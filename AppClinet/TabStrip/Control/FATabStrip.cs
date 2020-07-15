@@ -27,13 +27,6 @@ namespace CefiBrowser
         #endregion
 
         #region Constants
-
-        private int DEF_GLYPH_WIDTH = 38; //决定右边第标签列表按钮的位置，值为0时不显示，值为26时和关闭安钮重叠
-        private float DEF_START_POS; //第一个标签Button到Form左边的距离
-        private int Def_TabtoLeft = 10; //table离左边边界的距离
-
-        private float Def_TabButton_White = 200; //默认标签Button宽度
-        private int TabButtons_DefOffset = 13; //两个标签之前的缩进
         public float AddNbtCurrent_LocationY;// 实时存放新增按钮的right坐标
         private Color offSelectedColor = Color.FromArgb(208, 228, 228); //标签未选中时的颜色
         private Color onSelectedColor =  Color.FromArgb(242, 242, 242); //标签被选中时的颜色
@@ -41,12 +34,12 @@ namespace CefiBrowser
         private Color tabBackColor = Color.FromArgb(204, 204, 204); //标签后面背景色
         private Color UderLineColor = Color.FromArgb(169, 169, 169); //画UnderLine的颜色
         private Color AddBTonMouserDown = Color.FromArgb(189, 190, 189); //标签被选中时的颜色
-        private bool FButtonIsDown = false; //表明已经按下关闭，最大化，最小按钮
+        public bool FButtonIsDown = false; //表明已经按下关闭，最大化，最小按钮
 
         private Color colorMouseOn = Color.Silver;
         public static bool FormMaximum = true; //设置此变量决定主窗口最大化和非最大化时的Tab按钮离主界面离上方边界的距离
         public static bool onMouseDoubleClink = false; //控制当如果在标签上双击时不会进行Form最大化和最小化操作
-        public static bool ParentMouseMrafting; //标志鼠标是可以拖拽
+        public bool ParentMouseMrafting; //标志鼠标是可以拖拽
         public static bool isAddNewButton = false;
         
         private SolidBrush brushFont = new SolidBrush(Color.Black);
@@ -58,8 +51,8 @@ namespace CefiBrowser
 
         // 滑动
         //TabHeader thMouseDown = null;
-        Point pMouseDown = new Point();
-        Point mMovePiont = new Point();
+      //public  Point pMouseDown = new Point();
+      public  Point mMovePiont = new Point();
 
         #endregion
 
@@ -86,7 +79,7 @@ namespace CefiBrowser
         //private ContextMenuStrip menu = null;
         //private FATabStripMenuGlyph menuGlyph = null;
 
-        private NewAddButton NewAddRect = null;
+        public NewAddButton NewAddRect;
         public static FATabStripItemCollection items;
 
         private StringFormat sf = null;
@@ -153,7 +146,7 @@ namespace CefiBrowser
         /// <param name="tabIndex"></param>
         public void InsetTab(FATabStripItem tabItem, bool autoSelect,int tabIndex)
         {
-            if (Def_TabButton_White < 40) //如果标签宽度太小就不增加了，因为没实际意义
+            if (CefConstHelper.Def_TabButton_White < 40) //如果标签宽度太小就不增加了，因为没实际意义
                 return;
             CalcNewRectXY("AddItem");
 
@@ -165,7 +158,7 @@ namespace CefiBrowser
             tabItem.BackColor = SystemColors.Window;//onSelectedColor;// Color.FromArgb(204, 204, 204);
             tabItem.IsDrawn = true;
             tabItem.CanClose = true;
-            tabItem.Height =CefConstHelper.Def_TabButton_Hight;
+            tabItem.Height = CefConstHelper.Def_TabButton_Hight;
 
             Items.Insert(tabIndex, tabItem);
 
@@ -176,6 +169,15 @@ namespace CefiBrowser
             }
 
         }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ExStyle |= 0x02000000 | (int)WinAPI.WindowStyles.WS_CLIPCHILDREN;
+        //        return cp;
+        //    }
+        //}
         /// <summary>
         /// Add a <see cref="FATabStripItem"/> to this control.
         /// User can make the currently selected item or not.
@@ -183,7 +185,7 @@ namespace CefiBrowser
         /// <param name="tabItem"></param>
         public void AddTab(FATabStripItem tabItem, bool autoSelect)
         {
-            if (Def_TabButton_White < 40) //如果标签宽度太小就不增加了，因为没实际意义
+            if (CefConstHelper.Def_TabButton_White < 40) //如果标签宽度太小就不增加了，因为没实际意义
                 return;
             CalcNewRectXY("AddItem");
 
@@ -193,8 +195,8 @@ namespace CefiBrowser
             tabItem.BackColor = SystemColors.Window;//onSelectedColor;// Color.FromArgb(204, 204, 204);
             tabItem.IsDrawn = true;
             tabItem.CanClose = true;
-          //  tabItem.ItemIcon = Properties.Resources.icon_normal;//for test
-            tabItem.Height =CefConstHelper.Def_TabButton_Hight;
+            //  tabItem.ItemIcon = Properties.Resources.icon_normal;//for test
+           // tabItem.Height = CefConstHelper.Def_TabButton_Hight;
 
             Items.Add(tabItem);
 
@@ -202,33 +204,34 @@ namespace CefiBrowser
             {
                 SelectedItem = tabItem;
                 SelectItem(tabItem);
-               // SelectedItem.BackColor = offSelectedColor;// SystemColors.Window;
+                // SelectedItem.BackColor = offSelectedColor;// SystemColors.Window;
+                //}
+                this.Invalidate();
             }
         }
         /// <summary>
         /// 最大化和复原的时候计算离窗口上面的高度
         /// </summary>
         /// <param name="FuncName"></param>
-        public void ControlSizeChanged(string FuncName, MouseEventArgs e)
+        public void ControlSizeChanged()//string FuncName, MouseEventArgs e)
         {
-            float nAddBt_LocationY = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * items.Count + (float)Def_TabButton_White;
+            float nAddBt_LocationY = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * items.Count + (float)CefConstHelper.Def_TabButton_White;
             float newBTto_FormRight = ClientRectangle.Width - CefConstHelper.AddNbt_FormRight - 10; //10为新增按钮左边到左边最近一个标签按钮之间的宽度
 
             if (nAddBt_LocationY < newBTto_FormRight)
             {
                 AddNbtCurrent_LocationY = newBTto_FormRight;
-                Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count);
+                CefConstHelper.Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count);
 
-                float uu = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 1) + (float)Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
+                float uu = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 1) + (float)CefConstHelper.Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
                 float mm = (AddNbtCurrent_LocationY - uu) / (items.Count + 1);
 
-                Def_TabButton_White = Def_TabButton_White + mm;
-                float uu2u = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 1) + (float)Def_TabButton_White;
-                if (Def_TabButton_White > 200)
-                    Def_TabButton_White = 200;
-
+                CefConstHelper.Def_TabButton_White = CefConstHelper.Def_TabButton_White + mm;
+                float uu2u = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 1) + (float)CefConstHelper.Def_TabButton_White;
+                if (CefConstHelper.Def_TabButton_White > CefConstHelper.Current_TabButton_White)
+                    CefConstHelper.Def_TabButton_White = CefConstHelper.Current_TabButton_White;
             }
-
+            UpdateLayout();
         }
 
         /// <summary>
@@ -241,59 +244,61 @@ namespace CefiBrowser
 
             if (DAction == "AddItem")
             {
-                float nAddBt_LocationY = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * items.Count + (float)Def_TabButton_White;
+                float nAddBt_LocationY = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * items.Count + (float)CefConstHelper.Def_TabButton_White;
 
                 float newBTto_FormRight = ClientRectangle.Width - CefConstHelper.AddNbt_FormRight - 10; //10为新增按钮左边到左边最近一个标签按钮之间的宽度
 
                 if (nAddBt_LocationY > newBTto_FormRight)
                 {
                     AddNbtCurrent_LocationY = newBTto_FormRight;
-                    Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count + 1);
+                    CefConstHelper.Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count + 1);
 
-                    float uu = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * items.Count + (float)Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
+                    float uu = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * items.Count + (float)CefConstHelper.Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
                     float mm = (AddNbtCurrent_LocationY - uu) / (items.Count + 1);
 
-                    Def_TabButton_White = Def_TabButton_White + mm;
-                    float uu2u = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * items.Count + (float)Def_TabButton_White;
+                    CefConstHelper.Def_TabButton_White = CefConstHelper.Def_TabButton_White + mm;
+                    float uu2u = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * items.Count + (float)CefConstHelper.Def_TabButton_White;
 
                 }
             }
 
             if (DAction == "RemoveItem")
             {
-                float nAddBt_LocationY = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 1) + (float)Def_TabButton_White;
+                float nAddBt_LocationY = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 1) + (float)CefConstHelper.Def_TabButton_White;
 
                 float newBTto_FormRight = ClientRectangle.Width - CefConstHelper.AddNbt_FormRight - 10;
 
                 if (nAddBt_LocationY == newBTto_FormRight)
                 {
                     AddNbtCurrent_LocationY = newBTto_FormRight;
-                    Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count - 1);
+                    CefConstHelper.Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count - 1);
 
-                    float uu = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 2) + (float)Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
+                    float uu = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 2) + (float)CefConstHelper.Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
                     float mm = (AddNbtCurrent_LocationY - uu) / (items.Count - 1);
 
-                    Def_TabButton_White = Def_TabButton_White + mm;
-                    float uu2u = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 2) + (float)Def_TabButton_White;
-                    if (Def_TabButton_White > 200)
-                        Def_TabButton_White = 200;
+                    CefConstHelper.Def_TabButton_White = CefConstHelper.Def_TabButton_White + mm;
+                    float uu2u = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 2) + (float)CefConstHelper.Def_TabButton_White;
+                    if (CefConstHelper.Def_TabButton_White > CefConstHelper.Current_TabButton_White)
+                        CefConstHelper.Def_TabButton_White = CefConstHelper.Current_TabButton_White;
+
                 }
                 else
                 {
                     AddNbtCurrent_LocationY = newBTto_FormRight;
-                    Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count - 1);
+                    CefConstHelper.Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count - 1);
 
-                    float uu = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 2) + (float)Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
+                    float uu = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 2) + (float)CefConstHelper.Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
                     float mm = (AddNbtCurrent_LocationY - uu) / (items.Count - 1);
 
-                    Def_TabButton_White = Def_TabButton_White + mm;
-                    float uu2u = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 2) + (float)Def_TabButton_White;
-                    if (Def_TabButton_White > 200)
-                        Def_TabButton_White = 200;
+                    CefConstHelper.Def_TabButton_White = CefConstHelper.Def_TabButton_White + mm;
+                    float uu2u = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 2) + (float)CefConstHelper.Def_TabButton_White;
+                    if (CefConstHelper.Def_TabButton_White > CefConstHelper.Current_TabButton_White)
+                        CefConstHelper.Def_TabButton_White = CefConstHelper.Current_TabButton_White;
+
                 }
             }
-            this.Invalidate();
-            UpdateLayout();
+            //this.Invalidate();
+            //UpdateLayout();
         }
         /// <summary>
         /// Remove a <see cref="FATabStripItem"/> from this control.
@@ -339,7 +344,8 @@ namespace CefiBrowser
                 //    }
                 //}
             }
-            DEF_START_POS -= (Def_TabButton_White - TabButtons_DefOffset);
+            CefConstHelper.DEF_START_POS -= (CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset);
+         //   this.Invalidate();
 
         }
 
@@ -537,28 +543,32 @@ namespace CefiBrowser
                 FATabStripItem newitem = new FATabStripItem();
                 AddTab(newitem, true);
                 newitem = null;
+                ControlSizeChanged();
             }
-
-
-
             //画Tabstrip边框
             // SetDefaultSelected();
             //Rectangle borderRc = ClientRectangle;
             //borderRc.Width--;
             //borderRc.Height--;
             //e.Graphics.DrawRectangle(SystemPens.ControlDark, borderRc);
-
-            DEF_START_POS = 10;
+            CefConstHelper.DEF_START_POS = 10;
+            if (PublicClass.DpiX > 150)
+            {
+                CefConstHelper.DEF_START_POS = 16;
+            }
+            else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 150)
+            {
+                CefConstHelper.DEF_START_POS = 13;
+            }
 
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
 
             #region Draw Pages
-
-
+            FATabStripItem currentItem = new FATabStripItem();
             for (int i = 0; i < Items.Count; i++)
             {
-                FATabStripItem currentItem = Items[i];
+                currentItem = Items[i];
                 if (!currentItem.Visible && !DesignMode)
                     continue;
                 OnCalcTabPage(e.Graphics, currentItem);
@@ -573,7 +583,7 @@ namespace CefiBrowser
                 OnDrawTabPage(e.Graphics, currentItem);
 
             }
-            
+            currentItem = null;
             #endregion
 
 
@@ -588,32 +598,21 @@ namespace CefiBrowser
 
             }
             #region Draw UnderPage Line
-            float UderLineCost = 0;
-            
-            if(PublicClass.DpiX <= 100)
-            {
-                UderLineCost = 2f;
-            }
-            else if(PublicClass.DpiX>=120)
-            {
-                UderLineCost = 1.2f;
-            }
+            //  float UderLineCost = 0;
 
             if (SelectedItem != null && SelectedItem.IsDrawn)
             {
                 if (ParentForm.WindowState == FormWindowState.Maximized)
                 {
-                    UderLineCost = 3f;
-                    PointF end = new PointF(SelectedItem.StripRect.Left + 1f, CefConstHelper.DEF_HEADER_HEIGHT - UderLineCost);
-                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.DEF_HEADER_HEIGHT - UderLineCost), new PointF(ClientRectangle.Width, CefConstHelper.DEF_HEADER_HEIGHT - UderLineCost));
-                    e.Graphics.DrawLine(new Pen(onSelectedColor, 1f), end, new PointF(SelectedItem.StripRect.Right - 1f, CefConstHelper.DEF_HEADER_HEIGHT - UderLineCost));
+                    PointF end = new PointF(SelectedItem.StripRect.Left + 1f, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost);
+                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost), new PointF(ClientRectangle.Width, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost));
+                    e.Graphics.DrawLine(new Pen(onSelectedColor, 1f), end, new PointF(SelectedItem.StripRect.Right - 1f, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost));
                 }
                 else
                 {
-                    //UderLineCost = 1f;
-                    PointF end = new PointF(SelectedItem.StripRect.Left + 1f, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis - UderLineCost);
-                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis - UderLineCost), new PointF(ClientRectangle.Width, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis - UderLineCost));
-                    e.Graphics.DrawLine(new Pen(onSelectedColor, 1f), end, new PointF(SelectedItem.StripRect.Right - 1f, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis - UderLineCost));
+                    PointF end = new PointF(SelectedItem.StripRect.Left + 1f, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost);
+                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost), new PointF(ClientRectangle.Width, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost));
+                    e.Graphics.DrawLine(new Pen(onSelectedColor, 1f), end, new PointF(SelectedItem.StripRect.Right - 1f, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost));
 
                 }
             }
@@ -625,244 +624,243 @@ namespace CefiBrowser
             #endregion
         }
 
-        public void FATabMouseDown(MouseEventArgs e, string FuncName)
-        {
-            if (e.Button == MouseButtons.Right)
-                return;
+        #region 鼠标事件
+        //public void FATabMouseDown(MouseEventArgs e, string FuncName)
+        //{
+        //    if (e.Button == MouseButtons.Right)
+        //        return;
 
-            HitTestResult result = HitTest(e.Location);
-            FATabStripItem item = GetTabItemByPoint(e.Location);
+        //    HitTestResult result = HitTest(e.Location);
+        //    FATabStripItem item = GetTabItemByPoint(e.Location);
 
-            if (result == HitTestResult.TabItem)
-            {
-                if (item != null)
-                {
-                    SelectedItem = item;
-                    if (item.splic.Panel1.Controls.Count > 0 && MemCostLower)
-                    {
-                        Process[] allProcess = Process.GetProcesses();
-                        foreach (Process p in allProcess)
-                        {
-                            if (p.ProcessName.ToLower() + ".exe" == CefConstHelper.CefiBrowserName.ToLower())
-                            {
-                                if (p.StartTime.ToString().ToLower() == item.StrartTime.ToString().ToLower())
-                                {
-                                    IntPtr intPtrCef = p.Handle;
-                                    PublicClass.SetProcessWorkingSetSize(intPtrCef, -1, -1);
-                                    // break;
-                                }
-                            }
-                        }
-                    }
-                }
-                //这里Item按钮鼠标按下事件要改成只高亮显示，不关闭 ？？后继完成
-                if (item.ItemBounds.Contains(e.Location))
-                {
-                    FButtonIsDown = true;
-                    item.ItemCloseDown = true;
-                    Invalidate(item.ItemBounds);
-                }
-            }
-            else if (result == HitTestResult.AddNewButton)
-            {
-                NewAddRect.IsMouseDown = true;
-                Invalidate();// NewAddRect.DBouds);
-                FButtonIsDown = true;
-            }
-            else
-            {
-                CancelFromButton();
-            }
+        //    if (result == HitTestResult.TabItem)
+        //    {
+        //        if (item != null)
+        //        {
+        //            SelectedItem = item;
+        //            if (item.splic.Panel1.Controls.Count > 0 && MemCostLower)
+        //            {
+        //                Process[] allProcess = Process.GetProcesses();
+        //                foreach (Process p in allProcess)
+        //                {
+        //                    if (p.ProcessName.ToLower() + ".exe" == CefConstHelper.CefiBrowserName.ToLower())
+        //                    {
+        //                        if (p.StartTime.ToString().ToLower() == item.StrartTime.ToString().ToLower())
+        //                        {
+        //                            IntPtr intPtrCef = p.Handle;
+        //                            PublicClass.SetProcessWorkingSetSize(intPtrCef, -1, -1);
+        //                            // break;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        //这里Item按钮鼠标按下事件要改成只高亮显示，不关闭 ？？后继完成
+        //        if (item.ItemBounds.Contains(e.Location))
+        //        {
+        //            FButtonIsDown = true;
+        //            item.ItemCloseDown = true;
+        //            Invalidate(item.ItemBounds);
+        //        }
+        //    }
+        //    else if (result == HitTestResult.AddNewButton)
+        //    {
+        //        NewAddRect.IsMouseDown = true;
+        //        Invalidate();// NewAddRect.DBouds);
+        //        FButtonIsDown = true;
+        //    }
+        //    else
+        //    {
+        //        CancelFromButton();
+        //    }
 
-            ControlSizeChanged(FuncName, e);
+        //    //ControlSizeChanged(FuncName, e);
 
-            if (NewAddRect.Bounds.Contains(e.Location))
-            {
-                ParentMouseMrafting = false; //为False不能拖拽
-            }
-            else if (item != null)
-            {
-                ParentMouseMrafting = false; //为False不能拖拽
-            }
-            else
-            {
-                if (FuncName == "1")
-                {
-                    if (item != null)
-                    {
-                        ParentMouseMrafting = false; //为False不能拖拽
-                    }
-                }
-                if (e.Y <= NewAddRect.Bounds.Bottom + 5)
-                {
-                    ParentMouseMrafting = true; //为False不能拖拽
+        //    if (NewAddRect.Bounds.Contains(e.Location))
+        //    {
+        //        ParentMouseMrafting = false; //为False不能拖拽
+        //    }
+        //    else if (item != null)
+        //    {
+        //        ParentMouseMrafting = false; //为False不能拖拽
+        //    }
+        //    else
+        //    {
+        //        if (FuncName == "1")
+        //        {
+        //            if (item != null)
+        //            {
+        //                ParentMouseMrafting = false; //为False不能拖拽
+        //            }
+        //        }
+        //        if (e.Y <= NewAddRect.Bounds.Bottom + 5)
+        //        {
+        //            ParentMouseMrafting = true; //为False不能拖拽
 
-                }
-                else
-                    ParentMouseMrafting = false;
+        //        }
+        //        else
+        //            ParentMouseMrafting = false;
 
-                //if (FuncName == "2")
-                //{
-                //    ParentMouseMrafting = false;
-                //    if (NewAddRect.Bounds.Contains(e.Location) != true && SelectedItem.ItemBounds.Contains(e.Location) != true)
-                //    {
-                //        FormMaxNormal("2");
-                //    }
-                //}
-            }
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                pMouseDown = e.Location;
-                FButtonIsDown = true;
-            }
-            mouse_move_down = false; 
-        }
+        //        //if (FuncName == "2")
+        //        //{
+        //        //    ParentMouseMrafting = false;
+        //        //    if (NewAddRect.Bounds.Contains(e.Location) != true && SelectedItem.ItemBounds.Contains(e.Location) != true)
+        //        //    {
+        //        //        FormMaxNormal("2");
+        //        //    }
+        //        //}
+        //    }
+        //    if (e.Button == System.Windows.Forms.MouseButtons.Left)
+        //    {
+        //        pMouseDown = e.Location;
+        //        FButtonIsDown = true;
+        //    }
+        //    mouse_move_down = false; 
+        //}
 
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-            HitTestResult result = HitTest(e.Location);
-            FATabStripItem item = GetTabItemByPoint(e.Location);
+        //protected override void OnMouseMove(MouseEventArgs e)
+        //{
+        //    base.OnMouseMove(e);
+        //    HitTestResult result = HitTest(e.Location);
+        //    FATabStripItem item = GetTabItemByPoint(e.Location);
 
-            #region 新增按钮
+        //    #region 新增按钮
 
-            if (FButtonIsDown == false)
-                if (result == HitTestResult.AddNewButton)
-                {
-                    if (NewAddRect.Bounds.Contains(e.Location))
-                    {
-                        NewAddRect.IsMouseOver = true;
-                        Invalidate();
-                    }
-                    else
-                    {
-                        NewAddRect.IsMouseOver = false;
-                        Invalidate();
-                    }
+        //    if (FButtonIsDown == false)
+        //        if (result == HitTestResult.AddNewButton)
+        //        {
+        //            if (NewAddRect.Bounds.Contains(e.Location))
+        //            {
+        //                NewAddRect.IsMouseOver = true;
+        //                Invalidate();
+        //            }
+        //            else
+        //            {
+        //                NewAddRect.IsMouseOver = false;
+        //                Invalidate();
+        //            }
 
-                }
-                else
-                {
-                    CancelFromButton();
-                }
+        //        }
+        //        else
+        //        {
+        //            CancelFromButton();
+        //        }
 
-            #endregion
+        //    #endregion
 
-            #region 当鼠标移动到tab按钮和关闭按钮区域的时候标签按钮颜色的改变
-            //这里先把其他的ItemMouseOver关掉
-            for (int i = 0; i < items.Count; i++)
-            {
-                items[i].IsMouseOver = false;
-                Invalidate(items[i].TabBounds);
+        //    #region 当鼠标移动到tab按钮和关闭按钮区域的时候标签按钮颜色的改变
+        //    //这里先把其他的ItemMouseOver关掉
+        //    for (int i = 0; i < items.Count; i++)
+        //    {
+        //        items[i].IsMouseOver = false;
+        //        Invalidate(items[i].TabBounds);
 
-                items[i].ItemIsMouseOver = false;
-                Invalidate(items[i].ItemBounds);
+        //        items[i].ItemIsMouseOver = false;
+        //        Invalidate(items[i].ItemBounds);
 
-            }
+        //    }
 
-            if (item != null && FButtonIsDown == false)
-            {
-                if (selectedItem != item)
-                {
-                    item.IsMouseOver = true;
-                    Invalidate(item.TabBounds);
-                }
-                else
-                {
-                    item.IsMouseOver = false;
-                    Invalidate(item.TabBounds);
-                }
+        //    if (item != null && FButtonIsDown == false)
+        //    {
+        //        if (selectedItem != item)
+        //        {
+        //            item.IsMouseOver = true;
+        //            Invalidate(item.TabBounds);
+        //        }
+        //        else
+        //        {
+        //            item.IsMouseOver = false;
+        //            Invalidate(item.TabBounds);
+        //        }
 
-                if (item.ItemBounds.Contains(e.Location))
-                {
-                    item.ItemIsMouseOver = true;
-                    Invalidate(item.ItemBounds);
-                }
-                else
-                {
-                    item.ItemIsMouseOver = false;
-                    Invalidate(item.ItemBounds);
-                }
-            }
-            #endregion
-            if (e.Button == MouseButtons.Left)
-            {
-                //判断鼠标按下左键的同时是而且在移动，即拖拽行为发生
-                if (e.X - pMouseDown.X > 6 || pMouseDown.X - e.X > 6) //向右或是向左移动
-                {
-                    mouse_move_down = true;
-                    if (item != null && Items.Count > 1)
-                    {
-                        if (item != selectedItem)
-                            Items.SwichItem(selectedItem, GetTabItemByPoint(e.Location));
-                        else
-                            Items.SwichItem(selectedItem, GetTabItemByPointFromRigt(e.Location));
-                    }
-                }
-            }
+        //        if (item.ItemBounds.Contains(e.Location))
+        //        {
+        //            item.ItemIsMouseOver = true;
+        //            Invalidate(item.ItemBounds);
+        //        }
+        //        else
+        //        {
+        //            item.ItemIsMouseOver = false;
+        //            Invalidate(item.ItemBounds);
+        //        }
+        //    }
+        //    #endregion
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        //判断鼠标按下左键的同时是而且在移动，即拖拽行为发生
+        //        if (e.X - pMouseDown.X > 6 || pMouseDown.X - e.X > 6) //向右或是向左移动
+        //        {
+        //            mouse_move_down = true;
+        //            if (item != null && Items.Count > 1)
+        //            {
+        //                if (item != selectedItem)
+        //                    Items.SwichItem(selectedItem, GetTabItemByPoint(e.Location));
+        //                else
+        //                    Items.SwichItem(selectedItem, GetTabItemByPointFromRigt(e.Location));
+        //            }
+        //        }
+        //    }
 
-            mMovePiont = e.Location;
-            this.Invalidate();
-        }
-
-
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            base.OnMouseUp(e);
+        //    mMovePiont = e.Location;
+        //    //this.Invalidate();
+        //}
 
 
-            if (HitTest(e.Location) == HitTestResult.AddNewButton && FButtonIsDown && e.Button != MouseButtons.Right && mouse_move_down!=true)
-            {
-                NewAddRect.IsMouseOver = false;
-                NewAddRect.IsMouseDown = false;
-                FATabStripItem newitem = new FATabStripItem();
-                AddTab(newitem, true);
+        //protected override void OnMouseUp(MouseEventArgs e)
+        //{
+        //    base.OnMouseUp(e);
 
 
-            }
-            if (SelectedItem.ItemBounds.Contains(e.Location) && FButtonIsDown)
-            {
-                if (SelectedItem != null)
-                {
-                    TabStripItemClosingEventArgs args = new TabStripItemClosingEventArgs(SelectedItem);
-                    OnTabStripItemClosing(args);
-                    if (!args.Cancel && SelectedItem.CanClose)
-                    {
-                        RemoveTab(SelectedItem);
-                        OnTabStripItemClosed(EventArgs.Empty);
-                    }
-                }
-            }
+        //    if (HitTest(e.Location) == HitTestResult.AddNewButton && FButtonIsDown && e.Button != MouseButtons.Right && mouse_move_down != true)
+        //    {
+        //        NewAddRect.IsMouseOver = false;
+        //        NewAddRect.IsMouseDown = false;
+        //        FATabStripItem newitem = new FATabStripItem();
+        //        AddTab(newitem, true);
+        //    }
+        //    if (SelectedItem.ItemBounds.Contains(e.Location) && FButtonIsDown)
+        //    {
+        //        if (SelectedItem != null)
+        //        {
+        //            TabStripItemClosingEventArgs args = new TabStripItemClosingEventArgs(SelectedItem);
+        //            OnTabStripItemClosing(args);
+        //            if (!args.Cancel && SelectedItem.CanClose)
+        //            {
+        //                RemoveTab(SelectedItem);
+        //                OnTabStripItemClosed(EventArgs.Empty);
+        //            }
+        //        }
+        //    }
 
-            FButtonIsDown = false;
-           // slided = false;
-            mouse_move_down = false;
+        //    FButtonIsDown = false;
+        //    mouse_move_down = false;
 
-        }
-
-        
-        protected override void OnMouseLeave(EventArgs e)
-        {
-            base.OnMouseLeave(e);
-
-            FButtonIsDown = false; //鼠标离开的时候重置这个标志
-
-            CancelFromButton(); //取消Form按钮的选中状态
+        //}
 
 
-            //这里先把其他的ItemMouseOver及itemIsMouseOver关掉
-            for (int i = 0; i < items.Count; i++)
-            {
-                items[i].IsMouseOver = false;
-                Invalidate(items[i].TabBounds);
+        //protected override void OnMouseLeave(EventArgs e)
+        //{
+        //    base.OnMouseLeave(e);
 
-                items[i].ItemIsMouseOver = false;
-                Invalidate(items[i].ItemBounds);
-            }
-            //刷新控件
-            Invalidate();
-        }
+        //    FButtonIsDown = false; //鼠标离开的时候重置这个标志
 
+        //    CancelFromButton(); //取消Form按钮的选中状态
+
+
+        //    //这里先把其他的ItemMouseOver及itemIsMouseOver关掉
+        //    for (int i = 0; i < items.Count; i++)
+        //    {
+        //        items[i].IsMouseOver = false;
+        //        Invalidate(items[i].TabBounds);
+
+        //        items[i].ItemIsMouseOver = false;
+        //        Invalidate(items[i].ItemBounds);
+        //    }
+        //    //刷新控件
+        //    Invalidate();
+        //}
+
+        #endregion
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
@@ -870,39 +868,40 @@ namespace CefiBrowser
                 return;
             if (ParentForm != null && items.Count > 0)
             {
-                float nAddBt_LocationY = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * items.Count + (float)Def_TabButton_White;
+                float nAddBt_LocationY = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * items.Count + (float)CefConstHelper.Def_TabButton_White;
 
                 float newBTto_FormRight = ClientRectangle.Width - CefConstHelper.AddNbt_FormRight - 10; //10为新增按钮左边到左边最近一个标签按钮之间的宽度
 
                 if (nAddBt_LocationY > newBTto_FormRight)
                 {
                     AddNbtCurrent_LocationY = newBTto_FormRight;
-                    Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count);
+                    CefConstHelper.Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count);
 
-                    float uu = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 1) + (float)Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
+                    float uu = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 1) + (float)CefConstHelper.Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
                     float mm = (AddNbtCurrent_LocationY - uu) / (items.Count);
 
-                    Def_TabButton_White = Def_TabButton_White + mm;
-                    float uu2u = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 1) + (float)Def_TabButton_White;
-                    if (Def_TabButton_White > 200)
-                        Def_TabButton_White = 200;
+                    CefConstHelper.Def_TabButton_White = CefConstHelper.Def_TabButton_White + mm;
+                    float uu2u = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 1) + (float)CefConstHelper.Def_TabButton_White;
+                    if (CefConstHelper.Def_TabButton_White > CefConstHelper.Current_TabButton_White)
+                        CefConstHelper.Def_TabButton_White = CefConstHelper.Current_TabButton_White;
                 }
                 if (nAddBt_LocationY < newBTto_FormRight) //当左右缩放窗口时发生
                 {
                     AddNbtCurrent_LocationY = newBTto_FormRight;
-                    Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count);
-                    float uu = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 1) + (float)Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
+                    CefConstHelper.Def_TabButton_White = AddNbtCurrent_LocationY / (items.Count);
+                    float uu = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 1) + (float)CefConstHelper.Def_TabButton_White;// - AddNbtCurrent_LocationY) / (items.Count + 1);
                     float mm = (AddNbtCurrent_LocationY - uu) / (items.Count);
 
-                    Def_TabButton_White = Def_TabButton_White + mm;
-                    float uu2u = Def_TabtoLeft + ((float)Def_TabButton_White - TabButtons_DefOffset) * (items.Count - 1) + (float)Def_TabButton_White;
-                    if (Def_TabButton_White > 200)
-                        Def_TabButton_White = 200;
+                    CefConstHelper.Def_TabButton_White = CefConstHelper.Def_TabButton_White + mm;
+                    float uu2u = CefConstHelper.Def_TabtoLeft + ((float)CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset) * (items.Count - 1) + (float)CefConstHelper.Def_TabButton_White;
+                    if (CefConstHelper.Def_TabButton_White > CefConstHelper.Current_TabButton_White)
+                        CefConstHelper.Def_TabButton_White = CefConstHelper.Current_TabButton_White;
+
                 }
 
             }
-
-            UpdateLayout();
+            
+            //UpdateLayout();
         }
 
         #endregion
@@ -956,7 +955,9 @@ namespace CefiBrowser
 
         //    }
         //}
-
+        /// <summary>
+        /// 检查父窗体是否最大化
+        /// </summary>
         public void CalcParentFormMax()
         {
             if (ParentForm != null)
@@ -974,9 +975,8 @@ namespace CefiBrowser
 
             //测量用指定的 System.Drawing.Font 绘制并用指定的 System.Drawing.StringFormat 格式化的指定字符串
             //如果要固定标签长度不需检测Title的宽度
-            // SizeF textSize = g.MeasureString(currentItem.Title, SystemFonts.DefaultFont, new SizeF(Def_TabButton_White, 10), sf);
-
-            SizeF textSize = new SizeF(Def_TabButton_White, 10); //10p这个文字框的为高度，120为宽度，
+            // SizeF textSize = g.MeasureString(currentItem.Title, SystemFonts.DefaultFont, new SizeF(CefConstHelper.Def_TabButton_White, 10), sf);
+            // SizeF textSize = new SizeF(CefConstHelper.Def_TabButton_White, currentFont.Height); //10p这个文字框的为高度，120为宽度，
 
             CalcParentFormMax();
             RectangleF buttonRect;
@@ -984,24 +984,25 @@ namespace CefiBrowser
             if (FormMaximum != true)  //当窗口不是最大化的时候Y坐标会改变,具体为TabButton高度的一半
             {
                 //buttonRect是定义标签button的边框宽和高及坐标,28为高，X,Y为坐标
-                buttonRect = new RectangleF(DEF_START_POS, CefConstHelper.DEF_Header_TopDis, textSize.Width, CefConstHelper.Def_TabButton_Hight);
+                buttonRect = new RectangleF(CefConstHelper.DEF_START_POS, CefConstHelper.DEF_Header_TopDis, CefConstHelper.Def_TabButton_White, CefConstHelper.buttonHeight);
 
                 currentItem.StripRect = buttonRect;
-                DEF_START_POS += (Def_TabButton_White - TabButtons_DefOffset);
-                NewAddRect.Bounds = new RectangleF(DEF_START_POS + 10, (CefConstHelper.Def_TabButton_Hight +CefConstHelper.DEF_Header_TopDis) / 5 + CefConstHelper.DEF_Header_TopDis, 27, CefConstHelper.Def_TabButton_Hight / 2);
+                CefConstHelper.DEF_START_POS += (CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset);
+                NewAddRect.Bounds = new RectangleF(CefConstHelper.DEF_START_POS + 10, (CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis) / 5 + CefConstHelper.DEF_Header_TopDis, CefConstHelper.AddnewButton_Width, CefConstHelper.buttonHeight / 2);
             }
-            else
+            else 
             {
                 //buttonRect是定义标签button的边框宽和高及坐标,28为高，X,Y为坐标
                 //窗口最大化的时候Y坐标为1
-                buttonRect = new RectangleF(DEF_START_POS, this.Location.Y-2, textSize.Width, CefConstHelper.Def_TabButton_Hight);
+                buttonRect = new RectangleF(CefConstHelper.DEF_START_POS, this.Location.Y-2, CefConstHelper.Def_TabButton_White, CefConstHelper.buttonHeight);
                 currentItem.StripRect = buttonRect;
-                DEF_START_POS += (Def_TabButton_White - TabButtons_DefOffset);
-                NewAddRect.Bounds = new RectangleF(DEF_START_POS + 10, (CefConstHelper.Def_TabButton_Hight + CefConstHelper.DEF_Header_TopDis) / 5, 27, CefConstHelper.Def_TabButton_Hight / 2); //画新增按钮
+                CefConstHelper.DEF_START_POS += (CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset);
+                NewAddRect.Bounds = new RectangleF(CefConstHelper.DEF_START_POS + 10, (CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis) / 5, CefConstHelper.AddnewButton_Width, CefConstHelper.buttonHeight / 2); //画新增按钮
             }
+            PublicClass.DEF_START_POS = CefConstHelper.DEF_START_POS;
             if (mouse_move_down)//拖拽状态
             {
-                buttonRect.X = mMovePiont.X - Def_TabButton_White /2;
+                buttonRect.X = mMovePiont.X - CefConstHelper.Def_TabButton_White /2;
                 if (buttonRect.X < 3)
                     buttonRect.X = 3;
 
@@ -1009,6 +1010,7 @@ namespace CefiBrowser
                     buttonRect.X = ClientRectangle.Width - CefConstHelper.AddNbt_FormRight - buttonRect.Width + 30;
                 selectedItem.StripRect = buttonRect;
             }
+            
         }
         private void BeginAnimate()//开始动画方法
         {
@@ -1035,17 +1037,24 @@ namespace CefiBrowser
         private void OnDrawTabPage(Graphics g, FATabStripItem currentItem)
         {
             Font currentFont = Font;
-            SizeF textSize = g.MeasureString(currentItem.Title, currentFont, new SizeF(Def_TabButton_White, 10), sf);
+            SizeF textSize = g.MeasureString(currentItem.Title, currentFont, new SizeF(CefConstHelper.Def_TabButton_White, 10), sf);
 
             #region 画TabButton的样式
             RectangleF buttonRect = currentItem.StripRect;
-           // currentItem.TabBounds = new Rectangle((int)buttonRect.X, (int)buttonRect.Y, (int)buttonRect.Width, (int)buttonRect.Height);
+            // currentItem.TabBounds = new Rectangle((int)buttonRect.X, (int)buttonRect.Y, (int)buttonRect.Width, (int)buttonRect.Height);
+
+            #region Tab style
+            if (ParentForm.WindowState == FormWindowState.Maximized)
+                currentItem.ParentFormIsMax = selectedItem.ParentFormIsMax = true;
+            else
+                currentItem.ParentFormIsMax = selectedItem.ParentFormIsMax = false;
             currentItem.DrawCross(g, currentItem, SelectedItem);
+            #endregion
 
             PointF textLoc = new PointF(buttonRect.Left + buttonRect.Height, buttonRect.Top + (buttonRect.Height / 2) - (textSize.Height / 2) - 2);
             RectangleF textRect = buttonRect;
             textRect.Location = textLoc;
-            //textRect.Y = buttonRect.Y + buttonRect.Height/4;
+           // textRect.Y = buttonRect.Y + buttonRect.Height / 2 + currentFont.Height/2;
             textRect.X = buttonRect.Left + 14;
             textRect.Width = buttonRect.Width - (textRect.Left - buttonRect.Left) - 4;
             textRect.Height = textSize.Height + currentFont.Size ;
@@ -1053,23 +1062,24 @@ namespace CefiBrowser
             //画标签上的关闭按钮 并判断主窗口最大化和最小化时的Y轴的值
             CalcParentFormMax();
             if (FormMaximum == true)
-                rectClose = new Rectangle((int)textRect.Right - CefConstHelper.closeRectW - 10, (int)textRect.Height / 2 - CefConstHelper.DEF_Header_TopDis / 5, CefConstHelper.closeRectW, CefConstHelper.closeRectH);
+                rectClose = new Rectangle((int)textRect.Right - CefConstHelper.closeRectW - CefConstHelper.CloseRect_toRight_Parm, (int)(buttonRect.Y+ buttonRect.Height/2 - textRect.Height/2), CefConstHelper.closeRectW, CefConstHelper.closeRectH);
+            // rectClose = new Rectangle((int)textRect.Right - CefConstHelper.closeRectW - 10, (int)textRect.Height / 2 - CefConstHelper.DEF_Header_TopDis / 5, CefConstHelper.closeRectW, CefConstHelper.closeRectH);
             else
             {
-                rectClose = new Rectangle((int)textRect.Right - CefConstHelper.closeRectW - 10, (int)textRect.Height + (int)((float)CefConstHelper.DEF_Header_TopDis / 4f), CefConstHelper.closeRectW, CefConstHelper.closeRectH);
-
+               // rectClose = new Rectangle((int)textRect.Right - CefConstHelper.closeRectW - 10, (int)textRect.Height + (int)((float)CefConstHelper.DEF_Header_TopDis / 4f), CefConstHelper.closeRectW, CefConstHelper.closeRectH);
+               rectClose = new Rectangle((int)textRect.Right - CefConstHelper.closeRectW - CefConstHelper.CloseRect_toRight_Parm, (int)(buttonRect.Y + buttonRect.Height / 2 - textRect.Height / 2), CefConstHelper.closeRectW, CefConstHelper.closeRectH);
             }
 
             currentItem.ItemBounds = rectClose;
             currentItem.ItemCloseDraw(g);
 
             //画标签上的Icon图标
-            if (Def_TabButton_White >= 60)
+            if (CefConstHelper.Def_TabButton_White >= 60)
             {
                 if (FormMaximum == true)
-                    rectIcon = new RectangleF(textRect.Left + 2, textRect.Height / 2 , CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
+                    rectIcon = new RectangleF(textRect.Left + 3, textRect.Height / 2 , CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
                 else
-                    rectIcon = new RectangleF(textRect.Left + 2, textRect.Height + CefConstHelper.DEF_Header_TopDis / 2 , CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
+                    rectIcon = new RectangleF(textRect.Left + 3, textRect.Height + CefConstHelper.DEF_Header_TopDis / 2 , CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
 
                 rectIcon.Y = rectIcon.Y + (textRect.Height -rectIcon.Height)/ 3;
 
@@ -1099,9 +1109,9 @@ namespace CefiBrowser
             else
             {
                 if (FormMaximum == true) //是否提示多开状态
-                    rectIcon = new RectangleF(textRect.Left + 2, textRect.Height / 2 - 1.6f, CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
+                    rectIcon = new RectangleF(textRect.Left + 3, textRect.Height / 2 - 1.6f, CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
                 else
-                    rectIcon = new RectangleF(textRect.Left + 2, textRect.Height + CefConstHelper.DEF_Header_TopDis / 2 - 1.6f, CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
+                    rectIcon = new RectangleF(textRect.Left + 3, textRect.Height + CefConstHelper.DEF_Header_TopDis / 2 - 1.6f, CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeH);
 
                 textRect.Width = textRect.Width - rectClose.Width * 2;
                 textRect.X = textRect.X + 3;
@@ -1124,15 +1134,7 @@ namespace CefiBrowser
             sf.FormatFlags |= StringFormatFlags.NoWrap;
             sf.FormatFlags &= StringFormatFlags.DirectionRightToLeft;
 
-            stripButtonRect = new Rectangle(0, 0, ClientSize.Width - DEF_GLYPH_WIDTH - 2, 10);
-
-            //if (ParentForm != null)
-            //{
-            //    WinAPI.RECT rECT = new WinAPI.RECT();
-            //    rECT.Left = MainForm.Instance.Left;
-            //    rECT.Top = MainForm.Instance.Top;
-            //    rECT.Right = MainForm.Instance.Right;
-            //    rECT.Bottom = MainForm.Instance.Bottom;
+            stripButtonRect = new Rectangle(0, 0, ClientSize.Width - CefConstHelper.DEF_GLYPH_WIDTH - 2, CefConstHelper.buttonHeight);
 
                 if (ParentForm != null && ParentForm.WindowState == FormWindowState.Maximized)
                 {
@@ -1140,7 +1142,7 @@ namespace CefiBrowser
                         DockPadding.Top = 0;
                     else
                         //  DockPadding.Top = DEF_HEADER_HEIGHT + InControlHeight;
-                        DockPadding.Top = CefConstHelper.Def_TabButton_Hight + InControlHeight - 3;
+                        DockPadding.Top = CefConstHelper.buttonHeight + InControlHeight - 3;
 
                     DockPadding.Bottom = 0;
                     DockPadding.Right = 0;
@@ -1158,8 +1160,7 @@ namespace CefiBrowser
                     }
                     else
                     {
-                        DockPadding.Top = CefConstHelper.DEF_HEADER_HEIGHT + InControlHeight + CefConstHelper.DEF_Header_TopDis - 1;
-
+                        DockPadding.Top = CefConstHelper.buttonHeight + InControlHeight + CefConstHelper.DEF_Header_TopDis -1;
                         DockPadding.Bottom = 0;
                         DockPadding.Right = 0;
                         DockPadding.Left = 0;
@@ -1192,7 +1193,7 @@ namespace CefiBrowser
                 OnTabStripItemChanged(new TabStripItemChangedEventArgs(itm, FATabStripItemChangeTypes.Changed));
             }
 
-            UpdateLayout();
+            //UpdateLayout();
             Invalidate();
         }
 
@@ -1299,8 +1300,8 @@ namespace CefiBrowser
             set
             {
                 flashFuuSC = value;
-                this.Invalidate();
-               // UpdateLayout();
+                //this.Invalidate();
+                UpdateLayout();
             }
             get { return flashFuuSC ; } }
       

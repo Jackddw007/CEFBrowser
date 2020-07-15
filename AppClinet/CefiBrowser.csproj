@@ -385,6 +385,10 @@
     <Content Include="CefiBrowser.ico" />
     <Content Include="DLL\EasyHook.dll" />
     <Content Include="DLL\EasyHook32.dll" />
+    <None Include="Resources\iconMax24.jpg" />
+    <None Include="Resources\iconNo24.jpg" />
+    <None Include="Resources\iconClose24.jpg" />
+    <None Include="Resources\icon24Min.png" />
     <None Include="Resources\530dd26a401e5c846a74703dfb7680b.png" />
     <None Include="Resources\902542c0b424dda1680d72d5881ca95.png" />
     <None Include="Resources\win10close.png" />

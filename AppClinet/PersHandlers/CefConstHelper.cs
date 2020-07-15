@@ -8,9 +8,86 @@ namespace CefiBrowser
     public static class CefConstHelper
     {
         #region 公用静态值
-        public static int Def_TabButton_Hight = 30; //默认标签Button高度
-        public static int DEF_Header_TopDis = 14; //非最大化时标签上边离Form上边距的距离
-        public static int DEF_HEADER_HEIGHT = 30; //决定标签栏的高度，不是标签的高度
+        /// <summary>
+        /// 决定右边第标签列表按钮的位置，值为0时不显示，值为26时和关闭安钮重叠
+        /// </summary>
+        public static int DEF_GLYPH_WIDTH = 38;
+        /// <summary>
+        /// 第一个标签Button到Form左边的距离
+        /// </summary>
+        public static float DEF_START_POS=10;
+        /// <summary>
+        /// TabButton下面的一条装饰线
+        /// </summary>
+        public static float UderLineCost = 2f;
+        /// <summary>
+        /// 收藏夹按钮的宽度
+        /// </summary>
+        public static int FavireBT_Width =140;
+        /// <summary>
+        /// 收藏夹按钮之间的距离
+        /// </summary>
+        public static int FavireBT_Distance = 6;
+        /// <summary>
+        /// 收藏夹按钮参数？用途暂时忘了Umm...
+        /// </summary>
+        public static int FavireBT_Width_Parm = 26;
+        /// <summary>
+        /// 关闭按钮离右边的距离，默认为10
+        /// </summary>
+        public static int CloseRect_toRight_Parm = 10;
+        /// <summary>
+        /// table离左边边界的距离
+        /// </summary>
+        public static int Def_TabtoLeft = 10; 
+
+        /// <summary>
+        /// 两个标签之前的缩进
+        /// </summary>
+        public static int TabButtons_DefOffset = 13; //两个标签之前的缩进
+
+        /// <summary>
+        /// 默认标签Button高度
+        /// </summary>
+        public static int Def_TabButton_Hight = 30; 
+        /// <summary>
+        /// 非最大化时标签上边离Form上边距的距离
+        /// </summary>
+        public static int DEF_Header_TopDis = 14;
+        /// <summary>
+        /// 新增按钮宽度
+        /// </summary>
+        public static int AddnewButton_Width = 27;
+        /// <summary>
+        ///  决定标签栏的高度，不是标签的高度
+        /// </summary>
+        public static int DEF_HEADER_HEIGHT = 30;
+        /// <summary>
+        /// 控制TabButton样式的参数，当这个值变小时会成长方形
+        /// 梯形，当为13F的时则是上短下长的梯形
+        /// 默认值为13f
+        /// </summary>
+        public static float buttonPar = 13f;
+        /// <summary>
+        /// ?还没查到原因
+        /// 暂时用来控制梯形高度
+        /// 默认高度为TabButton高度一样
+        /// </summary>
+        public static int buttonHeight = 30;
+
+        /// <summary>
+        /// TabButton默认宽度
+        /// </summary>
+        public static float Def_TabButton_White = 200;
+
+        /// <summary>
+        /// 当前TabButton默认宽度
+        /// </summary>
+        public static float Current_TabButton_White = 200;
+        /// <summary>
+        /// FmenuItem中Item的宽度
+        /// </summary>
+        public static int FmenuItem_TextRect_Width = 266;
         /// <summary>
         ///Tab图标宽
         /// </summary>
@@ -28,6 +105,14 @@ namespace CefiBrowser
         /// </summary>
         public static int closeRectH = 15;
 
+        /// <summary>
+        /// 收藏夹按钮Icon与Title之前的距离
+        /// </summary>
+        public static int FavBTIcon_Distace = 20;
+        /// <summary>
+        /// 收藏夹子菜单中单个Item的高度
+        /// </summary>
+        public static int FMenuItem_Height = 22;
         /// <summary>
         /// 收藏栏标签字体高度
         /// </summary>

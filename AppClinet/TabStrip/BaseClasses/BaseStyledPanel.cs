@@ -46,7 +46,7 @@ namespace CefiBrowser.BaseClasses
             SetStyle(ControlStyles.StandardClick, true);
             //this.BackColor = Color.Transparent;
             //base.AllowDrop = true;
-
+            AutoScaleMode = AutoScaleMode.Font;
 
         }
 
@@ -105,7 +105,15 @@ namespace CefiBrowser.BaseClasses
             }
         }
 
-
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ExStyle |= (int)WinAPI.WindowStyles.WS_CLIPCHILDREN;
+        //        return cp;
+        //    }
+        //}
 
         #endregion
 

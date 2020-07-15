@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -104,7 +105,7 @@ namespace CefiBrowser.JackControl
             this.Font = new Font("Tahoma", 8.25f, FontStyle.Regular);
             this.BackColor = Color.Transparent;
             this.AutoSize = false;
-           // this.Height = 18;
+            //this.Height = 36;
         }
 
         #endregion
@@ -121,9 +122,7 @@ namespace CefiBrowser.JackControl
                 //刷新面板触发OnPaint重绘
                 MainForm.Instance.Invoke(new Action(() =>
                 {
-                   
-
-                    if (MainForm.Instance.faTabStrip1.SelectedItem.splic.Panel1.Controls.Count > 0)
+                   if (MainForm.Instance.faTabStrip1.SelectedItem.splic.Panel1.Controls.Count > 0)
                         if (MainForm.Instance.faTabStrip1.SelectedItem.ItemBrowser != null)
                         {
                             MainForm.Instance.faTabStrip1.SelectedItem.ItemBrowser.GetMainFrame().LoadUrl(this.URL);
@@ -154,54 +153,23 @@ namespace CefiBrowser.JackControl
             Graphics g = pevent.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias; //描边时消除锯齿SetSmoothingMode, AntiAlias为指定消除锯齿的呈现
             g.CompositingQuality = CompositingQuality.HighQuality;
-
-
-
-            Rectangle borderRect = new Rectangle(new Point(0, 0), new Size(266, 20));
+            Rectangle borderRect = new Rectangle(new Point(0, 0), new Size(CefConstHelper.FmenuItem_TextRect_Width, CefConstHelper.FMenuItem_Height));
 
 
             //测量用指定的 System.Drawing.Font 绘制并用指定的 System.Drawing.StringFormat 格式化的指定字符串
             //如果要固定标签长度不需检测Title的宽度
-            SizeF textSize = new SizeF(266, 13);
-            if (PublicClass.DpiX >= 120)
-                textSize = new SizeF(266, 17);
-            PointF textLoc = new PointF(borderRect.Left + 26, borderRect.Top + (borderRect.Height / 2) - (textSize.Height / 2));
-           if(PublicClass.DpiX>=120)
-            {
-                textLoc = new PointF(borderRect.Left + 26, borderRect.Top + (borderRect.Height / 2) - (textSize.Height / 2) +2);
-
-            }
+            SizeF textSize = new SizeF(CefConstHelper.FmenuItem_TextRect_Width, CefConstHelper.FMenuItem_Height/2);
+            PointF textLoc = new PointF(borderRect.Left + CefConstHelper.rectIconSizeW + CefConstHelper.rectIconSizeW/3, borderRect.Top + (borderRect.Height / 2) - (textSize.Height / 2));
             RectangleF textRect = new RectangleF(textLoc, textSize);
-            textRect.Width = borderRect.Width - 26;
-
+            textRect.Width = borderRect.Width * 1.4f - CefConstHelper.rectIconSizeW;
+            textRect.Height = CefConstHelper.TextSizeH;
             if (borderRect.Width < 1 && borderRect.Height < 1)
                 return;
 
-            //判断使用什么资源图
-            //if (m_bMouseHover)
-            //{
-            //Color fill = Color.FromArgb(255, 252, 244);// renderer.ColorTable.ButtonSelectedHighlight; //当鼠标移动到关闭按钮时的颜色Color.FromArgb(253, 244, 191);//
-            //g.FillRectangle(new SolidBrush(fill), borderRect);
-            //borderRect.Width--;
-            //borderRect.Height--;
-            //g.DrawRectangle(new Pen(Color.FromArgb(229, 195, 101)), borderRect);//new Pen(Color.FromArgb(229, 195, 101))
-            //                                                                    //}
-
-            //if (m_bMouseDown)
-            //{
-            //    Color fill = Color.FromArgb(255, 232, 166);// renderer.ColorTable.ButtonSelectedHighlight; //当鼠标移动到关闭按钮时的颜色Color.FromArgb(253, 244, 191);//
-
-            //g.FillRectangle(new SolidBrush(fill), borderRect);
-
-            //borderRect.Width--;
-            //borderRect.Height--;
-
-            //g.DrawRectangle(new Pen(Color.FromArgb(229, 195, 101)), borderRect);//new Pen(Color.FromArgb(229, 195, 101))
-            //}
             g.DrawString(Title, defaultFont, new SolidBrush(ForeColor), textRect, sf);
 
             if (itemIcon != null)
-                g.DrawImage(itemIcon, new Rectangle(borderRect.X + 5, borderRect.Height / 2 - 7, 16, 16));
+                g.DrawImage(itemIcon, new Rectangle(borderRect.X + 5, borderRect.Height / 2 - CefConstHelper.rectIconSizeW/3, CefConstHelper.rectIconSizeW, CefConstHelper.rectIconSizeW));
 
         }
 

@@ -39,16 +39,6 @@ namespace CefiBrowser
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             CefiBrowser.TTextBoxBorderRenderStyle tTextBoxBorderRenderStyle1 = new CefiBrowser.TTextBoxBorderRenderStyle();
-            this.BtnMUserSupport = new CefiBrowser.ButtonXP();
-            this.addrPanel1 = new CefiBrowser.AddrPanel();
-            this.BtnSeach = new CefiBrowser.ButtonXP();
-            this.textBoxXP1 = new System.Windows.Forms.TextBox();
-            this.BtFav = new CefiBrowser.ButtonXP();
-            this.BtBack = new CefiBrowser.ButtonXP();
-            this.BtForward = new CefiBrowser.ButtonXP();
-            this.BtReflash = new CefiBrowser.ButtonXP();
-            this.BtHome = new CefiBrowser.ButtonXP();
-            this.BtnSettings = new CefiBrowser.ButtonXP();
             this.FaTabMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.NewTabItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -99,234 +89,38 @@ namespace CefiBrowser
             this.BtnNextSearch = new System.Windows.Forms.Button();
             this.BtnPrevSearch = new System.Windows.Forms.Button();
             this.BtnCloseSearch = new System.Windows.Forms.Button();
+            this.formCloseButton1 = new CefiBrowser.ButtonXP();
+            this.formMaxNormalButton1 = new CefiBrowser.ButtonXP();
+            this.formMinButton1 = new CefiBrowser.ButtonXP();
             this.textShow = new CefiBrowser.TxtBoxXP();
+            this.ToolsPanel = new CefiBrowser.AddrPanel();
+            this.BtnSettings = new CefiBrowser.ButtonXP();
+            this.BtnMUserSupport = new CefiBrowser.ButtonXP();
+            this.addrPanel1 = new CefiBrowser.AddrPanel();
+            this.BtnSeach = new CefiBrowser.ButtonXP();
+            this.textBoxXP1 = new System.Windows.Forms.TextBox();
+            this.BtFav = new CefiBrowser.ButtonXP();
+            this.BtBack = new CefiBrowser.ButtonXP();
+            this.BtHome = new CefiBrowser.ButtonXP();
+            this.BtForward = new CefiBrowser.ButtonXP();
+            this.BtReflash = new CefiBrowser.ButtonXP();
+            this.FavPanel = new CefiBrowser.AddrPanel();
             this.addrPanel3 = new CefiBrowser.AddrPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.faTabStrip1 = new CefiBrowser.FATabStrip();
             this.fMenuStrip1 = new CefiBrowser.FMenuStrip();
             this.addrPanel2 = new CefiBrowser.AddrPanel();
-            this.FavPanel = new CefiBrowser.AddrPanel();
-            this.ToolsPanel = new CefiBrowser.AddrPanel();
-            this.formMinButton1 = new CefiBrowser.ButtonXP();
-            this.formMaxNormalButton1 = new CefiBrowser.ButtonXP();
-            this.formCloseButton1 = new CefiBrowser.ButtonXP();
-            this.addrPanel1.SuspendLayout();
             this.FaTabMenu.SuspendLayout();
             this.Favri_BarMenu.SuspendLayout();
             this.Settings_Menu.SuspendLayout();
             this.DownloadPanel3.SuspendLayout();
             this.PanelSearch.SuspendLayout();
+            this.ToolsPanel.SuspendLayout();
+            this.addrPanel1.SuspendLayout();
             this.addrPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.faTabStrip1)).BeginInit();
-            this.ToolsPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // BtnMUserSupport
-            // 
-            this.BtnMUserSupport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnMUserSupport.AutoSize = true;
-            this.BtnMUserSupport.BackColor = System.Drawing.Color.Transparent;
-            this.BtnMUserSupport.BackColorDown = System.Drawing.Color.DarkGray;
-            this.BtnMUserSupport.BackColorEX = System.Drawing.Color.Transparent;
-            this.BtnMUserSupport.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnMUserSupport.BackColorMove = System.Drawing.Color.LightGray;
-            this.BtnMUserSupport.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMUserSupport.ImageDefault = global::CefiBrowser.Properties.Resources.Multiusers;
-            this.BtnMUserSupport.ImageDown = null;
-            this.BtnMUserSupport.ImageLeave = null;
-            this.BtnMUserSupport.ImageMove = null;
-            this.BtnMUserSupport.Location = new System.Drawing.Point(784, 6);
-            this.BtnMUserSupport.Name = "BtnMUserSupport";
-            this.BtnMUserSupport.Size = new System.Drawing.Size(20, 20);
-            this.BtnMUserSupport.TabIndex = 15;
-            this.BtnMUserSupport.TextColor = System.Drawing.Color.Black;
-            this.BtnMUserSupport.TextEX = "";
-            this.BtnMUserSupport.ButtonClick += new System.EventHandler(this.BtnMUserSupport_ButtonClick);
-            // 
-            // addrPanel1
-            // 
-            this.addrPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addrPanel1.BackColor = System.Drawing.Color.White;
-            this.addrPanel1.Controls.Add(this.BtnSeach);
-            this.addrPanel1.Controls.Add(this.textBoxXP1);
-            this.addrPanel1.Controls.Add(this.BtFav);
-            this.addrPanel1.DrBottom = true;
-            this.addrPanel1.DrLeft = true;
-            this.addrPanel1.DrRight = true;
-            this.addrPanel1.DrTop = true;
-            this.addrPanel1.Location = new System.Drawing.Point(107, 4);
-            this.addrPanel1.mStrText = null;
-            this.addrPanel1.Name = "addrPanel1";
-            this.addrPanel1.Size = new System.Drawing.Size(671, 26);
-            this.addrPanel1.TabIndex = 14;
-            // 
-            // BtnSeach
-            // 
-            this.BtnSeach.AutoSize = true;
-            this.BtnSeach.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSeach.BackColorDown = System.Drawing.Color.Transparent;
-            this.BtnSeach.BackColorEX = System.Drawing.Color.Transparent;
-            this.BtnSeach.BackColorLeave = System.Drawing.Color.Transparent;
-            this.BtnSeach.BackColorMove = System.Drawing.Color.Transparent;
-            this.BtnSeach.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnSeach.ImageDefault = global::CefiBrowser.Properties.Resources.shousuo;
-            this.BtnSeach.ImageDown = null;
-            this.BtnSeach.ImageLeave = null;
-            this.BtnSeach.ImageMove = null;
-            this.BtnSeach.Location = new System.Drawing.Point(3, 3);
-            this.BtnSeach.Name = "BtnSeach";
-            this.BtnSeach.Size = new System.Drawing.Size(21, 20);
-            this.BtnSeach.TabIndex = 3;
-            this.BtnSeach.TextColor = System.Drawing.Color.Black;
-            this.BtnSeach.TextEX = "";
-            // 
-            // textBoxXP1
-            // 
-            this.textBoxXP1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxXP1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxXP1.Font = new System.Drawing.Font("Verdana", 10.6F);
-            this.textBoxXP1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.textBoxXP1.Location = new System.Drawing.Point(24, 4);
-            this.textBoxXP1.Name = "textBoxXP1";
-            this.textBoxXP1.Size = new System.Drawing.Size(618, 18);
-            this.textBoxXP1.TabIndex = 2;
-            this.textBoxXP1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TextBoxXP1_MouseClick);
-            this.textBoxXP1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxXP1_KeyUp);
-            this.textBoxXP1.LostFocus += new System.EventHandler(this.TextBoxXP1_LostFocus);
-            // 
-            // BtFav
-            // 
-            this.BtFav.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtFav.AutoSize = true;
-            this.BtFav.BackColor = System.Drawing.Color.Transparent;
-            this.BtFav.BackColorDown = System.Drawing.Color.DarkGray;
-            this.BtFav.BackColorEX = System.Drawing.Color.White;
-            this.BtFav.BackColorLeave = System.Drawing.Color.White;
-            this.BtFav.BackColorMove = System.Drawing.Color.LightGray;
-            this.BtFav.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtFav.ImageDefault = global::CefiBrowser.Properties.Resources.favrite;
-            this.BtFav.ImageDown = null;
-            this.BtFav.ImageLeave = null;
-            this.BtFav.ImageMove = null;
-            this.BtFav.Location = new System.Drawing.Point(648, 2);
-            this.BtFav.Name = "BtFav";
-            this.BtFav.Size = new System.Drawing.Size(21, 21);
-            this.BtFav.TabIndex = 0;
-            this.BtFav.TextColor = System.Drawing.Color.Black;
-            this.BtFav.TextEX = "";
-            this.BtFav.ButtonClick += new System.EventHandler(this.BtFav_ButtonClick);
-            // 
-            // BtBack
-            // 
-            this.BtBack.AutoSize = true;
-            this.BtBack.BackColor = System.Drawing.Color.Transparent;
-            this.BtBack.BackColorDown = System.Drawing.Color.DarkGray;
-            this.BtBack.BackColorEX = System.Drawing.Color.Transparent;
-            this.BtBack.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtBack.BackColorMove = System.Drawing.Color.LightGray;
-            this.BtBack.Enabled = false;
-            this.BtBack.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtBack.ImageDefault = global::CefiBrowser.Properties.Resources.back;
-            this.BtBack.ImageDown = null;
-            this.BtBack.ImageLeave = null;
-            this.BtBack.ImageMove = null;
-            this.BtBack.Location = new System.Drawing.Point(5, 7);
-            this.BtBack.Name = "BtBack";
-            this.BtBack.Size = new System.Drawing.Size(20, 20);
-            this.BtBack.TabIndex = 13;
-            this.BtBack.TextColor = System.Drawing.Color.Black;
-            this.BtBack.TextEX = "";
-            this.BtBack.ButtonClick += new System.EventHandler(this.BtBack_Click);
-            // 
-            // BtForward
-            // 
-            this.BtForward.AutoSize = true;
-            this.BtForward.BackColor = System.Drawing.Color.Transparent;
-            this.BtForward.BackColorDown = System.Drawing.Color.DarkGray;
-            this.BtForward.BackColorEX = System.Drawing.Color.Transparent;
-            this.BtForward.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtForward.BackColorMove = System.Drawing.Color.LightGray;
-            this.BtForward.Enabled = false;
-            this.BtForward.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtForward.ImageDefault = global::CefiBrowser.Properties.Resources.forward;
-            this.BtForward.ImageDown = null;
-            this.BtForward.ImageLeave = null;
-            this.BtForward.ImageMove = null;
-            this.BtForward.Location = new System.Drawing.Point(28, 7);
-            this.BtForward.Name = "BtForward";
-            this.BtForward.Size = new System.Drawing.Size(20, 20);
-            this.BtForward.TabIndex = 12;
-            this.BtForward.TextColor = System.Drawing.Color.Black;
-            this.BtForward.TextEX = "";
-            this.BtForward.ButtonClick += new System.EventHandler(this.BtForward_ButtonClink);
-            // 
-            // BtReflash
-            // 
-            this.BtReflash.AutoSize = true;
-            this.BtReflash.BackColor = System.Drawing.Color.Transparent;
-            this.BtReflash.BackColorDown = System.Drawing.Color.DarkGray;
-            this.BtReflash.BackColorEX = System.Drawing.Color.Transparent;
-            this.BtReflash.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtReflash.BackColorMove = System.Drawing.Color.LightGray;
-            this.BtReflash.Enabled = false;
-            this.BtReflash.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtReflash.ImageDefault = global::CefiBrowser.Properties.Resources.reflesh;
-            this.BtReflash.ImageDown = null;
-            this.BtReflash.ImageLeave = null;
-            this.BtReflash.ImageMove = null;
-            this.BtReflash.Location = new System.Drawing.Point(55, 7);
-            this.BtReflash.Name = "BtReflash";
-            this.BtReflash.Size = new System.Drawing.Size(20, 20);
-            this.BtReflash.TabIndex = 11;
-            this.BtReflash.TextColor = System.Drawing.Color.Black;
-            this.BtReflash.TextEX = "";
-            this.BtReflash.ButtonClick += new System.EventHandler(this.BtReflash_Click);
-            // 
-            // BtHome
-            // 
-            this.BtHome.AutoSize = true;
-            this.BtHome.BackColor = System.Drawing.Color.Transparent;
-            this.BtHome.BackColorDown = System.Drawing.Color.DarkGray;
-            this.BtHome.BackColorEX = System.Drawing.Color.Transparent;
-            this.BtHome.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtHome.BackColorMove = System.Drawing.Color.LightGray;
-            this.BtHome.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtHome.ImageDefault = global::CefiBrowser.Properties.Resources.home;
-            this.BtHome.ImageDown = null;
-            this.BtHome.ImageLeave = null;
-            this.BtHome.ImageMove = null;
-            this.BtHome.Location = new System.Drawing.Point(81, 7);
-            this.BtHome.Name = "BtHome";
-            this.BtHome.Size = new System.Drawing.Size(20, 20);
-            this.BtHome.TabIndex = 10;
-            this.BtHome.TextColor = System.Drawing.Color.Black;
-            this.BtHome.TextEX = "";
-            this.BtHome.ButtonClick += new System.EventHandler(this.BtHome_Clinck);
-            // 
-            // BtnSettings
-            // 
-            this.BtnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSettings.AutoSize = true;
-            this.BtnSettings.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSettings.BackColorDown = System.Drawing.Color.DarkGray;
-            this.BtnSettings.BackColorEX = System.Drawing.Color.Transparent;
-            this.BtnSettings.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.BtnSettings.BackColorMove = System.Drawing.Color.LightGray;
-            this.BtnSettings.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnSettings.ImageDefault = global::CefiBrowser.Properties.Resources.menu;
-            this.BtnSettings.ImageDown = null;
-            this.BtnSettings.ImageLeave = null;
-            this.BtnSettings.ImageMove = null;
-            this.BtnSettings.Location = new System.Drawing.Point(808, 6);
-            this.BtnSettings.Name = "BtnSettings";
-            this.BtnSettings.Size = new System.Drawing.Size(19, 20);
-            this.BtnSettings.TabIndex = 9;
-            this.BtnSettings.TextColor = System.Drawing.Color.Black;
-            this.BtnSettings.TextEX = "";
-            this.BtnSettings.ButtonClick += new System.EventHandler(this.BtnSettings_ButtonClick);
             // 
             // FaTabMenu
             // 
@@ -340,53 +134,53 @@ namespace CefiBrowser
             this.CloseRightTabItem,
             this.CloseLeftabItem});
             this.FaTabMenu.Name = "contextMenuStrip1";
-            this.FaTabMenu.Size = new System.Drawing.Size(230, 126);
+            this.FaTabMenu.Size = new System.Drawing.Size(381, 206);
             this.FaTabMenu.LostFocus += new System.EventHandler(this.FaTabMenu_LostFocus);
             // 
             // NewTabItem
             // 
             this.NewTabItem.Name = "NewTabItem";
             this.NewTabItem.ShortcutKeyDisplayString = " ";
-            this.NewTabItem.Size = new System.Drawing.Size(229, 22);
+            this.NewTabItem.Size = new System.Drawing.Size(380, 38);
             this.NewTabItem.Text = "打开新的标签页";
             this.NewTabItem.Click += new System.EventHandler(this.NewTabItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(226, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(377, 6);
             // 
             // CloseTabItem
             // 
             this.CloseTabItem.Name = "CloseTabItem";
             this.CloseTabItem.ShortcutKeyDisplayString = "            Ctrl+C";
-            this.CloseTabItem.Size = new System.Drawing.Size(229, 22);
+            this.CloseTabItem.Size = new System.Drawing.Size(380, 38);
             this.CloseTabItem.Text = "关闭标签页";
             this.CloseTabItem.Click += new System.EventHandler(this.CloseTabItem_Click);
             // 
             // CloseAtherTabItem
             // 
             this.CloseAtherTabItem.Name = "CloseAtherTabItem";
-            this.CloseAtherTabItem.Size = new System.Drawing.Size(229, 22);
+            this.CloseAtherTabItem.Size = new System.Drawing.Size(380, 38);
             this.CloseAtherTabItem.Text = "关闭其他标签页";
             this.CloseAtherTabItem.Click += new System.EventHandler(this.CloseAtherTabItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(377, 6);
             // 
             // CloseRightTabItem
             // 
             this.CloseRightTabItem.Name = "CloseRightTabItem";
-            this.CloseRightTabItem.Size = new System.Drawing.Size(229, 22);
+            this.CloseRightTabItem.Size = new System.Drawing.Size(380, 38);
             this.CloseRightTabItem.Text = "关闭右侧标签页";
             this.CloseRightTabItem.Click += new System.EventHandler(this.CloseRightTabItem_Click);
             // 
             // CloseLeftabItem
             // 
             this.CloseLeftabItem.Name = "CloseLeftabItem";
-            this.CloseLeftabItem.Size = new System.Drawing.Size(229, 22);
+            this.CloseLeftabItem.Size = new System.Drawing.Size(380, 38);
             this.CloseLeftabItem.Text = "关闭左侧标签页";
             this.CloseLeftabItem.Click += new System.EventHandler(this.CloseLeftabItem_Click);
             // 
@@ -406,78 +200,78 @@ namespace CefiBrowser
             this.toolStripSeparator5,
             this.显示书签栏SToolStripMenuItem});
             this.Favri_BarMenu.Name = "Favri_BarMenu";
-            this.Favri_BarMenu.Size = new System.Drawing.Size(191, 198);
+            this.Favri_BarMenu.Size = new System.Drawing.Size(317, 342);
             this.Favri_BarMenu.LostFocus += new System.EventHandler(this.Favri_BarMenu_LostFocus);
             // 
             // TwoOpenNewTableitem
             // 
             this.TwoOpenNewTableitem.Name = "TwoOpenNewTableitem";
-            this.TwoOpenNewTableitem.Size = new System.Drawing.Size(190, 22);
+            this.TwoOpenNewTableitem.Size = new System.Drawing.Size(316, 40);
             this.TwoOpenNewTableitem.Text = "打开新的标签页";
             this.TwoOpenNewTableitem.Click += new System.EventHandler(this.TwoOpenNewTableitem_Click);
             // 
             // OpenRULInNewTab
             // 
             this.OpenRULInNewTab.Name = "OpenRULInNewTab";
-            this.OpenRULInNewTab.Size = new System.Drawing.Size(190, 22);
+            this.OpenRULInNewTab.Size = new System.Drawing.Size(316, 40);
             this.OpenRULInNewTab.Text = "在新标签页中打开(O)";
             this.OpenRULInNewTab.Click += new System.EventHandler(this.OpenRULInNewTab_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(313, 6);
             // 
             // CopyFavriBtURL
             // 
             this.CopyFavriBtURL.Name = "CopyFavriBtURL";
-            this.CopyFavriBtURL.Size = new System.Drawing.Size(190, 22);
+            this.CopyFavriBtURL.Size = new System.Drawing.Size(316, 40);
             this.CopyFavriBtURL.Text = "复制URL";
             this.CopyFavriBtURL.Click += new System.EventHandler(this.CopyFavriBtURL_Click);
             // 
             // Favi_Modif_Item
             // 
             this.Favi_Modif_Item.Name = "Favi_Modif_Item";
-            this.Favi_Modif_Item.Size = new System.Drawing.Size(190, 22);
+            this.Favi_Modif_Item.Size = new System.Drawing.Size(316, 40);
             this.Favi_Modif_Item.Text = "修改(T)";
             // 
             // DelCurrentFavriBT
             // 
             this.DelCurrentFavriBT.Name = "DelCurrentFavriBT";
-            this.DelCurrentFavriBT.Size = new System.Drawing.Size(190, 22);
+            this.DelCurrentFavriBT.Size = new System.Drawing.Size(316, 40);
             this.DelCurrentFavriBT.Text = "删除(D)";
             this.DelCurrentFavriBT.Click += new System.EventHandler(this.DelCurrentFavriBT_Click);
             // 
             // Favi_3_Line
             // 
             this.Favi_3_Line.Name = "Favi_3_Line";
-            this.Favi_3_Line.Size = new System.Drawing.Size(187, 6);
+            this.Favi_3_Line.Size = new System.Drawing.Size(313, 6);
             // 
             // AddFavri_Folder
             // 
             this.AddFavri_Folder.Name = "AddFavri_Folder";
-            this.AddFavri_Folder.Size = new System.Drawing.Size(190, 22);
+            this.AddFavri_Folder.Size = new System.Drawing.Size(316, 40);
             this.AddFavri_Folder.Text = "添加文件夹(F)";
             this.AddFavri_Folder.Click += new System.EventHandler(this.AddFavri_Folder_Click);
             // 
             // Edit_FavriBT
             // 
             this.Edit_FavriBT.Name = "Edit_FavriBT";
-            this.Edit_FavriBT.Size = new System.Drawing.Size(190, 22);
+            this.Edit_FavriBT.Size = new System.Drawing.Size(316, 40);
             this.Edit_FavriBT.Text = "整理书签";
             this.Edit_FavriBT.Click += new System.EventHandler(this.Edit_FavriBT_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(313, 6);
             // 
             // 显示书签栏SToolStripMenuItem
             // 
             this.显示书签栏SToolStripMenuItem.Checked = true;
             this.显示书签栏SToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.显示书签栏SToolStripMenuItem.Name = "显示书签栏SToolStripMenuItem";
-            this.显示书签栏SToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.显示书签栏SToolStripMenuItem.Size = new System.Drawing.Size(316, 40);
             this.显示书签栏SToolStripMenuItem.Text = "显示书签栏(S)";
             // 
             // Settings_Menu
@@ -506,49 +300,49 @@ namespace CefiBrowser
             this.toolStripSeparator6,
             this.toolStripMenuItem8});
             this.Settings_Menu.Name = "Settings_Menu";
-            this.Settings_Menu.Size = new System.Drawing.Size(185, 386);
+            this.Settings_Menu.Size = new System.Drawing.Size(305, 674);
             // 
             // OpneNFataItem
             // 
             this.OpneNFataItem.Name = "OpneNFataItem";
-            this.OpneNFataItem.Size = new System.Drawing.Size(184, 22);
+            this.OpneNFataItem.Size = new System.Drawing.Size(304, 40);
             this.OpneNFataItem.Text = "新建标签页";
             this.OpneNFataItem.Click += new System.EventHandler(this.OpneNFataItem_Click);
             // 
             // OpenNCefiBrowser
             // 
             this.OpenNCefiBrowser.Name = "OpenNCefiBrowser";
-            this.OpenNCefiBrowser.Size = new System.Drawing.Size(184, 22);
+            this.OpenNCefiBrowser.Size = new System.Drawing.Size(304, 40);
             this.OpenNCefiBrowser.Text = "打开新的窗口";
             this.OpenNCefiBrowser.Click += new System.EventHandler(this.OpenNCefiBrowser_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(301, 6);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(304, 40);
             this.toolStripMenuItem4.Text = "缩放";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(301, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(304, 40);
             this.toolStripMenuItem1.Text = "设置主页";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // MemSetting
             // 
             this.MemSetting.Name = "MemSetting";
-            this.MemSetting.Size = new System.Drawing.Size(184, 22);
+            this.MemSetting.Size = new System.Drawing.Size(304, 40);
             this.MemSetting.Text = "内存节省模式";
             this.MemSetting.Click += new System.EventHandler(this.CefGSetting_Click);
             // 
@@ -557,67 +351,67 @@ namespace CefiBrowser
             this.toolStripMenuItem5.Checked = true;
             this.toolStripMenuItem5.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(304, 40);
             this.toolStripMenuItem5.Text = "显示收藏栏";
             // 
             // EditFaviFolder
             // 
             this.EditFaviFolder.Name = "EditFaviFolder";
-            this.EditFaviFolder.Size = new System.Drawing.Size(184, 22);
+            this.EditFaviFolder.Size = new System.Drawing.Size(304, 40);
             this.EditFaviFolder.Text = "收藏夹";
             this.EditFaviFolder.Click += new System.EventHandler(this.EditFaviFolder_Click);
             // 
             // DownloadToolStripMenuItem
             // 
             this.DownloadToolStripMenuItem.Name = "DownloadToolStripMenuItem";
-            this.DownloadToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.DownloadToolStripMenuItem.Size = new System.Drawing.Size(304, 40);
             this.DownloadToolStripMenuItem.Text = "下载管理";
             this.DownloadToolStripMenuItem.Click += new System.EventHandler(this.DownloadToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(301, 6);
             // 
             // CefiBPrint
             // 
             this.CefiBPrint.Name = "CefiBPrint";
-            this.CefiBPrint.Size = new System.Drawing.Size(184, 22);
+            this.CefiBPrint.Size = new System.Drawing.Size(304, 40);
             this.CefiBPrint.Text = "打印";
             this.CefiBPrint.Click += new System.EventHandler(this.CefiBPrint_Click);
             // 
             // PrinttoPDF
             // 
             this.PrinttoPDF.Name = "PrinttoPDF";
-            this.PrinttoPDF.Size = new System.Drawing.Size(184, 22);
+            this.PrinttoPDF.Size = new System.Drawing.Size(304, 40);
             this.PrinttoPDF.Text = "页面另存为PDF";
             this.PrinttoPDF.Click += new System.EventHandler(this.PrinttoPDF_Click);
             // 
             // sBtnSear
             // 
             this.sBtnSear.Name = "sBtnSear";
-            this.sBtnSear.Size = new System.Drawing.Size(184, 22);
+            this.sBtnSear.Size = new System.Drawing.Size(304, 40);
             this.sBtnSear.Text = "在当前页查找";
             this.sBtnSear.Click += new System.EventHandler(this.sBtnSear_Click);
             // 
             // F12Tools
             // 
             this.F12Tools.Name = "F12Tools";
-            this.F12Tools.Size = new System.Drawing.Size(184, 22);
+            this.F12Tools.Size = new System.Drawing.Size(304, 40);
             this.F12Tools.Text = "F12开发者工具";
             this.F12Tools.Click += new System.EventHandler(this.F12Tools_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(301, 6);
             // 
             // KuaYu_Support
             // 
             this.KuaYu_Support.Checked = true;
             this.KuaYu_Support.CheckState = System.Windows.Forms.CheckState.Checked;
             this.KuaYu_Support.Name = "KuaYu_Support";
-            this.KuaYu_Support.Size = new System.Drawing.Size(184, 22);
+            this.KuaYu_Support.Size = new System.Drawing.Size(304, 40);
             this.KuaYu_Support.Text = "启用跨域支持";
             // 
             // MulitiUsers_Support
@@ -625,26 +419,26 @@ namespace CefiBrowser
             this.MulitiUsers_Support.Checked = true;
             this.MulitiUsers_Support.CheckState = System.Windows.Forms.CheckState.Checked;
             this.MulitiUsers_Support.Name = "MulitiUsers_Support";
-            this.MulitiUsers_Support.Size = new System.Drawing.Size(184, 22);
+            this.MulitiUsers_Support.Size = new System.Drawing.Size(304, 40);
             this.MulitiUsers_Support.Text = "启用多用户支持";
             this.MulitiUsers_Support.Click += new System.EventHandler(this.MulitiUsers_Support_Click);
             // 
             // Clear_Cache
             // 
             this.Clear_Cache.Name = "Clear_Cache";
-            this.Clear_Cache.Size = new System.Drawing.Size(184, 22);
+            this.Clear_Cache.Size = new System.Drawing.Size(304, 40);
             this.Clear_Cache.Text = "清除浏览器历史记录";
             this.Clear_Cache.Click += new System.EventHandler(this.Clear_Cache_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(301, 6);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(184, 22);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(304, 40);
             this.toolStripMenuItem8.Text = "版本信息";
             // 
             // DownloadPanel3
@@ -654,13 +448,17 @@ namespace CefiBrowser
             this.DownloadPanel3.Controls.Add(this.viewDowload);
             this.DownloadPanel3.Controls.Add(this.buttonXP2);
             this.DownloadPanel3.DrBottom = false;
+            this.DownloadPanel3.DrItemAdd = false;
+            this.DownloadPanel3.DrItemDEL = false;
             this.DownloadPanel3.DrLeft = false;
             this.DownloadPanel3.DrRight = false;
             this.DownloadPanel3.DrTop = true;
-            this.DownloadPanel3.Location = new System.Drawing.Point(396, 266);
+            this.DownloadPanel3.DrTopPanel = false;
+            this.DownloadPanel3.Location = new System.Drawing.Point(792, 532);
+            this.DownloadPanel3.Margin = new System.Windows.Forms.Padding(5);
             this.DownloadPanel3.mStrText = null;
             this.DownloadPanel3.Name = "DownloadPanel3";
-            this.DownloadPanel3.Size = new System.Drawing.Size(316, 40);
+            this.DownloadPanel3.Size = new System.Drawing.Size(632, 80);
             this.DownloadPanel3.TabIndex = 11;
             this.DownloadPanel3.Visible = false;
             // 
@@ -668,19 +466,22 @@ namespace CefiBrowser
             // 
             this.viewDowload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.viewDowload.AutoSize = true;
-            this.viewDowload.BackColor = System.Drawing.Color.Transparent;
+            this.viewDowload.BackColor = System.Drawing.Color.White;
             this.viewDowload.BackColorDown = System.Drawing.Color.Silver;
             this.viewDowload.BackColorEX = System.Drawing.Color.White;
             this.viewDowload.BackColorLeave = System.Drawing.Color.White;
             this.viewDowload.BackColorMove = System.Drawing.Color.Gainsboro;
+            this.viewDowload.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.viewDowload.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.viewDowload.ForeColor = System.Drawing.Color.Black;
             this.viewDowload.ImageDefault = ((System.Drawing.Image)(resources.GetObject("viewDowload.ImageDefault")));
             this.viewDowload.ImageDown = null;
             this.viewDowload.ImageLeave = null;
             this.viewDowload.ImageMove = null;
-            this.viewDowload.Location = new System.Drawing.Point(253, 7);
+            this.viewDowload.Location = new System.Drawing.Point(507, 13);
+            this.viewDowload.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.viewDowload.Name = "viewDowload";
-            this.viewDowload.Size = new System.Drawing.Size(29, 27);
+            this.viewDowload.Size = new System.Drawing.Size(59, 53);
             this.viewDowload.TabIndex = 2;
             this.viewDowload.TextColor = System.Drawing.Color.Black;
             this.viewDowload.TextEX = "";
@@ -690,19 +491,22 @@ namespace CefiBrowser
             // 
             this.buttonXP2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonXP2.AutoSize = true;
-            this.buttonXP2.BackColor = System.Drawing.Color.Transparent;
+            this.buttonXP2.BackColor = System.Drawing.Color.White;
             this.buttonXP2.BackColorDown = System.Drawing.Color.Silver;
             this.buttonXP2.BackColorEX = System.Drawing.Color.White;
             this.buttonXP2.BackColorLeave = System.Drawing.Color.White;
             this.buttonXP2.BackColorMove = System.Drawing.Color.Gainsboro;
+            this.buttonXP2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonXP2.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonXP2.ForeColor = System.Drawing.Color.Black;
             this.buttonXP2.ImageDefault = ((System.Drawing.Image)(resources.GetObject("buttonXP2.ImageDefault")));
             this.buttonXP2.ImageDown = null;
             this.buttonXP2.ImageLeave = null;
             this.buttonXP2.ImageMove = null;
-            this.buttonXP2.Location = new System.Drawing.Point(283, 7);
+            this.buttonXP2.Location = new System.Drawing.Point(565, 13);
+            this.buttonXP2.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.buttonXP2.Name = "buttonXP2";
-            this.buttonXP2.Size = new System.Drawing.Size(29, 27);
+            this.buttonXP2.Size = new System.Drawing.Size(59, 53);
             this.buttonXP2.TabIndex = 1;
             this.buttonXP2.TextColor = System.Drawing.Color.Black;
             this.buttonXP2.TextEX = "";
@@ -717,13 +521,17 @@ namespace CefiBrowser
             this.PanelSearch.Controls.Add(this.BtnPrevSearch);
             this.PanelSearch.Controls.Add(this.BtnCloseSearch);
             this.PanelSearch.DrBottom = false;
+            this.PanelSearch.DrItemAdd = false;
+            this.PanelSearch.DrItemDEL = false;
             this.PanelSearch.DrLeft = false;
             this.PanelSearch.DrRight = false;
             this.PanelSearch.DrTop = false;
-            this.PanelSearch.Location = new System.Drawing.Point(393, 225);
+            this.PanelSearch.DrTopPanel = false;
+            this.PanelSearch.Location = new System.Drawing.Point(787, 451);
+            this.PanelSearch.Margin = new System.Windows.Forms.Padding(5);
             this.PanelSearch.mStrText = null;
             this.PanelSearch.Name = "PanelSearch";
-            this.PanelSearch.Size = new System.Drawing.Size(231, 31);
+            this.PanelSearch.Size = new System.Drawing.Size(461, 61);
             this.PanelSearch.TabIndex = 1;
             this.PanelSearch.Visible = false;
             // 
@@ -731,9 +539,10 @@ namespace CefiBrowser
             // 
             this.TxtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtSearch.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtSearch.Location = new System.Drawing.Point(4, 8);
+            this.TxtSearch.Location = new System.Drawing.Point(8, 16);
+            this.TxtSearch.Margin = new System.Windows.Forms.Padding(5);
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(141, 17);
+            this.TxtSearch.Size = new System.Drawing.Size(283, 34);
             this.TxtSearch.TabIndex = 10;
             this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
@@ -743,10 +552,10 @@ namespace CefiBrowser
             this.BtnNextSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnNextSearch.ForeColor = System.Drawing.Color.White;
             this.BtnNextSearch.Image = ((System.Drawing.Image)(resources.GetObject("BtnNextSearch.Image")));
-            this.BtnNextSearch.Location = new System.Drawing.Point(176, 2);
-            this.BtnNextSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnNextSearch.Location = new System.Drawing.Point(352, 4);
+            this.BtnNextSearch.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.BtnNextSearch.Name = "BtnNextSearch";
-            this.BtnNextSearch.Size = new System.Drawing.Size(25, 26);
+            this.BtnNextSearch.Size = new System.Drawing.Size(51, 52);
             this.BtnNextSearch.TabIndex = 9;
             this.BtnNextSearch.Tag = "Find next (Enter)";
             this.BtnNextSearch.UseVisualStyleBackColor = true;
@@ -758,10 +567,10 @@ namespace CefiBrowser
             this.BtnPrevSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPrevSearch.ForeColor = System.Drawing.Color.White;
             this.BtnPrevSearch.Image = ((System.Drawing.Image)(resources.GetObject("BtnPrevSearch.Image")));
-            this.BtnPrevSearch.Location = new System.Drawing.Point(151, 2);
-            this.BtnPrevSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnPrevSearch.Location = new System.Drawing.Point(301, 4);
+            this.BtnPrevSearch.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.BtnPrevSearch.Name = "BtnPrevSearch";
-            this.BtnPrevSearch.Size = new System.Drawing.Size(25, 26);
+            this.BtnPrevSearch.Size = new System.Drawing.Size(51, 52);
             this.BtnPrevSearch.TabIndex = 8;
             this.BtnPrevSearch.Tag = "Find previous (Shift+Enter)";
             this.BtnPrevSearch.UseVisualStyleBackColor = true;
@@ -773,14 +582,89 @@ namespace CefiBrowser
             this.BtnCloseSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCloseSearch.ForeColor = System.Drawing.Color.White;
             this.BtnCloseSearch.Image = ((System.Drawing.Image)(resources.GetObject("BtnCloseSearch.Image")));
-            this.BtnCloseSearch.Location = new System.Drawing.Point(202, 2);
-            this.BtnCloseSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnCloseSearch.Location = new System.Drawing.Point(404, 4);
+            this.BtnCloseSearch.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.BtnCloseSearch.Name = "BtnCloseSearch";
-            this.BtnCloseSearch.Size = new System.Drawing.Size(25, 26);
+            this.BtnCloseSearch.Size = new System.Drawing.Size(51, 52);
             this.BtnCloseSearch.TabIndex = 7;
             this.BtnCloseSearch.Tag = "Close (Esc)";
             this.BtnCloseSearch.UseVisualStyleBackColor = true;
             this.BtnCloseSearch.Click += new System.EventHandler(this.BtnCloseSearch_Click);
+            // 
+            // formCloseButton1
+            // 
+            this.formCloseButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.formCloseButton1.AutoSize = true;
+            this.formCloseButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formCloseButton1.BackColorDown = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.formCloseButton1.BackColorEX = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formCloseButton1.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formCloseButton1.BackColorMove = System.Drawing.Color.Red;
+            this.formCloseButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.formCloseButton1.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.formCloseButton1.ForeColor = System.Drawing.Color.Black;
+            this.formCloseButton1.ImageDefault = global::CefiBrowser.Properties.Resources.iconClose24;
+            this.formCloseButton1.ImageDown = global::CefiBrowser.Properties.Resources.iconClose24;
+            this.formCloseButton1.ImageLeave = global::CefiBrowser.Properties.Resources.iconClose24;
+            this.formCloseButton1.ImageMove = global::CefiBrowser.Properties.Resources.win10closeIn;
+            this.formCloseButton1.Location = new System.Drawing.Point(1611, 2);
+            this.formCloseButton1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.formCloseButton1.Name = "formCloseButton1";
+            this.formCloseButton1.Size = new System.Drawing.Size(61, 45);
+            this.formCloseButton1.TabIndex = 15;
+            this.formCloseButton1.TextColor = System.Drawing.Color.Black;
+            this.formCloseButton1.TextEX = "";
+            this.formCloseButton1.ButtonClick += new System.EventHandler(this.formCloseButton1_Click);
+            // 
+            // formMaxNormalButton1
+            // 
+            this.formMaxNormalButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.formMaxNormalButton1.AutoSize = true;
+            this.formMaxNormalButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formMaxNormalButton1.BackColorDown = System.Drawing.Color.OldLace;
+            this.formMaxNormalButton1.BackColorEX = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formMaxNormalButton1.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formMaxNormalButton1.BackColorMove = System.Drawing.Color.WhiteSmoke;
+            this.formMaxNormalButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.formMaxNormalButton1.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.formMaxNormalButton1.ForeColor = System.Drawing.Color.Black;
+            this.formMaxNormalButton1.ImageDefault = global::CefiBrowser.Properties.Resources.iconNo24;
+            this.formMaxNormalButton1.ImageDown = null;
+            this.formMaxNormalButton1.ImageLeave = null;
+            this.formMaxNormalButton1.ImageMove = null;
+            this.formMaxNormalButton1.Location = new System.Drawing.Point(1555, 3);
+            this.formMaxNormalButton1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.formMaxNormalButton1.Name = "formMaxNormalButton1";
+            this.formMaxNormalButton1.Size = new System.Drawing.Size(56, 45);
+            this.formMaxNormalButton1.TabIndex = 13;
+            this.formMaxNormalButton1.TextColor = System.Drawing.Color.Black;
+            this.formMaxNormalButton1.TextEX = "";
+            this.formMaxNormalButton1.ButtonClick += new System.EventHandler(this.formMaxNormalButton1_Click);
+            // 
+            // formMinButton1
+            // 
+            this.formMinButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.formMinButton1.AutoSize = true;
+            this.formMinButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formMinButton1.BackColorDown = System.Drawing.Color.OldLace;
+            this.formMinButton1.BackColorEX = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formMinButton1.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.formMinButton1.BackColorMove = System.Drawing.Color.WhiteSmoke;
+            this.formMinButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.formMinButton1.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.formMinButton1.ForeColor = System.Drawing.Color.Black;
+            this.formMinButton1.ImageDefault = global::CefiBrowser.Properties.Resources.icon24Min;
+            this.formMinButton1.ImageDown = null;
+            this.formMinButton1.ImageLeave = null;
+            this.formMinButton1.ImageMove = null;
+            this.formMinButton1.Location = new System.Drawing.Point(1499, 3);
+            this.formMinButton1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.formMinButton1.Name = "formMinButton1";
+            this.formMinButton1.Size = new System.Drawing.Size(56, 45);
+            this.formMinButton1.TabIndex = 12;
+            this.formMinButton1.TextColor = System.Drawing.Color.Black;
+            this.formMinButton1.TextEX = "";
+            this.formMinButton1.ButtonClick += new System.EventHandler(this.formMinButton1_Click);
             // 
             // textShow
             // 
@@ -792,15 +676,297 @@ namespace CefiBrowser
             this.textShow.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textShow.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.textShow.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.textShow.Location = new System.Drawing.Point(204, 88);
+            this.textShow.Location = new System.Drawing.Point(408, 176);
             this.textShow.Margin = new System.Windows.Forms.Padding(0);
             this.textShow.Multiline = true;
             this.textShow.Name = "textShow";
-            this.textShow.Size = new System.Drawing.Size(125, 38);
+            this.textShow.Size = new System.Drawing.Size(251, 76);
             this.textShow.TabIndex = 9;
             this.textShow.TextMargin = new System.Windows.Forms.Padding(1);
             this.textShow.Visible = false;
             this.textShow.WordWrap = false;
+            // 
+            // ToolsPanel
+            // 
+            this.ToolsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ToolsPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ToolsPanel.Controls.Add(this.BtnSettings);
+            this.ToolsPanel.Controls.Add(this.BtnMUserSupport);
+            this.ToolsPanel.Controls.Add(this.addrPanel1);
+            this.ToolsPanel.Controls.Add(this.BtBack);
+            this.ToolsPanel.Controls.Add(this.BtHome);
+            this.ToolsPanel.Controls.Add(this.BtForward);
+            this.ToolsPanel.Controls.Add(this.BtReflash);
+            this.ToolsPanel.DrBottom = false;
+            this.ToolsPanel.DrItemAdd = false;
+            this.ToolsPanel.DrItemDEL = false;
+            this.ToolsPanel.DrLeft = false;
+            this.ToolsPanel.DrRight = false;
+            this.ToolsPanel.DrTop = false;
+            this.ToolsPanel.DrTopPanel = false;
+            this.ToolsPanel.Location = new System.Drawing.Point(3, 85);
+            this.ToolsPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.ToolsPanel.mStrText = null;
+            this.ToolsPanel.Name = "ToolsPanel";
+            this.ToolsPanel.Size = new System.Drawing.Size(1669, 64);
+            this.ToolsPanel.TabIndex = 9;
+            // 
+            // BtnSettings
+            // 
+            this.BtnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSettings.AutoSize = true;
+            this.BtnSettings.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSettings.BackColorDown = System.Drawing.Color.DarkGray;
+            this.BtnSettings.BackColorEX = System.Drawing.Color.Transparent;
+            this.BtnSettings.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnSettings.BackColorMove = System.Drawing.Color.LightGray;
+            this.BtnSettings.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnSettings.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnSettings.ForeColor = System.Drawing.Color.Black;
+            this.BtnSettings.ImageDefault = global::CefiBrowser.Properties.Resources.menu;
+            this.BtnSettings.ImageDown = null;
+            this.BtnSettings.ImageLeave = null;
+            this.BtnSettings.ImageMove = null;
+            this.BtnSettings.Location = new System.Drawing.Point(1616, 12);
+            this.BtnSettings.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtnSettings.Name = "BtnSettings";
+            this.BtnSettings.Size = new System.Drawing.Size(37, 40);
+            this.BtnSettings.TabIndex = 9;
+            this.BtnSettings.TextColor = System.Drawing.Color.Black;
+            this.BtnSettings.TextEX = "";
+            this.BtnSettings.ButtonClick += new System.EventHandler(this.BtnSettings_ButtonClick);
+            // 
+            // BtnMUserSupport
+            // 
+            this.BtnMUserSupport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnMUserSupport.AutoSize = true;
+            this.BtnMUserSupport.BackColor = System.Drawing.Color.Transparent;
+            this.BtnMUserSupport.BackColorDown = System.Drawing.Color.DarkGray;
+            this.BtnMUserSupport.BackColorEX = System.Drawing.Color.Transparent;
+            this.BtnMUserSupport.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtnMUserSupport.BackColorMove = System.Drawing.Color.LightGray;
+            this.BtnMUserSupport.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMUserSupport.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMUserSupport.ForeColor = System.Drawing.Color.Black;
+            this.BtnMUserSupport.ImageDefault = global::CefiBrowser.Properties.Resources.Multiusers;
+            this.BtnMUserSupport.ImageDown = null;
+            this.BtnMUserSupport.ImageLeave = null;
+            this.BtnMUserSupport.ImageMove = null;
+            this.BtnMUserSupport.Location = new System.Drawing.Point(1568, 12);
+            this.BtnMUserSupport.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtnMUserSupport.Name = "BtnMUserSupport";
+            this.BtnMUserSupport.Size = new System.Drawing.Size(40, 40);
+            this.BtnMUserSupport.TabIndex = 15;
+            this.BtnMUserSupport.TextColor = System.Drawing.Color.Black;
+            this.BtnMUserSupport.TextEX = "";
+            this.BtnMUserSupport.ButtonClick += new System.EventHandler(this.BtnMUserSupport_ButtonClick);
+            // 
+            // addrPanel1
+            // 
+            this.addrPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addrPanel1.BackColor = System.Drawing.Color.White;
+            this.addrPanel1.Controls.Add(this.BtnSeach);
+            this.addrPanel1.Controls.Add(this.textBoxXP1);
+            this.addrPanel1.Controls.Add(this.BtFav);
+            this.addrPanel1.DrBottom = true;
+            this.addrPanel1.DrItemAdd = false;
+            this.addrPanel1.DrItemDEL = false;
+            this.addrPanel1.DrLeft = true;
+            this.addrPanel1.DrRight = true;
+            this.addrPanel1.DrTop = true;
+            this.addrPanel1.DrTopPanel = false;
+            this.addrPanel1.Location = new System.Drawing.Point(213, 8);
+            this.addrPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.addrPanel1.mStrText = null;
+            this.addrPanel1.Name = "addrPanel1";
+            this.addrPanel1.Size = new System.Drawing.Size(1341, 52);
+            this.addrPanel1.TabIndex = 14;
+            // 
+            // BtnSeach
+            // 
+            this.BtnSeach.AutoSize = true;
+            this.BtnSeach.BackColor = System.Drawing.Color.Transparent;
+            this.BtnSeach.BackColorDown = System.Drawing.Color.Transparent;
+            this.BtnSeach.BackColorEX = System.Drawing.Color.Transparent;
+            this.BtnSeach.BackColorLeave = System.Drawing.Color.Transparent;
+            this.BtnSeach.BackColorMove = System.Drawing.Color.Transparent;
+            this.BtnSeach.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnSeach.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnSeach.ForeColor = System.Drawing.Color.Black;
+            this.BtnSeach.ImageDefault = global::CefiBrowser.Properties.Resources.shousuo;
+            this.BtnSeach.ImageDown = null;
+            this.BtnSeach.ImageLeave = null;
+            this.BtnSeach.ImageMove = null;
+            this.BtnSeach.Location = new System.Drawing.Point(5, 5);
+            this.BtnSeach.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtnSeach.Name = "BtnSeach";
+            this.BtnSeach.Size = new System.Drawing.Size(43, 40);
+            this.BtnSeach.TabIndex = 3;
+            this.BtnSeach.TextColor = System.Drawing.Color.Black;
+            this.BtnSeach.TextEX = "";
+            // 
+            // textBoxXP1
+            // 
+            this.textBoxXP1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxXP1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxXP1.Font = new System.Drawing.Font("Verdana", 10.6F);
+            this.textBoxXP1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textBoxXP1.Location = new System.Drawing.Point(48, 8);
+            this.textBoxXP1.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxXP1.Name = "textBoxXP1";
+            this.textBoxXP1.Size = new System.Drawing.Size(1236, 35);
+            this.textBoxXP1.TabIndex = 2;
+            this.textBoxXP1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TextBoxXP1_MouseClick);
+            this.textBoxXP1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxXP1_KeyUp);
+            this.textBoxXP1.LostFocus += new System.EventHandler(this.TextBoxXP1_LostFocus);
+            // 
+            // BtFav
+            // 
+            this.BtFav.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtFav.AutoSize = true;
+            this.BtFav.BackColor = System.Drawing.Color.White;
+            this.BtFav.BackColorDown = System.Drawing.Color.DarkGray;
+            this.BtFav.BackColorEX = System.Drawing.Color.White;
+            this.BtFav.BackColorLeave = System.Drawing.Color.White;
+            this.BtFav.BackColorMove = System.Drawing.Color.LightGray;
+            this.BtFav.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtFav.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtFav.ForeColor = System.Drawing.Color.Black;
+            this.BtFav.ImageDefault = global::CefiBrowser.Properties.Resources.favrite;
+            this.BtFav.ImageDown = null;
+            this.BtFav.ImageLeave = null;
+            this.BtFav.ImageMove = null;
+            this.BtFav.Location = new System.Drawing.Point(1296, 4);
+            this.BtFav.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtFav.Name = "BtFav";
+            this.BtFav.Size = new System.Drawing.Size(43, 43);
+            this.BtFav.TabIndex = 0;
+            this.BtFav.TextColor = System.Drawing.Color.Black;
+            this.BtFav.TextEX = "";
+            this.BtFav.ButtonClick += new System.EventHandler(this.BtFav_ButtonClick);
+            // 
+            // BtBack
+            // 
+            this.BtBack.AutoSize = true;
+            this.BtBack.BackColor = System.Drawing.Color.Transparent;
+            this.BtBack.BackColorDown = System.Drawing.Color.DarkGray;
+            this.BtBack.BackColorEX = System.Drawing.Color.Transparent;
+            this.BtBack.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtBack.BackColorMove = System.Drawing.Color.LightGray;
+            this.BtBack.Enabled = false;
+            this.BtBack.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtBack.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtBack.ForeColor = System.Drawing.Color.Black;
+            this.BtBack.ImageDefault = global::CefiBrowser.Properties.Resources.back;
+            this.BtBack.ImageDown = null;
+            this.BtBack.ImageLeave = null;
+            this.BtBack.ImageMove = null;
+            this.BtBack.Location = new System.Drawing.Point(11, 13);
+            this.BtBack.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtBack.Name = "BtBack";
+            this.BtBack.Size = new System.Drawing.Size(40, 40);
+            this.BtBack.TabIndex = 13;
+            this.BtBack.TextColor = System.Drawing.Color.Black;
+            this.BtBack.TextEX = "";
+            this.BtBack.ButtonClick += new System.EventHandler(this.BtBack_Click);
+            // 
+            // BtHome
+            // 
+            this.BtHome.AutoSize = true;
+            this.BtHome.BackColor = System.Drawing.Color.Transparent;
+            this.BtHome.BackColorDown = System.Drawing.Color.DarkGray;
+            this.BtHome.BackColorEX = System.Drawing.Color.Transparent;
+            this.BtHome.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtHome.BackColorMove = System.Drawing.Color.LightGray;
+            this.BtHome.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtHome.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtHome.ForeColor = System.Drawing.Color.Black;
+            this.BtHome.ImageDefault = global::CefiBrowser.Properties.Resources.home;
+            this.BtHome.ImageDown = null;
+            this.BtHome.ImageLeave = null;
+            this.BtHome.ImageMove = null;
+            this.BtHome.Location = new System.Drawing.Point(163, 13);
+            this.BtHome.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtHome.Name = "BtHome";
+            this.BtHome.Size = new System.Drawing.Size(40, 40);
+            this.BtHome.TabIndex = 10;
+            this.BtHome.TextColor = System.Drawing.Color.Black;
+            this.BtHome.TextEX = "";
+            this.BtHome.ButtonClick += new System.EventHandler(this.BtHome_Clinck);
+            // 
+            // BtForward
+            // 
+            this.BtForward.AutoSize = true;
+            this.BtForward.BackColor = System.Drawing.Color.Transparent;
+            this.BtForward.BackColorDown = System.Drawing.Color.DarkGray;
+            this.BtForward.BackColorEX = System.Drawing.Color.Transparent;
+            this.BtForward.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtForward.BackColorMove = System.Drawing.Color.LightGray;
+            this.BtForward.Enabled = false;
+            this.BtForward.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtForward.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtForward.ForeColor = System.Drawing.Color.Black;
+            this.BtForward.ImageDefault = global::CefiBrowser.Properties.Resources.forward;
+            this.BtForward.ImageDown = null;
+            this.BtForward.ImageLeave = null;
+            this.BtForward.ImageMove = null;
+            this.BtForward.Location = new System.Drawing.Point(56, 13);
+            this.BtForward.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtForward.Name = "BtForward";
+            this.BtForward.Size = new System.Drawing.Size(40, 40);
+            this.BtForward.TabIndex = 12;
+            this.BtForward.TextColor = System.Drawing.Color.Black;
+            this.BtForward.TextEX = "";
+            this.BtForward.ButtonClick += new System.EventHandler(this.BtForward_ButtonClink);
+            // 
+            // BtReflash
+            // 
+            this.BtReflash.AutoSize = true;
+            this.BtReflash.BackColor = System.Drawing.Color.Transparent;
+            this.BtReflash.BackColorDown = System.Drawing.Color.DarkGray;
+            this.BtReflash.BackColorEX = System.Drawing.Color.Transparent;
+            this.BtReflash.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.BtReflash.BackColorMove = System.Drawing.Color.LightGray;
+            this.BtReflash.Enabled = false;
+            this.BtReflash.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtReflash.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtReflash.ForeColor = System.Drawing.Color.Black;
+            this.BtReflash.ImageDefault = global::CefiBrowser.Properties.Resources.reflesh;
+            this.BtReflash.ImageDown = null;
+            this.BtReflash.ImageLeave = null;
+            this.BtReflash.ImageMove = null;
+            this.BtReflash.Location = new System.Drawing.Point(109, 13);
+            this.BtReflash.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.BtReflash.Name = "BtReflash";
+            this.BtReflash.Size = new System.Drawing.Size(40, 40);
+            this.BtReflash.TabIndex = 11;
+            this.BtReflash.TextColor = System.Drawing.Color.Black;
+            this.BtReflash.TextEX = "";
+            this.BtReflash.ButtonClick += new System.EventHandler(this.BtReflash_Click);
+            // 
+            // FavPanel
+            // 
+            this.FavPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FavPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.FavPanel.DrBottom = true;
+            this.FavPanel.DrItemAdd = false;
+            this.FavPanel.DrItemDEL = false;
+            this.FavPanel.DrLeft = false;
+            this.FavPanel.DrRight = false;
+            this.FavPanel.DrTop = false;
+            this.FavPanel.DrTopPanel = false;
+            this.FavPanel.Location = new System.Drawing.Point(3, 152);
+            this.FavPanel.Margin = new System.Windows.Forms.Padding(5);
+            this.FavPanel.mStrText = null;
+            this.FavPanel.Name = "FavPanel";
+            this.FavPanel.Size = new System.Drawing.Size(1669, 56);
+            this.FavPanel.TabIndex = 1;
+            this.FavPanel.LostFocus += new System.EventHandler(this.FMenuStrip1_LostFocus);
+            this.FavPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FavPanel_MouseUp);
             // 
             // addrPanel3
             // 
@@ -808,13 +974,17 @@ namespace CefiBrowser
             this.addrPanel3.Controls.Add(this.label2);
             this.addrPanel3.Controls.Add(this.textBox2);
             this.addrPanel3.DrBottom = false;
+            this.addrPanel3.DrItemAdd = false;
+            this.addrPanel3.DrItemDEL = false;
             this.addrPanel3.DrLeft = false;
             this.addrPanel3.DrRight = false;
             this.addrPanel3.DrTop = false;
-            this.addrPanel3.Location = new System.Drawing.Point(349, 107);
+            this.addrPanel3.DrTopPanel = false;
+            this.addrPanel3.Location = new System.Drawing.Point(699, 213);
+            this.addrPanel3.Margin = new System.Windows.Forms.Padding(5);
             this.addrPanel3.mStrText = null;
             this.addrPanel3.Name = "addrPanel3";
-            this.addrPanel3.Size = new System.Drawing.Size(125, 28);
+            this.addrPanel3.Size = new System.Drawing.Size(251, 56);
             this.addrPanel3.TabIndex = 2;
             this.addrPanel3.Visible = false;
             // 
@@ -822,9 +992,10 @@ namespace CefiBrowser
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(3, 4);
+            this.label2.Location = new System.Drawing.Point(5, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(134, 36);
             this.label2.TabIndex = 8;
             this.label2.Text = "缩放比例:";
             // 
@@ -835,11 +1006,11 @@ namespace CefiBrowser
             this.textBox2.BackColor = System.Drawing.Color.White;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("微软雅黑", 11.5F);
-            this.textBox2.Location = new System.Drawing.Point(74, 4);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox2.Location = new System.Drawing.Point(148, 8);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(48, 21);
+            this.textBox2.Size = new System.Drawing.Size(96, 41);
             this.textBox2.TabIndex = 6;
             // 
             // faTabStrip1
@@ -857,7 +1028,7 @@ namespace CefiBrowser
             this.faTabStrip1.MemCostLower = false;
             this.faTabStrip1.Name = "faTabStrip1";
             this.faTabStrip1.RemoveALLItem = false;
-            this.faTabStrip1.Size = new System.Drawing.Size(835, 471);
+            this.faTabStrip1.Size = new System.Drawing.Size(1673, 945);
             this.faTabStrip1.TabIndex = 6;
             this.faTabStrip1.Text = "faTabStrip1";
             this.faTabStrip1.TabStripItemClosed += new System.EventHandler(this.FaTabStrip1_TabStripItemClosed);
@@ -866,6 +1037,9 @@ namespace CefiBrowser
             this.faTabStrip1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FaTabStrip1_ControlRemoved);
             this.faTabStrip1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FaTabStrip1_KeyUp);
             this.faTabStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.faTabStrip1.MouseLeave += new System.EventHandler(this.Form1_MouseLeave);
+            this.faTabStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.faTabStrip1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             // 
             // fMenuStrip1
             // 
@@ -879,127 +1053,25 @@ namespace CefiBrowser
             // 
             this.addrPanel2.BackColor = System.Drawing.SystemColors.Control;
             this.addrPanel2.DrBottom = false;
+            this.addrPanel2.DrItemAdd = false;
+            this.addrPanel2.DrItemDEL = false;
             this.addrPanel2.DrLeft = false;
             this.addrPanel2.DrRight = false;
             this.addrPanel2.DrTop = false;
+            this.addrPanel2.DrTopPanel = false;
             this.addrPanel2.Location = new System.Drawing.Point(0, 105);
             this.addrPanel2.mStrText = null;
             this.addrPanel2.Name = "addrPanel2";
             this.addrPanel2.Size = new System.Drawing.Size(786, 26);
             this.addrPanel2.TabIndex = 0;
             // 
-            // FavPanel
-            // 
-            this.FavPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FavPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.FavPanel.DrBottom = true;
-            this.FavPanel.DrLeft = false;
-            this.FavPanel.DrRight = false;
-            this.FavPanel.DrTop = false;
-            this.FavPanel.Location = new System.Drawing.Point(1, 76);
-            this.FavPanel.mStrText = null;
-            this.FavPanel.Name = "FavPanel";
-            this.FavPanel.Size = new System.Drawing.Size(835, 28);
-            this.FavPanel.TabIndex = 1;
-            this.FavPanel.LostFocus += new System.EventHandler(this.FMenuStrip1_LostFocus);
-            this.FavPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FavPanel_MouseUp);
-            // 
-            // ToolsPanel
-            // 
-            this.ToolsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ToolsPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ToolsPanel.Controls.Add(this.BtnSettings);
-            this.ToolsPanel.Controls.Add(this.BtnMUserSupport);
-            this.ToolsPanel.Controls.Add(this.addrPanel1);
-            this.ToolsPanel.Controls.Add(this.BtBack);
-            this.ToolsPanel.Controls.Add(this.BtHome);
-            this.ToolsPanel.Controls.Add(this.BtForward);
-            this.ToolsPanel.Controls.Add(this.BtReflash);
-            this.ToolsPanel.DrBottom = false;
-            this.ToolsPanel.DrLeft = false;
-            this.ToolsPanel.DrRight = false;
-            this.ToolsPanel.DrTop = false;
-            this.ToolsPanel.Location = new System.Drawing.Point(1, 43);
-            this.ToolsPanel.mStrText = null;
-            this.ToolsPanel.Name = "ToolsPanel";
-            this.ToolsPanel.Size = new System.Drawing.Size(835, 32);
-            this.ToolsPanel.TabIndex = 9;
-            // 
-            // formMinButton1
-            // 
-            this.formMinButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.formMinButton1.AutoSize = true;
-            this.formMinButton1.BackColor = System.Drawing.Color.Transparent;
-            this.formMinButton1.BackColorDown = System.Drawing.Color.OldLace;
-            this.formMinButton1.BackColorEX = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.formMinButton1.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.formMinButton1.BackColorMove = System.Drawing.Color.WhiteSmoke;
-            this.formMinButton1.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.formMinButton1.ImageDefault = global::CefiBrowser.Properties.Resources.win10min;
-            this.formMinButton1.ImageDown = null;
-            this.formMinButton1.ImageLeave = null;
-            this.formMinButton1.ImageMove = null;
-            this.formMinButton1.Location = new System.Drawing.Point(749, 1);
-            this.formMinButton1.Name = "formMinButton1";
-            this.formMinButton1.Size = new System.Drawing.Size(28, 23);
-            this.formMinButton1.TabIndex = 12;
-            this.formMinButton1.TextColor = System.Drawing.Color.Black;
-            this.formMinButton1.TextEX = "";
-            this.formMinButton1.ButtonClick += new System.EventHandler(this.formMinButton1_Click);
-            // 
-            // formMaxNormalButton1
-            // 
-            this.formMaxNormalButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.formMaxNormalButton1.AutoSize = true;
-            this.formMaxNormalButton1.BackColor = System.Drawing.Color.Transparent;
-            this.formMaxNormalButton1.BackColorDown = System.Drawing.Color.OldLace;
-            this.formMaxNormalButton1.BackColorEX = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.formMaxNormalButton1.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.formMaxNormalButton1.BackColorMove = System.Drawing.Color.WhiteSmoke;
-            this.formMaxNormalButton1.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.formMaxNormalButton1.ImageDefault = ((System.Drawing.Image)(resources.GetObject("formMaxNormalButton1.ImageDefault")));
-            this.formMaxNormalButton1.ImageDown = null;
-            this.formMaxNormalButton1.ImageLeave = null;
-            this.formMaxNormalButton1.ImageMove = null;
-            this.formMaxNormalButton1.Location = new System.Drawing.Point(777, 1);
-            this.formMaxNormalButton1.Name = "formMaxNormalButton1";
-            this.formMaxNormalButton1.Size = new System.Drawing.Size(28, 23);
-            this.formMaxNormalButton1.TabIndex = 13;
-            this.formMaxNormalButton1.TextColor = System.Drawing.Color.Black;
-            this.formMaxNormalButton1.TextEX = "";
-            this.formMaxNormalButton1.ButtonClick += new System.EventHandler(this.formMaxNormalButton1_Click);
-            // 
-            // formCloseButton1
-            // 
-            this.formCloseButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.formCloseButton1.AutoSize = true;
-            this.formCloseButton1.BackColor = System.Drawing.Color.Transparent;
-            this.formCloseButton1.BackColorDown = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.formCloseButton1.BackColorEX = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.formCloseButton1.BackColorLeave = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.formCloseButton1.BackColorMove = System.Drawing.Color.Red;
-            this.formCloseButton1.FontM = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.formCloseButton1.ImageDefault = global::CefiBrowser.Properties.Resources.win10close;
-            this.formCloseButton1.ImageDown = global::CefiBrowser.Properties.Resources.win10close;
-            this.formCloseButton1.ImageLeave = global::CefiBrowser.Properties.Resources.win10close;
-            this.formCloseButton1.ImageMove = global::CefiBrowser.Properties.Resources.win10closeIn;
-            this.formCloseButton1.Location = new System.Drawing.Point(805, 1);
-            this.formCloseButton1.Name = "formCloseButton1";
-            this.formCloseButton1.Size = new System.Drawing.Size(31, 23);
-            this.formCloseButton1.TabIndex = 15;
-            this.formCloseButton1.TextColor = System.Drawing.Color.Black;
-            this.formCloseButton1.TextEX = "";
-            this.formCloseButton1.ButtonClick += new System.EventHandler(this.formCloseButton1_Click);
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.ClientSize = new System.Drawing.Size(837, 473);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(203)))), ((int)(((byte)(185)))));
+            this.ClientSize = new System.Drawing.Size(1675, 947);
             this.Controls.Add(this.DownloadPanel3);
             this.Controls.Add(this.PanelSearch);
             this.Controls.Add(this.formCloseButton1);
@@ -1015,6 +1087,7 @@ namespace CefiBrowser
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Activated += new System.EventHandler(this.Form1_Activeated);
@@ -1022,8 +1095,6 @@ namespace CefiBrowser
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.addrPanel1.ResumeLayout(false);
-            this.addrPanel1.PerformLayout();
             this.FaTabMenu.ResumeLayout(false);
             this.Favri_BarMenu.ResumeLayout(false);
             this.Settings_Menu.ResumeLayout(false);
@@ -1031,11 +1102,13 @@ namespace CefiBrowser
             this.DownloadPanel3.PerformLayout();
             this.PanelSearch.ResumeLayout(false);
             this.PanelSearch.PerformLayout();
+            this.ToolsPanel.ResumeLayout(false);
+            this.ToolsPanel.PerformLayout();
+            this.addrPanel1.ResumeLayout(false);
+            this.addrPanel1.PerformLayout();
             this.addrPanel3.ResumeLayout(false);
             this.addrPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.faTabStrip1)).EndInit();
-            this.ToolsPanel.ResumeLayout(false);
-            this.ToolsPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

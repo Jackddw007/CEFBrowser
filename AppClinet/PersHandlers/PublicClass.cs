@@ -176,6 +176,7 @@
 
         }
 
+
         public static void ResizeWindow(IntPtr handle, int width, int height)
         {
             if (handle != IntPtr.Zero)
@@ -268,7 +269,6 @@
             GC.Collect();
             return true;
         }
-
 
         #region  OCR图片识别，目前支持四位字符，包括字母和数字
         /// <summary>
@@ -846,22 +846,47 @@
         /// </summary>
         public static void SetIconCloseRectWH()
         {
-            if (PublicClass.DpiX >= 140)
+            if (PublicClass.DpiX > 150)
             {
                 CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 38;
-                CefConstHelper.closeRectH = CefConstHelper.closeRectW = 19;
-                CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 19;
-                CefConstHelper.TextSizeH = 19;
-                CefConstHelper.AddNbt_FormRight = 166;
-
+                CefConstHelper.closeRectH = CefConstHelper.closeRectW = 22;
+                CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 24;
+                CefConstHelper.TextSizeH = 26;
+                CefConstHelper.FmenuItem_TextRect_Width = 400;
+                CefConstHelper.FavBTIcon_Distace = 26;
+                CefConstHelper.FavireBT_Width = 170;
+                CefConstHelper.FavireBT_Distance = 22;
+                CefConstHelper.FavireBT_Width_Parm = 42;
+                CefConstHelper.AddNbt_FormRight = 220;
+                CefConstHelper.Current_TabButton_White = 300;
+                CefConstHelper.Def_TabButton_White = 300;
+                CefConstHelper.buttonHeight = 52;
+                CefConstHelper.AddnewButton_Width = 39;
+                CefConstHelper.buttonPar = 19;
+                CefConstHelper.UderLineCost = 2f;
+                CefConstHelper.CloseRect_toRight_Parm = 13;
+                CefConstHelper.FMenuItem_Height = 38;
             }
-            else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 140)
+            else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 150)
             {
                 CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 34;
-                CefConstHelper.closeRectH = CefConstHelper.closeRectW = 17;
-                CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 17;
-                CefConstHelper.TextSizeH = 16;
-                CefConstHelper.AddNbt_FormRight = 150;
+                CefConstHelper.closeRectH = CefConstHelper.closeRectW = 19;
+                CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 20;
+                CefConstHelper.TextSizeH = 22;
+                CefConstHelper.FavBTIcon_Distace = 23;
+                CefConstHelper.FavireBT_Width = 150;
+                CefConstHelper.FavireBT_Distance = 16;
+                CefConstHelper.FavireBT_Width_Parm = 32;
+                CefConstHelper.AddNbt_FormRight = 190;
+                CefConstHelper.Current_TabButton_White = 250;
+                CefConstHelper.Def_TabButton_White = 250;
+                CefConstHelper.buttonHeight = 46;
+                CefConstHelper.AddnewButton_Width = 33;
+                CefConstHelper.buttonPar = 16;
+                CefConstHelper.UderLineCost = 1.2f;
+                CefConstHelper.CloseRect_toRight_Parm = 11;
+                CefConstHelper.FMenuItem_Height = 30;
+                CefConstHelper.FmenuItem_TextRect_Width = 330;
             }
         }
 #endregion
@@ -1019,6 +1044,10 @@ public static Image GetPicThumbnail(Image itemImage, int dHeight, int dWidth)//,
 
         #endregion
 
+        #region ToolsPanel上画线控制
+        public static float DEF_START_POS ;
+
+        #endregion
     }
 
 

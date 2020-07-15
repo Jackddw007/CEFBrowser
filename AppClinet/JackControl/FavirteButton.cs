@@ -64,15 +64,15 @@ namespace CefiBrowser
             
 
         }
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000 | (int)WinAPI.WindowStyles.WS_CLIPCHILDREN;
-                return cp;
-            }
-        }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ExStyle |= 0x02000000 | (int)WinAPI.WindowStyles.WS_CLIPCHILDREN;
+        //        return cp;
+        //    }
+        //}
         //用来标示是否鼠标正在悬浮在按钮上  true:悬浮在按钮上 false:鼠标离开了按钮
         private bool m_bMouseHover;
         //用来标示是否鼠标点击了按钮  true：按下了按钮 false：松开了按钮
@@ -287,22 +287,27 @@ namespace CefiBrowser
                                 int fWidth = 0;
                                 foreach (FavireBT jobInfo in favireBTs)
                                 {
-
                                     if (jobInfo.FatherID == this.ID)
                                     {
                                         countfMenuItem++;
                                         FMenuItem fMenuItem = new FMenuItem();
-                                        fMenuItem.Width = 266;
-                                        fMenuItem.Height = 22;
+                                        fMenuItem.Width = CefConstHelper.FmenuItem_TextRect_Width;
+                                        fMenuItem.Height = CefConstHelper.FMenuItem_Height;
                                         fMenuItem.Title = jobInfo.Title;
                                         if (GetPixelByStr(fMenuItem.Title) < fMenuItem.Width)
                                         {
-                                            fMenuItem.Width = GetPixelByStr(fMenuItem.Title) + 58;
+                                            fMenuItem.Width = CefConstHelper.FmenuItem_TextRect_Width ;// GetPixelByStr(fMenuItem.Title);
                                             if (fMenuItem.Width > fWidth)
                                                 fWidth = fMenuItem.Width;
                                         }
-                                        if (fMenuItem.Width > 260)
-                                            fMenuItem.Width = fWidth = 266 + 26;
+                                        else
+                                        {
+                                            fMenuItem.Width = GetPixelByStr(fMenuItem.Title);
+                                        if (fMenuItem.Width > CefConstHelper.FmenuItem_TextRect_Width * 1.4)
+                                                fMenuItem.Width = (int)(CefConstHelper.FmenuItem_TextRect_Width*1.4);
+                                            if (fMenuItem.Width > fWidth)
+                                                fWidth = fMenuItem.Width;
+                                        }
 
                                         fMenuItem.URL = jobInfo.URL;
                                         fMenuItem.ItemIcon = PublicClass.Base64ToImage(jobInfo.IconBase64str);
@@ -314,19 +319,22 @@ namespace CefiBrowser
                                     }
                                 }
                                 MainForm.Instance.fMenuStrip1.Width = fWidth;
-                                MainForm.Instance.fMenuStrip1.Height = countfMenuItem * 22 + 4;//自动调整个快捷菜单的高度
+                                //先不处理吧，还没想好？umm...:)
+                                // if(countfMenuItem * CefConstHelper.FMenuItem_Height + 4 > MainForm.Instance.Height - MainForm.Instance.ToolsPanel.Height )
+                                //自动调整个快捷菜单的高度
+                                MainForm.Instance.fMenuStrip1.Height = countfMenuItem * CefConstHelper.FMenuItem_Height + 6;
                                 for (int i = 0; i < MainForm.Instance.fMenuStrip1.Items.Count; i++)
                                 {
                                     MainForm.Instance.fMenuStrip1.Items[i].Width = fWidth;
                                 }
-
                             }
+                            MainForm.Instance.fMenuStrip1.Show(MainForm.Instance.FavPanel.PointToScreen(p));
                         }
                         catch (Exception e)
                         {
                             MessageBox.Show(e.Message);
                         }
-                        MainForm.Instance.fMenuStrip1.Show(MainForm.Instance.FavPanel.PointToScreen(p));
+                       
                     }
                     ));
                 }
@@ -530,9 +538,11 @@ namespace CefiBrowser
             //如果要固定标签长度不需检测Title的宽度
             SizeF textSize = new SizeF(titleWidth, CefConstHelper.TextSizeH);
    
-            PointF textLoc = new PointF(borderRect.Left + 20, borderRect.Top + (borderRect.Height / 2) - (textSize.Height / 2));
+            PointF textLoc = new PointF(borderRect.Left + CefConstHelper.FavBTIcon_Distace, borderRect.Top + (borderRect.Height / 2) - (textSize.Height / 2));
             RectangleF textRect = new RectangleF(textLoc, textSize);
-            textRect.Width = borderRect.Width - 19;
+            textRect.Width = borderRect.Width;
+            textRect.Height  = CefConstHelper.TextSizeH ;
+           
 
             if (borderRect.Width < 1 && borderRect.Height < 1)
                 return;

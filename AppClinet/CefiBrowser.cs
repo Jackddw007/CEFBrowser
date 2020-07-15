@@ -30,6 +30,7 @@ namespace CefiBrowser
         public string _directory = "Temp/";
         public bool RunQueueScreen = false; //是否运行外屏模式
 
+        public Point pMouseDown = new Point(); //Tab移动的时候需要
         public HostHandler host;
         public static MainForm Instance;
         public static string Date_Added = string.Empty; //存放FavriID，方便删除
@@ -70,7 +71,9 @@ namespace CefiBrowser
             _startUrl = starturl;
             //MessageBox.Show(_startUrl);
             Instance = this;
-         
+            //  CefConstHelper.DEF_Header_TopDis = 14;// + PublicClass.DpiY / 96-1+10;
+
+
             InitializeComponent();
 
             _Timer = new Timer() { Interval = 266 };
@@ -197,7 +200,7 @@ namespace CefiBrowser
             scrWidth = this.Width;
             this.KeyPreview = true;
             ToolsPanel.BackColor = FavPanel.BackColor = onSelectedColor;
-            this.BackColor= faTabStrip1.BackColor = formCloseButton1.BackColor = formMaxNormalButton1.BackColor = formMinButton1.BackColor = SbackColor;
+            faTabStrip1.BackColor = formCloseButton1.BackColor = formMaxNormalButton1.BackColor = formMinButton1.BackColor = SbackColor;
             faTabStrip1.ForeColor = ToolsPanel.ForeColor = FavPanel.ForeColor = label2.ForeColor = Color.Black;
             this.ForeColor = Color.Blue;
             //Control.CheckForIllegalCrossThreadCalls = false;
@@ -222,7 +225,8 @@ namespace CefiBrowser
             //this.Width = PublicClass.DESKTOP.Width;
             //this.Height = PublicClass.DESKTOP.Height;
             this.WindowState = FormWindowState.Maximized;
-            this.AutoScaleMode = AutoScaleMode.Dpi; //让界面布局适应各种大小不同的屏幕
+            this.AutoScaleMode = AutoScaleMode.Font; //让界面布局适应各种大小不同的屏幕
+
             this.AutoSize = false;//.置窗体不根据内容超出而调整窗体自身大小，以免窗体超出屏幕。
                                   //AutoScroll = true;
 
@@ -245,6 +249,7 @@ namespace CefiBrowser
             //this.NewShadowEnable = true;
             //this.NewShadowColor = Color.FromArgb(255, 30, 30, 30);
             //this.NewShadowWidth = 4;
+           // this.ToolsPanel.Visible = this.FavPanel.Visible = false;
         }
 
 
@@ -334,12 +339,6 @@ namespace CefiBrowser
 
             base.OnFormClosing(e);
         }
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-            //Point ms = Control.MousePosition; //获取鼠标在屏幕的位置
-            //if (ms.X <= 0)
-            //    MessageBox.Show("Hited!!");
-        }
 
         private void formCloseButton1_Click(object sender, EventArgs e)
         {
@@ -353,18 +352,17 @@ namespace CefiBrowser
         }
         public void NMFuction()
         {
-
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
             }
             else
             {
-                if (this.RestoreBounds != PublicClass.RestoreRect )
-                    this.DesktopBounds = PublicClass.RestoreRect;
                 this.WindowState = FormWindowState.Normal;
+                if (this.RestoreBounds != PublicClass.RestoreRect)
+                    this.DesktopBounds = PublicClass.RestoreRect;
             }
-
+            //faTabStrip1.ControlSizeChanged();
         }
         private void formMaxNormalButton1_Click(object sender, EventArgs e)
         {
@@ -462,7 +460,7 @@ namespace CefiBrowser
         //下面其实不是Form1的大小改变，而是Fatab大小改变,当鼠标拖拽的时候下面的代码会生效
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            PublicClass.SetIconCloseRectWH();
+            //PublicClass.SetIconCloseRectWH();
             //try
             //{
             //    if (RunQueueScreen != true && faTabStrip1 != null && faTabStrip1.Items.Count > 0 && DownloadPanel3.Visible != true)
@@ -487,22 +485,21 @@ namespace CefiBrowser
                 if (PublicClass.RestoreRect == this.RestoreBounds)
                 {
                     faTabStrip1.InControlHeight = ToolsPanel.Height + FavPanel.Height;
-                    this.ToolsPanel.Location = new Point(faTabStrip1.Location.X - 0, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis);
-                    this.FavPanel.Location = new Point(faTabStrip1.Location.X - 0, ToolsPanel.Bottom);
-                    this.FavPanel.Width = ToolsPanel.Width = faTabStrip1.Width;
+                    this.ToolsPanel.Location = new Point(faTabStrip1.Location.X +1, CefConstHelper.Def_TabButton_Hight + CefConstHelper.DEF_Header_TopDis*2);
+                    this.FavPanel.Location = new Point(faTabStrip1.Location.X +1, ToolsPanel.Bottom);
+                    this.FavPanel.Width = ToolsPanel.Width = faTabStrip1.Width-1;
                 }
                 else
                 {
-                    //if (PublicClass.RestoreRect == this.RestoreBounds)
-                    //{
-                    PublicClass.SetIconCloseRectWH();
+                  //  PublicClass.SetIconCloseRectWH();
                     faTabStrip1.InControlHeight = ToolsPanel.Height + FavPanel.Height;
-                    this.ToolsPanel.Location = new Point(faTabStrip1.Location.X - 0, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis);
-                    this.FavPanel.Location = new Point(faTabStrip1.Location.X - 0, ToolsPanel.Bottom);
-                    this.FavPanel.Width = ToolsPanel.Width = faTabStrip1.Width;
-                    //}
+                    this.ToolsPanel.Location = new Point(faTabStrip1.Location.X+1, CefConstHelper.Def_TabButton_Hight + CefConstHelper.DEF_Header_TopDis*2);
+                    this.FavPanel.Location = new Point(faTabStrip1.Location.X+1 , ToolsPanel.Bottom);
+                    this.FavPanel.Width = ToolsPanel.Width = faTabStrip1.Width-1;
                 }
-        }
+                //faTabStrip1.ControlSizeChanged();
+                // faTabStrip1.CalcNewRectXY("AddItem");
+            }
             WinAPI.RECT rECT = new WinAPI.RECT();
             rECT.Left = this.Left;
             rECT.Top = this.Top;
@@ -512,21 +509,15 @@ namespace CefiBrowser
             if (IsAboutToMaximize(rECT))
             {
                 faTabStrip1.InControlHeight = ToolsPanel.Height + FavPanel.Height;
-                if (PublicClass.DpiX < 100)
-                {
-                    this.ToolsPanel.Location = new Point(faTabStrip1.Location.X, CefConstHelper.DEF_HEADER_HEIGHT -1);
-                }
-                else if (PublicClass.DpiX >= 120)
-                {
-                    this.ToolsPanel.Location = new Point(faTabStrip1.Location.X, CefConstHelper.DEF_HEADER_HEIGHT);
-                }
-
+                this.ToolsPanel.Location = new Point(faTabStrip1.Location.X, CefConstHelper.Def_TabButton_Hight + CefConstHelper.DEF_Header_TopDis);
                 this.FavPanel.Location = new Point(faTabStrip1.Location.X, ToolsPanel.Bottom);// 61);
                 this.FavPanel.Width = ToolsPanel.Width = this.faTabStrip1.Width;
-
                 if (PanelSearch.Visible)
                     PanelSearch.Location = new Point(this.Width - PanelSearch.Width - PanelSearch.Width / 4 - 5, FavPanel.Top + 10);
+                //faTabStrip1.ControlSizeChanged();
             }
+
+
             if (faTabStrip1.SelectedItem != null)
             {
                 if (faTabStrip1.SelectedItem.Title == CefConstHelper.CefDownloadTitle && faTabStrip1.SelectedItem.splic.Panel1.Controls.Count > 1)
@@ -552,12 +543,16 @@ namespace CefiBrowser
             }
 
             if (WindowState == FormWindowState.Maximized)
-                formMaxNormalButton1.ImageDefault = Properties.Resources.win10maxnor;
+            {
+                formMaxNormalButton1.ImageDefault = Properties.Resources.iconMax24;
+
+            }
             else if (WindowState == FormWindowState.Normal)
             {
-                formMaxNormalButton1.ImageDefault = Properties.Resources.win10max;
-                ReDWLine(this.CreateGraphics());
+                formMaxNormalButton1.ImageDefault = Properties.Resources.iconNo24;
+                // ReDWLine(this.CreateGraphics());
             }
+
         }
 
   
@@ -709,13 +704,164 @@ namespace CefiBrowser
         #region Tab控件事件
         private void FaTabStrip1_ControlAdded(object sender, System.Windows.Forms.ControlEventArgs e)
         {
-            textBoxXP1.Text = "";
-            textBoxXP1.Focus();
-            BtBack.Enabled = false;
-            BtForward.Enabled = false;
-            BtReflash.Enabled = false;
-            BtnSeach.ImageDefault = Properties.Resources.shousuo;
+         //   this.ToolsPanel.DrTopPanel = true;
+         ////  this.ToolsPanel.DrTop = true;
+         //   this.ToolsPanel.Invalidate();
         }
+
+        #region 鼠标事件
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            HitTestResult result =faTabStrip1.HitTest(e.Location);
+            FATabStripItem item = faTabStrip1.GetTabItemByPoint(e.Location);
+
+            #region 新增按钮
+
+            if (faTabStrip1.FButtonIsDown == false)
+                if (result == HitTestResult.AddNewButton)
+                {
+                    if (faTabStrip1.NewAddRect.Bounds.Contains(e.Location))
+                    {
+                        faTabStrip1.NewAddRect.IsMouseOver = true;
+                        faTabStrip1.Invalidate();
+                    }
+                    else
+                    {
+                        faTabStrip1.NewAddRect.IsMouseOver = false;
+                        faTabStrip1.Invalidate();
+                    }
+
+                }
+                else
+                {
+                    faTabStrip1.CancelFromButton();
+                }
+
+            #endregion
+
+            #region 当鼠标移动到tab按钮和关闭按钮区域的时候标签按钮颜色的改变
+            //这里先把其他的ItemMouseOver关掉
+            for (int i = 0; i < faTabStrip1.Items.Count; i++)
+            {
+                faTabStrip1.Items[i].IsMouseOver = false;
+                Invalidate(faTabStrip1.Items[i].TabBounds);
+
+                faTabStrip1.Items[i].ItemIsMouseOver = false;
+                Invalidate(faTabStrip1.Items[i].ItemBounds);
+
+            }
+
+            if (item != null && faTabStrip1.FButtonIsDown == false)
+            {
+                if (faTabStrip1.SelectedItem != item)
+                {
+                    item.IsMouseOver = true;
+                    Invalidate(item.TabBounds);
+                }
+                else
+                {
+                    item.IsMouseOver = false;
+                    Invalidate(item.TabBounds);
+                }
+
+                if (item.ItemBounds.Contains(e.Location))
+                {
+                    item.ItemIsMouseOver = true;
+                    Invalidate(item.ItemBounds);
+                }
+                else
+                {
+                    item.ItemIsMouseOver = false;
+                    Invalidate(item.ItemBounds);
+                }
+            }
+            #endregion
+
+            if (e.Button == MouseButtons.Left && faTabStrip1.FButtonIsDown)
+            {
+                //判断鼠标按下左键的同时是而且在移动，即拖拽行为发生
+                if (e.X - pMouseDown.X > 6 || pMouseDown.X - e.X > 6) //向右或是向左移动
+                {
+                    faTabStrip1.mouse_move_down = true;
+                    if (item != null && faTabStrip1.Items.Count > 1)
+                    {
+                        if (item != faTabStrip1.SelectedItem)
+                            faTabStrip1.Items.SwichItem(faTabStrip1.SelectedItem, faTabStrip1.GetTabItemByPoint(e.Location));
+                        else
+                            faTabStrip1.Items.SwichItem(faTabStrip1.SelectedItem, faTabStrip1.GetTabItemByPointFromRigt(e.Location));
+                    }
+                    faTabStrip1.Invalidate();
+                }
+            }
+
+            faTabStrip1.mMovePiont = e.Location;
+
+        }
+
+        private void Form1_MouseLeave(object sender, EventArgs  e)
+        {
+            faTabStrip1.FButtonIsDown = false; //鼠标离开的时候重置这个标志
+
+            faTabStrip1.CancelFromButton(); //取消Form按钮的选中状态
+
+
+            //这里先把其他的ItemMouseOver及itemIsMouseOver关掉
+            for (int i = 0; i < faTabStrip1.Items.Count; i++)
+            {
+                faTabStrip1.Items[i].IsMouseOver = false;
+                faTabStrip1.Invalidate(faTabStrip1.Items[i].TabBounds);
+
+                faTabStrip1.Items[i].ItemIsMouseOver = false;
+                faTabStrip1.Invalidate(faTabStrip1.Items[i].ItemBounds);
+            }
+            //刷新控件
+            faTabStrip1.Invalidate();
+        }
+        /// <summary>
+        /// 这里的MouseUp是FatabStrip和Form共用的
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+          //  HitTestResult result = faTabStrip1.HitTest(e.Location);
+            if (faTabStrip1.HitTest(e.Location) == HitTestResult.AddNewButton && faTabStrip1.FButtonIsDown && e.Button != MouseButtons.Right && faTabStrip1.mouse_move_down != true)
+            {
+                faTabStrip1.NewAddRect.IsMouseOver = false;
+                faTabStrip1.NewAddRect.IsMouseDown = false;
+                //FATabStripItem newitem = new FATabStripItem();
+                //faTabStrip1.AddTab(newitem, true);
+                faTabStrip1.CalcNewRectXY("AddItem");
+                FATabStripItem tabStrip = new FATabStripItem();
+                tabStrip.StripRect = new RectangleF(new PointF(faTabStrip1.SelectedItem.StripRect.Location.X + faTabStrip1.SelectedItem.StripRect.Width - 13f, faTabStrip1.SelectedItem.StripRect.Location.Y), faTabStrip1.SelectedItem.StripRect.Size);
+                faTabStrip1.InsetTab(tabStrip, true, faTabStrip1.SelectedItem.TabIndex + 1);
+                //faTabStrip1.Invalidate();
+
+                textBoxXP1.Text = "";
+                textBoxXP1.Focus();
+                BtBack.Enabled = false;
+                BtForward.Enabled = false;
+                BtReflash.Enabled = false;
+                BtnSeach.ImageDefault = Properties.Resources.shousuo;
+            }
+            if (faTabStrip1.SelectedItem.ItemBounds.Contains(e.Location) && faTabStrip1.FButtonIsDown)
+            {
+                if (faTabStrip1.SelectedItem != null)
+                {
+                    TabStripItemClosingEventArgs args = new TabStripItemClosingEventArgs(faTabStrip1.SelectedItem);
+                    faTabStrip1.OnTabStripItemClosing(args);
+                    if (!args.Cancel && faTabStrip1.SelectedItem.CanClose)
+                    {
+                        faTabStrip1.RemoveTab(faTabStrip1.SelectedItem);
+                        faTabStrip1.OnTabStripItemClosed(EventArgs.Empty);
+                    }
+                }
+            }
+
+            faTabStrip1.FButtonIsDown = false;
+            faTabStrip1.mouse_move_down = false;
+        }
+
         //这里实际是引用TabPages控件的MouseDown
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -728,7 +874,7 @@ namespace CefiBrowser
                     if (item != null)
                     {
                         faTabStrip1.SelectedItem = item;
-
+                        //this.addrPanel1.Invalidate();
                     }
                     if (e.Button == MouseButtons.Right)
                     {
@@ -750,6 +896,8 @@ namespace CefiBrowser
                     if (item != null)
                     {
                         faTabStrip1.SelectedItem = item;
+                        //this.ToolsPanel.DrTopPanel = true;
+                        //this.ToolsPanel.Invalidate();
                     }
 
                     if (faTabStrip1.SelectedItem.splic.Panel1.Controls.Count == 0)
@@ -796,57 +944,135 @@ namespace CefiBrowser
                         }
                     }
                 }
+
             }
+
+
             if (e.Clicks == 1)
             {
                 ToolsPanel.Visible = true;
                 FavPanel.Visible = true;
-                FATabStrip.ParentMouseMrafting = false;
+                faTabStrip1.ParentMouseMrafting = false;
                 //执行这个是判断是否能拖拽
-                this.faTabStrip1.FATabMouseDown(e, "1");
+                FATabMouseDown(e, "1");
 
                 //如果鼠标区域不在Tab标签的Rect范围就可以拖拽，否则不行
-                if (FATabStrip.ParentMouseMrafting)
-                {
-                    cefimousDown = false;
-                    //X = this.Location.X;
-                    //Y = this.Location.Y;
-                    // faTabStrip1.SelectedItem.BrowserIsLoading = false;
-                    faTabStrip1.Visible = true;
-                    PublicClass.ReleaseCapture();
-                   PublicClass.SendMessage(Handle, PublicClass.WM_NCLBUTTONDOWN, PublicClass.HT_CAPTION, 0);
-
-                }
-            }
-            if (e.Clicks == 2)
-            {
-                ToolsPanel.Visible = true;
-                FavPanel.Visible = true;
-                FATabStrip.ParentMouseMrafting = false;
-                //执行这个是判断是否能拖拽
-                this.faTabStrip1.FATabMouseDown(e, "1");
-
-                //如果鼠标区域不在Tab标签的Rect范围就可以拖拽，否则不行
-                if (FATabStrip.ParentMouseMrafting)
+                if (faTabStrip1.ParentMouseMrafting)
                 {
                     cefimousDown = false;
                     faTabStrip1.Visible = true;
-                    //X = this.Location.X;
-                    //Y = this.Location.Y;
-                   // faTabStrip1.SelectedItem.BrowserIsLoading = false;
                     PublicClass.ReleaseCapture();
                     PublicClass.SendMessage(Handle, PublicClass.WM_NCLBUTTONDOWN, PublicClass.HT_CAPTION, 0);
                 }
-                FATabStrip.ParentMouseMrafting = false;
-                if (faTabStrip1.newAddBT.Bounds.Contains(e.Location) != true && faTabStrip1.SelectedItem.ItemBounds.Contains(e.Location) != true)
+                //if (faTabStrip1.ParentMouseMrafting)
+                    faTabStrip1.Invalidate();
+            }
+            else if (e.Clicks == 2)
+            {
+                ToolsPanel.Visible = true;
+                FavPanel.Visible = true;
+                if (e.Button == MouseButtons.Left)
+                {
+                    pMouseDown = e.Location;
+                    faTabStrip1.FButtonIsDown = false;
+                }
+                if (faTabStrip1.newAddBT.Bounds.Contains(e.Location) != true && result != HitTestResult.TabItem)
                 {
                     NMFuction();
                 }
+                faTabStrip1.Invalidate();
             }
             item = null;
             GC.Collect();
         }
 
+        private void FATabMouseDown(MouseEventArgs e, string FuncName)
+        {
+            if (e.Button == MouseButtons.Right)
+                return;
+
+            HitTestResult result =faTabStrip1.HitTest(e.Location);
+            FATabStripItem item = faTabStrip1.GetTabItemByPoint(e.Location);
+
+            if (result == HitTestResult.TabItem)
+            {
+                if (item != null)
+                {
+                    faTabStrip1.SelectedItem = item;
+                    if (item.splic.Panel1.Controls.Count > 0 && faTabStrip1.MemCostLower)
+                    {
+                        Process[] allProcess = Process.GetProcesses();
+                        foreach (Process p in allProcess)
+                        {
+                            if (p.ProcessName.ToLower() + ".exe" == CefConstHelper.CefiBrowserName.ToLower())
+                            {
+                                if (p.StartTime.ToString().ToLower() == item.StrartTime.ToString().ToLower())
+                                {
+                                    IntPtr intPtrCef = p.Handle;
+                                    PublicClass.SetProcessWorkingSetSize(intPtrCef, -1, -1);
+                                    // break;
+                                }
+                            }
+                        }
+                    }
+                }
+                //这里Item按钮鼠标按下事件要改成只高亮显示，不关闭 ？？后继完成
+                if (item.ItemBounds.Contains(e.Location))
+                {
+                    faTabStrip1.FButtonIsDown = true;
+                    item.ItemCloseDown = true;
+                    Invalidate(item.ItemBounds);
+                }
+            }
+            else if (result == HitTestResult.AddNewButton)
+            {
+                faTabStrip1.NewAddRect.IsMouseDown = true;
+                faTabStrip1.Invalidate();// NewAddRect.DBouds);
+                faTabStrip1.FButtonIsDown = true;
+            }
+            else
+            {
+                faTabStrip1.CancelFromButton();
+            }
+
+            //ControlSizeChanged(FuncName, e);
+
+            if (faTabStrip1.NewAddRect.Bounds.Contains(e.Location))
+            {
+                faTabStrip1.ParentMouseMrafting = false; //为False不能拖拽
+            }
+            else if (item != null)
+            {
+                faTabStrip1.ParentMouseMrafting = false; //为False不能拖拽
+            }
+            else
+            {
+                if (FuncName == "1")
+                {
+                    if (item != null)
+                    {
+                        faTabStrip1.ParentMouseMrafting = false; //为False不能拖拽
+                    }
+                }
+                if (e.Y <= faTabStrip1.NewAddRect.Bounds.Bottom + 5)
+                {
+                    faTabStrip1.ParentMouseMrafting = true; //为False不能拖拽
+
+                }
+                else
+                    faTabStrip1.ParentMouseMrafting = false;
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                pMouseDown = e.Location;
+                faTabStrip1.FButtonIsDown = true;
+            }
+            faTabStrip1.mouse_move_down = false;
+           // faTabStrip1.Invalidate();
+
+        }
+        
+        #endregion
         private void FaTabStrip1_TabStripItemClosed(object sender, System.EventArgs e)
         {
             textBoxXP1.Text = faTabStrip1.SelectedItem.URL;
@@ -856,7 +1082,10 @@ namespace CefiBrowser
         private void FaTabStrip1_ControlRemoved(object sender, System.Windows.Forms.ControlEventArgs e)
         {
             faTabStrip1.CalcNewRectXY("RemoveItem");
-
+            //this.Form1_MouseDown(sender, new MouseEventArgs(MouseButtons.Left, 1, 3, 3, 0));
+            //this.ToolsPanel.DrItemDEL = true;
+            //this.ToolsPanel.DrTopPanel = true;
+            //this.ToolsPanel.Invalidate();
         }
 
 
@@ -1355,7 +1584,7 @@ namespace CefiBrowser
                         if (jobInfo.Layer == "0")
                         {
                             favirte = new FavirteButton();
-                            favirte.Height = 23;
+                            favirte.Height = favirte.Font.Height +6;
                             favirte.Title = jobInfo.Title;
                             favirte.URL = jobInfo.URL;
                             favirte.ItemIcon = PublicClass.Base64ToImage(jobInfo.IconBase64str);
@@ -1374,23 +1603,20 @@ namespace CefiBrowser
                             favirte.TitleWidth = sif.Width;
                             if (PublicClass.DpiX >= 120)
                             {
-                                favirte.Width = 32 + favirte.TitleWidth;
+                                favirte.Width = CefConstHelper.FavireBT_Width_Parm + favirte.TitleWidth;
                                 favirte.Height = favirte.Height + CefConstHelper.TextSizeH / 4;
                             }
                             else
-                                favirte.Width = 26 + favirte.TitleWidth;
+                                favirte.Width = CefConstHelper.FavireBT_Width_Parm + favirte.TitleWidth;
 
-                            //if(sif.Height>favirte.Height)
-                            
+                            if (favirte.Width > CefConstHelper.FavireBT_Width)
+                                favirte.Width = CefConstHelper.FavireBT_Width;
 
-                            if (favirte.Width > 140)
-                                favirte.Width = 140;
-
-                            favirte.Left = FavPanel.Left + 6;
+                            favirte.Left = FavPanel.Left + CefConstHelper.FavireBT_Distance;
                             if (FavPanel.Controls.Count > 0)
                             {
                                 int nFavPoint = 0;
-                                nFavPoint = FavPanel.Left + 6;
+                                nFavPoint = FavPanel.Left + CefConstHelper.FavireBT_Distance;
                                 for (int i = 0; i < FavPanel.Controls.Count; i++)
                                 {
                                     nFavPoint = FavPanel.Controls[i].Width + 2 + nFavPoint;
@@ -2439,7 +2665,7 @@ namespace CefiBrowser
                 DownloadPanel3.Controls.Remove(DownloadPanel3.Controls[i-1]);
             }
             DownloadPanel3.Visible = false;
-            faTabStrip1.Height = faTabStrip1.Height + 16 + DownloadPanel3.Height;
+            faTabStrip1.Height = faTabStrip1.Height + DownloadPanel3.Height;
         }
         //打开所有下载界面
         private void DownloadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2593,17 +2819,18 @@ namespace CefiBrowser
             }
         }
 
+
         public void ReDWLine(Graphics e)
         {
-            Rectangle borderRc = this.ClientRectangle;
+            //Rectangle borderRc = this.ClientRectangle;
 
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                borderRc.Width--;
-                borderRc.Height--;
-                e.DrawRectangle(new Pen(SystemColors.ControlDark, 1), borderRc);
+            //if (this.WindowState == FormWindowState.Normal)
+            //{
+            //    borderRc.Width--;
+            //    borderRc.Height--;
+            //    e.DrawRectangle(new Pen(SystemColors.ControlDark, 1), borderRc);
 
-            }
+            //}
         }
         protected override void OnPaint(PaintEventArgs e)
         {

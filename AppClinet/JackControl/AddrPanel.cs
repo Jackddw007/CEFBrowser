@@ -41,6 +41,7 @@ namespace CefiBrowser
                 return cp;
             }
         }
+
         /// <summary>
         /// 显示文件
         /// </summary>
@@ -54,7 +55,46 @@ namespace CefiBrowser
                 e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, 0), new PointF(0, ClientRectangle.Height));
             //画上边边线
             if (DrTop)
-                e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, 0), new PointF(ClientRectangle.Width, 0));
+            {
+                if (DrTopPanel)
+                {
+                    MainForm.Instance.Invoke(new Action(() =>
+                    {
+                        if (MainForm.Instance.faTabStrip1.SelectedItem != null)
+                    {
+                        //if (DrItemDEL)
+                        //{
+                        //    //MainForm.Instance.faTabStrip1.UpdateLayout();
+                        //    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, 0), new PointF(MainForm.Instance.faTabStrip1.Items[MainForm.Instance.faTabStrip1.SelectedItem.TabIndex - 1].StripRect.X, 0));
+                        //    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(MainForm.Instance.faTabStrip1.Items[MainForm.Instance.faTabStrip1.SelectedItem.TabIndex - 1].StripRect.Right, 0), new PointF(MainForm.Instance.faTabStrip1.Width, 0));
+
+                        //}
+                        //else if (DrItemAdd)
+                        //{
+                        //    //MainForm.Instance.faTabStrip1.UpdateLayout();
+                        //    //e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, 0), new PointF(MainForm.Instance.faTabStrip1.Items[MainForm.Instance.faTabStrip1.SelectedItem.TabIndex].StripRect.X, 0));
+                        //    //e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(MainForm.Instance.faTabStrip1.Items[MainForm.Instance.faTabStrip1.SelectedItem.TabIndex].StripRect.Right, 0), new PointF(MainForm.Instance.faTabStrip1.Width, 0));
+
+                        //}
+                        //else
+                        //{
+                            e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, 0), new PointF(MainForm.Instance.faTabStrip1.SelectedItem.StripRect.X, 0));
+                            e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(MainForm.Instance.faTabStrip1.SelectedItem.StripRect.Right, 0), new PointF(MainForm.Instance.faTabStrip1.Width, 0));
+
+                        //}
+                    }
+                    }
+                ));
+                    DrTopPanel = false;
+                    DrItemAdd = false;
+                    DrItemDEL = false;
+                }
+                else
+                {
+                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, 0), new PointF(ClientRectangle.Width, 0));
+                }
+
+            }
             //画右边边线
             if (DrRight)
                 e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(ClientRectangle.Width - 1, 0), new PointF(ClientRectangle.Width - 1, ClientRectangle.Height));
@@ -79,7 +119,18 @@ namespace CefiBrowser
         public bool DrLeft { set; get; }
         public bool DrRight { set; get; }
         public bool DrBottom { set; get; }
+        /// <summary>
+        /// 是否有效画上画线
+        /// </summary>
+        public bool DrTopPanel { set; get; }
+        /// <summary>
+        /// Item增加时
+        /// </summary>
+        public bool DrItemAdd { set; get; }
 
-
+        /// <summary>
+        /// Item删除时
+        /// </summary>
+        public bool DrItemDEL { set; get; }
     }
 }

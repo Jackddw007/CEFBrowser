@@ -46,7 +46,7 @@ namespace CefiBrowser
                 if (MainForm.Instance.DownloadPanel3.Visible == false)
                 {
                     MainForm.Instance.DownloadPanel3.Visible = true;
-                    MainForm.Instance.faTabStrip1.Height = MainForm.Instance.Height - MainForm.Instance.DownloadPanel3.Height - 16;
+                    MainForm.Instance.faTabStrip1.Height = MainForm.Instance.Height - MainForm.Instance.DownloadPanel3.Height;//修正下载时进度控件位置错误
                 }
                 for (int i = 0; i < 1000; i++)
                 {

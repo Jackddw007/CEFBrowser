@@ -33,7 +33,8 @@ namespace CefiBrowser
             set
             {
                 _imageDefault = value;
-                label.Image = _DefaultImage= _imageDefault;
+                _DefaultImage= _imageDefault; //????????????
+                this.Invalidate();
             }
         }
         /// <summary>
@@ -82,12 +83,12 @@ namespace CefiBrowser
                 if (isMouseDown)
                 {
                     _backColorEX = value;
-                    label.BackColor = backColorDown;
+                    this.BackColor = backColorDown;
                 }
                 else
                 {
                     _backColorEX = value;
-                    label.BackColor = _backColorEX;
+                    this.BackColor = _backColorEX;
                 }
             }
         }
@@ -134,7 +135,7 @@ namespace CefiBrowser
             set
             {
                 textEX = value;
-                label.Text = textEX;
+                Text = textEX;
             }
         }
         /// <summary>
@@ -148,7 +149,7 @@ namespace CefiBrowser
             set
             {
                 textColor = value;
-                label.ForeColor = textColor;
+                ForeColor = textColor;
             }
         }
         /// <summary>
@@ -162,7 +163,7 @@ namespace CefiBrowser
             set
             {
                 fontM = value;
-                label.Font = fontM;
+                Font = fontM;
             }
         }
 
@@ -171,23 +172,27 @@ namespace CefiBrowser
         {
             //AutoSize = true;
             //AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoScaleMode = AutoScaleMode.Font;
             this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             //this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+        
+            
             //this.BackColor = Color.Transparent;
             InitializeComponent();
         }
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.Style |= (int)WinAPI.WindowStyles.WS_CLIPCHILDREN;
-                return cp;
-            }
-        }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.Style |= (int)WinAPI.WindowStyles.WS_CLIPCHILDREN;
+        //        return cp;
+        //    }
+        //}
         /// <summary>
         /// 鼠标单击事件
         /// </summary>
@@ -199,6 +204,15 @@ namespace CefiBrowser
             {
                 ButtonClick(sender, e);
             }
+        }
+        private RectangleF ImageBounds = Rectangle.Empty;
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            ImageBounds = new RectangleF(new PointF(this.Width/2- CefConstHelper.rectIconSizeW/2, this.Height / 2 - CefConstHelper.rectIconSizeH / 2),
+                new SizeF(CefConstHelper.rectIconSizeW,CefConstHelper.rectIconSizeH));
+            e.Graphics.DrawImage(_DefaultImage, ImageBounds);
         }
 
         /// <summary>
@@ -273,5 +287,12 @@ namespace CefiBrowser
             this.Invalidate();
         }
 
+        private void ButtonXP_Click(object sender, EventArgs e)
+        {
+            if (ButtonClick != null)
+            {
+                ButtonClick(sender, e);
+            }
+        }
     }
 }

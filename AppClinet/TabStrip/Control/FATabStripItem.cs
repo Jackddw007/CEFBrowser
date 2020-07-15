@@ -110,7 +110,7 @@ namespace CefiBrowser
             set { devToolsOpen = value; }
         }
 
-        internal RectangleF StripRect
+        public RectangleF StripRect
         {
             get { return stripRect; }
             set { stripRect = value; }
@@ -123,6 +123,10 @@ namespace CefiBrowser
             set { itemIcon = value; }
         }
 
+        /// <summary>
+        /// 父窗口是否最大化
+        /// </summary>
+        public bool ParentFormIsMax { set; get; }
         public RectangleF IconBounds
         {
             get { return iconBounds; }
@@ -470,10 +474,23 @@ namespace CefiBrowser
 
             #region ButtonRect的样式
 
-            path.AddLine(buttonRect.X , buttonRect.Bottom , buttonRect.Left + 13f , buttonRect.Y );
-            path.AddLine(buttonRect.Left + 13f, buttonRect.Y, buttonRect.Right - 13f, buttonRect.Y);
-            path.AddLine(buttonRect.Right - 13f , buttonRect.Y , buttonRect.Right , buttonRect.Bottom );
-            path.CloseFigure();
+            //  float buttonHeight = buttonRect.Bottom ;
+            if (!ParentFormIsMax)
+            {
+                path.AddLine(buttonRect.X, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis, buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y);
+                path.AddLine(buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y, buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y);
+                path.AddLine(buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y, buttonRect.Right, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis);
+                path.CloseFigure();
+            }
+            else
+            {
+                path.AddLine(buttonRect.X, CefConstHelper.buttonHeight, buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y);
+                path.AddLine(buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y, buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y);
+                path.AddLine(buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y, buttonRect.Right, CefConstHelper.buttonHeight);
+                path.CloseFigure();
+
+            }
+
             ////using (GraphicsPath path = new GraphicsPath())
             ////{
             ////path.AddBezier(
@@ -519,11 +536,22 @@ namespace CefiBrowser
             }
 
             g.FillPath(brush, path);
-            g.DrawPath(SystemPens.Control, path);
-            g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.X, buttonRect.Bottom), new PointF(buttonRect.Left + 13f, buttonRect.Y));
-            g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.Left + 13f, buttonRect.Y), new PointF(buttonRect.Right - 13f, buttonRect.Y));
-            g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.Right - 13f, buttonRect.Y), new PointF(buttonRect.Right, buttonRect.Bottom));
 
+            if (!ParentFormIsMax)
+            {
+                g.DrawPath(SystemPens.Control, path);
+                g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.X, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis), new PointF(buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y));
+                g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y), new PointF(buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y));
+                g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y), new PointF(buttonRect.Right, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis));
+            }
+            else
+            {
+                g.DrawPath(SystemPens.Control, path);
+                g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.X, CefConstHelper.buttonHeight), new PointF(buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y));
+                g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.Left + CefConstHelper.buttonPar, buttonRect.Y), new PointF(buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y));
+                g.DrawLine(SystemPens.ControlDark, new PointF(buttonRect.Right - CefConstHelper.buttonPar, buttonRect.Y), new PointF(buttonRect.Right, CefConstHelper.buttonHeight));
+
+            }
 
         }
 
@@ -592,18 +620,18 @@ namespace CefiBrowser
             }
         }
 
-
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-          //  base.OnPaint(e);
-
-    }
-
-        //draw Itemtext
+      //draw Itemtext
         public void DrawItemText(Graphics g, RectangleF textRect)
         {
             textRect.Height = CefConstHelper.TextSizeH;
+            if (PublicClass.DpiY >= 120 && PublicClass.DpiY <= 150)
+            {
+                textRect.Height = CefConstHelper.TextSizeH +3;
+            }
+            else if (PublicClass.DpiY >= 150)
+            {
+                textRect.Height = CefConstHelper.TextSizeH+5;
+            }
             if (browserIsLoading)
                 textRect.X = iconBounds.Right + 3;
 

@@ -176,18 +176,6 @@
   <metadata name="fMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>412, 21</value>
   </metadata>
-  <data name="formMaxNormalButton1.ImageDefault" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAASCAYAAABB7B6eAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJ
-        TUUH4wwEFgUv2JuvBAAAAR1JREFUOE+1lIkOgzAMQzn+/3u5YTjSi7yqMCZtk0xS47hJYTTHcTTbtkXc
-        9z0iHPwdSh0ecJnohlCawl/Btap1XutmnudcIFzX9S3eoabFS96RLMsScRzHFAHvtoZSjweeOQFirenm
-        /OnyEdKqpuYVCbsp+lF1XXeG9w5LuEa17qUYl2maIgIJBbq7gzToncczxyG68OkG5NS6Z5KK3MjxvtiA
-        Gnm4ZyQ8eRGMpoK+78+0bgykwVy1mOOZQn8OKojxHk4gLZsI7hWvF7sKPurTCcqjFeQp71xIhFAYhiFe
-        QfgrSCMtdfA0nSSEd6Hx27a9hR8jtTQcHn5e/BN9Ezq6Ajpq8BDkHYl/qHxDN7iCa7w2PzcQ/0KV/B2O
-        5gXXF795Rbg4fgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>51</value>
   </metadata>

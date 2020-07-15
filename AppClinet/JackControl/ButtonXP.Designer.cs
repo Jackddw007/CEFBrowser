@@ -1,4 +1,6 @@
-﻿namespace CefiBrowser
+﻿using Microsoft.Win32;
+
+namespace CefiBrowser
 {
     partial class ButtonXP
     {
@@ -28,35 +30,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label
+            // ButtonXP
             // 
-            this.label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label.Location = new System.Drawing.Point(0, 0);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(20, 20);
-            this.label.TabIndex = 0;
-            this.label.Click += new System.EventHandler(this.label_Click);
-            this.label.MouseLeave += new System.EventHandler(this.label_MouseLeave);
-            this.label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_MouseMove);
-            this.label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label_MouseDown);
-            this.label.LostFocus += new System.EventHandler(label_LostFocus);
-            // 
-            // ButtonEX
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "ButtonXP";
-            this.Size = new System.Drawing.Size(20, 20);
+            this.Size = new System.Drawing.Size(40, 40);
+            this.Click += new System.EventHandler(this.ButtonXP_Click);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_MouseMove);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label_MouseDown);
+            this.MouseLeave +=  (this.label_MouseLeave);
+            this.LostFocus += new System.EventHandler(this.label_LostFocus);
             this.ResumeLayout(false);
 
         }
 
-        #endregion
+        private void ButtonXP_MouseLeave(object sender, System.EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        private System.Windows.Forms.Label label;
+        #endregion
     }
 }
