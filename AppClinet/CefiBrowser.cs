@@ -2439,7 +2439,7 @@ namespace CefiBrowser
                 DownloadPanel3.Controls.Remove(DownloadPanel3.Controls[i-1]);
             }
             DownloadPanel3.Visible = false;
-            faTabStrip1.Height = faTabStrip1.Height + 16 + DownloadPanel3.Height;
+            faTabStrip1.Height = faTabStrip1.Height + DownloadPanel3.Height;
         }
         //打开所有下载界面
         private void DownloadToolStripMenuItem_Click(object sender, EventArgs e)
