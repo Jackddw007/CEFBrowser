@@ -249,7 +249,18 @@ namespace CefiBrowser
             //this.NewShadowEnable = true;
             //this.NewShadowColor = Color.FromArgb(255, 30, 30, 30);
             //this.NewShadowWidth = 4;
-           // this.ToolsPanel.Visible = this.FavPanel.Visible = false;
+            // this.ToolsPanel.Visible = this.FavPanel.Visible = false;
+            string BrowserStyle = PublicClass.GetAppConfig("BrowseStyle");
+            if(BrowserStyle == "ChromeStyle")
+            {
+              //  ChromeStyle.Checked = true;
+                ChromeStyle_Click(sender, e);
+            }
+            else if(BrowserStyle == "MSEdgeStyle")
+            {
+                MSEdgeStyle_Click(sender, e);
+                //MSEdgeStyle.Checked = true;
+            }
         }
 
 
@@ -428,22 +439,22 @@ namespace CefiBrowser
         }
 
      
-        protected override void OnMove(EventArgs e)
-        {
-            base.OnMove(e);
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                if (PublicClass.RestoreRect == this.RestoreBounds)
-                {
-                    PublicClass.SetIconCloseRectWH();
-                    faTabStrip1.InControlHeight = ToolsPanel.Height + FavPanel.Height;
-                    this.ToolsPanel.Location = new Point(faTabStrip1.Location.X - 0, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis);
-                    this.FavPanel.Location = new Point(faTabStrip1.Location.X - 0, ToolsPanel.Bottom);
-                    this.FavPanel.Width = ToolsPanel.Width = faTabStrip1.Width;
-                }
-            }
+        //protected override void OnMove(EventArgs e)
+        //{
+        //    base.OnMove(e);
+        //    if (this.WindowState == FormWindowState.Normal)
+        //    {
+        //        if (PublicClass.RestoreRect == this.RestoreBounds)
+        //        {
+        //          //  PublicClass.SetIconCloseRectWH();
+        //            faTabStrip1.InControlHeight = ToolsPanel.Height + FavPanel.Height;
+        //            this.ToolsPanel.Location = new Point(faTabStrip1.Location.X - 0, CefConstHelper.DEF_HEADER_HEIGHT + CefConstHelper.DEF_Header_TopDis);
+        //            this.FavPanel.Location = new Point(faTabStrip1.Location.X - 0, ToolsPanel.Bottom);
+        //            this.FavPanel.Width = ToolsPanel.Width = faTabStrip1.Width;
+        //        }
+        //    }
 
-        }
+        //}
 
         //protected override void OnResize(EventArgs e)
         //{
@@ -718,6 +729,7 @@ namespace CefiBrowser
             #region 新增按钮
 
             if (faTabStrip1.FButtonIsDown == false)
+            {
                 if (result == HitTestResult.AddNewButton)
                 {
                     if (faTabStrip1.NewAddRect.Bounds.Contains(e.Location))
@@ -732,23 +744,40 @@ namespace CefiBrowser
                     }
 
                 }
-                else
+                else if(result == HitTestResult.TabItem)
                 {
                     faTabStrip1.CancelFromButton();
-                }
+                    //if (faTabStrip1.FButtonIsDown == false)
+                    //{
+                    //    faTabStrip1.NewAddRect.IsMouseOver = false;
+                    //    faTabStrip1.NewAddRect.IsMouseDown = false;
 
+                    //    if (faTabStrip1.SelectedItem != null)
+                    //    {
+                    //        faTabStrip1.SelectedItem.ItemCloseDown = false;
+                    //        faTabStrip1.SelectedItem.ItemIsMouseOver = false;
+                    //    }
+
+                    //    faTabStrip1.Invalidate();
+                    //}
+
+                }
+            }
             #endregion
 
             #region 当鼠标移动到tab按钮和关闭按钮区域的时候标签按钮颜色的改变
             //这里先把其他的ItemMouseOver关掉
-            for (int i = 0; i < faTabStrip1.Items.Count; i++)
+            if (result == HitTestResult.AddNewButton || result == HitTestResult.TabItem)
             {
-                faTabStrip1.Items[i].IsMouseOver = false;
-                Invalidate(faTabStrip1.Items[i].TabBounds);
+                for (int i = 0; i < faTabStrip1.Items.Count; i++)
+                {
+                    faTabStrip1.Items[i].IsMouseOver = false;
+                    Invalidate(faTabStrip1.Items[i].TabBounds);
 
-                faTabStrip1.Items[i].ItemIsMouseOver = false;
-                Invalidate(faTabStrip1.Items[i].ItemBounds);
+                    faTabStrip1.Items[i].ItemIsMouseOver = false;
+                    Invalidate(faTabStrip1.Items[i].ItemBounds);
 
+                }
             }
 
             if (item != null && faTabStrip1.FButtonIsDown == false)
@@ -802,6 +831,7 @@ namespace CefiBrowser
         {
             faTabStrip1.FButtonIsDown = false; //鼠标离开的时候重置这个标志
 
+            
             faTabStrip1.CancelFromButton(); //取消Form按钮的选中状态
 
 
@@ -815,7 +845,7 @@ namespace CefiBrowser
                 faTabStrip1.Invalidate(faTabStrip1.Items[i].ItemBounds);
             }
             //刷新控件
-            faTabStrip1.Invalidate();
+            //faTabStrip1.Invalidate();
         }
         /// <summary>
         /// 这里的MouseUp是FatabStrip和Form共用的
@@ -825,7 +855,7 @@ namespace CefiBrowser
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
           //  HitTestResult result = faTabStrip1.HitTest(e.Location);
-            if (faTabStrip1.HitTest(e.Location) == HitTestResult.AddNewButton && faTabStrip1.FButtonIsDown && e.Button != MouseButtons.Right && faTabStrip1.mouse_move_down != true)
+            if (faTabStrip1.HitTest(e.Location) == HitTestResult.AddNewButton  && e.Button != MouseButtons.Right && faTabStrip1.mouse_move_down != true)
             {
                 faTabStrip1.NewAddRect.IsMouseOver = false;
                 faTabStrip1.NewAddRect.IsMouseDown = false;
@@ -993,7 +1023,7 @@ namespace CefiBrowser
 
             HitTestResult result =faTabStrip1.HitTest(e.Location);
             FATabStripItem item = faTabStrip1.GetTabItemByPoint(e.Location);
-
+           
             if (result == HitTestResult.TabItem)
             {
                 if (item != null)
@@ -1021,13 +1051,13 @@ namespace CefiBrowser
                 {
                     faTabStrip1.FButtonIsDown = true;
                     item.ItemCloseDown = true;
-                    Invalidate(item.ItemBounds);
+                    faTabStrip1.Invalidate(item.ItemBounds);
                 }
             }
             else if (result == HitTestResult.AddNewButton)
             {
                 faTabStrip1.NewAddRect.IsMouseDown = true;
-                faTabStrip1.Invalidate();// NewAddRect.DBouds);
+                faTabStrip1.Invalidate(new Region( faTabStrip1.newAddBT.Bounds));// NewAddRect.DBouds);
                 faTabStrip1.FButtonIsDown = true;
             }
             else
@@ -2819,6 +2849,48 @@ namespace CefiBrowser
             }
         }
 
+        private void ChromeStyle_Click(object sender, EventArgs e)
+        {
+            MSEdgeStyle.Checked = false;
+            ChromeStyle.Checked = true;
+            faTabStrip1.newAddBT.MSEdgeStyle = false;
+            //if (PublicClass.DpiX > 150)
+            //{
+            CefConstHelper.buttonPar = 20;
+            CefConstHelper.TabButtons_DefOffset = 14;
+            //}
+            //else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 150)
+            //{
+            //    CefConstHelper.buttonPar = 20;
+            //    CefConstHelper.TabButtons_DefOffset = 14;
+            //}
+            faTabStrip1.Invalidate();
+            PublicClass.UpdateAppConfig("BrowseStyle", "ChromStyle");
+        }
+
+        private void MSEdgeStyle_Click(object sender, EventArgs e)
+        {
+            MSEdgeStyle.Checked = true;
+            ChromeStyle.Checked = false;
+            faTabStrip1.newAddBT.MSEdgeStyle = true;
+            CefConstHelper.buttonPar = 0;
+            CefConstHelper.TabButtons_DefOffset = 1;
+            if (PublicClass.DpiX > 150)
+            {
+                //CefConstHelper.buttonPar = 0;
+                CefConstHelper.TabButtons_DefOffset = 0;
+                //CefConstHelper.AddNbt_FormRight = 230;
+
+            }
+            else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 150)
+            {
+                //CefConstHelper.buttonPar = 0;
+                CefConstHelper.TabButtons_DefOffset = 0;
+                //CefConstHelper.AddNbt_FormRight = 220;
+            }
+            faTabStrip1.Invalidate();
+            PublicClass.UpdateAppConfig("BrowseStyle", "MSEdgeStyle");
+        }
 
         public void ReDWLine(Graphics e)
         {

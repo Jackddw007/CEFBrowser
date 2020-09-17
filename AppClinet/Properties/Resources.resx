@@ -298,4 +298,55 @@
   <data name="iconNo24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconNo24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="forwardDisabled24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qianJingDisabled24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forwardEnabled24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qianJingEnabled24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoBackDisabled24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoBackDisabled24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoBackEnabled24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoBackEnabled24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Home24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReFlash24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReFlash24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FavBtIconDef24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FavBtIconDef24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FavBtIconEnter24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FavBtIconEnter24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forwardDisabled241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwardDisabled24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forwardEnabled20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwardEnabled20.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forwardEnabled241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwardEnabled24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoBackEnabled20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoBackEnabled20.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Home20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Home20.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Internet24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Internet24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReFlash20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ReFlash20.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Seach24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Seach24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SSL24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SSL24.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

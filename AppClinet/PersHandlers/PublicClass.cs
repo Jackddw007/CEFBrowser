@@ -3,6 +3,7 @@
     using CefiBrowser.Properties;
     using Microsoft.Win32;
     using System;
+    using System.Configuration;
     using System.Diagnostics;
     using System.Drawing;
     using System.Drawing.Drawing2D;
@@ -754,7 +755,7 @@
             const int DESKTOPHORZRES = 118;
             #endregion
 
-        #region 属性  
+        #region 系统属性和TabButton相关属性设置  
             /// <summary>  
             /// 获取屏幕分辨率当前物理大小  
             /// </summary>  
@@ -846,9 +847,10 @@
         /// </summary>
         public static void SetIconCloseRectWH()
         {
-            if (PublicClass.DpiX > 150)
+          //  CefConstHelper.DEF_START_POS = 16;
+            if (PublicClass.DpiX >=168 && PublicClass.DpiX <192)
             {
-                CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 38;
+                CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 36;
                 CefConstHelper.closeRectH = CefConstHelper.closeRectW = 22;
                 CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 24;
                 CefConstHelper.TextSizeH = 26;
@@ -857,19 +859,88 @@
                 CefConstHelper.FavireBT_Width = 170;
                 CefConstHelper.FavireBT_Distance = 22;
                 CefConstHelper.FavireBT_Width_Parm = 42;
-                CefConstHelper.AddNbt_FormRight = 220;
-                CefConstHelper.Current_TabButton_White = 300;
-                CefConstHelper.Def_TabButton_White = 300;
+                CefConstHelper.AddNbt_FormRight = 250;
+                CefConstHelper.Current_TabButton_White = 400;
+                CefConstHelper.Def_TabButton_White = 400;
                 CefConstHelper.buttonHeight = 52;
                 CefConstHelper.AddnewButton_Width = 39;
-                CefConstHelper.buttonPar = 19;
-                CefConstHelper.UderLineCost = 2f;
+                CefConstHelper.buttonPar = 20;
+                CefConstHelper.TabButtons_DefOffset = 0;
+                CefConstHelper.UderLineCost = 0;
                 CefConstHelper.CloseRect_toRight_Parm = 13;
                 CefConstHelper.FMenuItem_Height = 38;
             }
-            else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 150)
+            else if (PublicClass.DpiX >=192 && PublicClass.DpiX <216)
+            {
+                CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 40;
+                CefConstHelper.closeRectH = CefConstHelper.closeRectW = 22;
+                CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 24;
+                CefConstHelper.TextSizeH = 26;
+                CefConstHelper.FmenuItem_TextRect_Width = 400;
+                CefConstHelper.FavBTIcon_Distace = 26;
+                CefConstHelper.FavireBT_Width = 170;
+                CefConstHelper.FavireBT_Distance = 22;
+                CefConstHelper.FavireBT_Width_Parm = 42;
+                CefConstHelper.AddNbt_FormRight = 260;
+                CefConstHelper.Current_TabButton_White = 400;
+                CefConstHelper.Def_TabButton_White = 400;
+                CefConstHelper.buttonHeight = 52;
+                CefConstHelper.AddnewButton_Width = 39;
+                CefConstHelper.buttonPar = 20;
+                CefConstHelper.TabButtons_DefOffset = 0;
+                CefConstHelper.UderLineCost = 0f;
+                CefConstHelper.CloseRect_toRight_Parm = 13;
+                CefConstHelper.FMenuItem_Height = 38;
+            }
+          else if (PublicClass.DpiX >= 216)
+                {
+                
+                    CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 54;
+                    CefConstHelper.closeRectH = CefConstHelper.closeRectW = 22;
+                    CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 24;
+                    CefConstHelper.TextSizeH = 30;
+                    CefConstHelper.FmenuItem_TextRect_Width = 400;
+                    CefConstHelper.FavBTIcon_Distace = 26;
+                    CefConstHelper.FavireBT_Width = 170;
+                    CefConstHelper.FavireBT_Distance = 22;
+                    CefConstHelper.FavireBT_Width_Parm = 42;
+                    CefConstHelper.AddNbt_FormRight = 280;
+                    CefConstHelper.Current_TabButton_White = 400;
+                    CefConstHelper.Def_TabButton_White = 400;
+                    CefConstHelper.buttonHeight = 52;
+                    CefConstHelper.AddnewButton_Width = 39;
+                    CefConstHelper.buttonPar = 20;
+                    CefConstHelper.TabButtons_DefOffset = 14;
+                    CefConstHelper.UderLineCost = 0f;
+                    CefConstHelper.CloseRect_toRight_Parm = 13;
+                    CefConstHelper.FMenuItem_Height = 38;
+                //CefConstHelper.DEF_Header_TopDis = 14;
+            }
+                else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <169)
             {
                 CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 34;
+                CefConstHelper.closeRectH = CefConstHelper.closeRectW = 19;
+                CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 20;
+                CefConstHelper.TextSizeH = 22;
+                CefConstHelper.FavBTIcon_Distace = 23;
+                CefConstHelper.FavireBT_Width = 150;
+                CefConstHelper.FavireBT_Distance = 16;
+                CefConstHelper.FavireBT_Width_Parm = 32;
+                CefConstHelper.AddNbt_FormRight = 230;
+                CefConstHelper.Current_TabButton_White = 250;
+                CefConstHelper.Def_TabButton_White = 250;
+                CefConstHelper.buttonHeight = 46;
+                CefConstHelper.AddnewButton_Width = 33;
+                CefConstHelper.buttonPar = 16;
+                CefConstHelper.TabButtons_DefOffset = 0;
+                CefConstHelper.UderLineCost = 0f;
+                CefConstHelper.CloseRect_toRight_Parm = 11;
+                CefConstHelper.FMenuItem_Height = 30;
+                CefConstHelper.FmenuItem_TextRect_Width = 330;
+            }
+            else
+            {
+                CefConstHelper.DEF_HEADER_HEIGHT = CefConstHelper.Def_TabButton_Hight = 30;
                 CefConstHelper.closeRectH = CefConstHelper.closeRectW = 19;
                 CefConstHelper.rectIconSizeH = CefConstHelper.rectIconSizeW = 20;
                 CefConstHelper.TextSizeH = 22;
@@ -883,30 +954,112 @@
                 CefConstHelper.buttonHeight = 46;
                 CefConstHelper.AddnewButton_Width = 33;
                 CefConstHelper.buttonPar = 16;
-                CefConstHelper.UderLineCost = 1.2f;
+                CefConstHelper.TabButtons_DefOffset = 0;
+                CefConstHelper.UderLineCost = 3f;
                 CefConstHelper.CloseRect_toRight_Parm = 11;
                 CefConstHelper.FMenuItem_Height = 30;
                 CefConstHelper.FmenuItem_TextRect_Width = 330;
             }
         }
-#endregion
+        #endregion
+
+        #region 读写.config文件配置
+        ///<summary> 
+        ///返回*.exe.config文件中appSettings配置节的value项  
+        ///</summary> 
+        ///<param name="strKey"></param> 
+        ///<returns></returns> 
+        public static string GetAppConfig(string strKey)
+        {
+            string file = System.Windows.Forms.Application.ExecutablePath;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(file);
+            foreach (string key in config.AppSettings.Settings.AllKeys)
+            {
+                if (key == strKey)
+                {
+                    return config.AppSettings.Settings[strKey].Value.ToString();
+                }
+            }
+            return null;
+        }
+
+        ///<summary>  
+        ///在*.exe.config文件中appSettings配置节增加一对键值对  
+        ///</summary>  
+        ///<param name="newKey"></param>  
+        ///<param name="newValue"></param>  
+        public static void UpdateAppConfig(string newKey, string newValue)
+        {
+            string file = System.Windows.Forms.Application.ExecutablePath;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(file);
+            bool exist = false;
+            foreach (string key in config.AppSettings.Settings.AllKeys)
+            {
+                if (key == newKey)
+                {
+                    exist = true;
+                }
+            }
+            if (exist)
+            {
+                config.AppSettings.Settings.Remove(newKey);
+            }
+            config.AppSettings.Settings.Add(newKey, newValue);
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        ///<summary> 
+        ///更新连接字符串  
+        ///</summary> 
+        ///<param name="newName">连接字符串名称</param> 
+        ///<param name="newConString">连接字符串内容</param> 
+        ///<param name="newProviderName">数据提供程序名称</param> 
+        public static void UpdateConnectionStringsConfig(string newName, string newConString, string newProviderName)
+        {
+            //指定config文件读取
+            string file = System.Windows.Forms.Application.ExecutablePath;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(file);
+
+            bool exist = false; //记录该连接串是否已经存在  
+            //如果要更改的连接串已经存在  
+            if (config.ConnectionStrings.ConnectionStrings[newName] != null)
+            {
+                exist = true;
+            }
+            // 如果连接串已存在，首先删除它  
+            if (exist)
+            {
+                config.ConnectionStrings.ConnectionStrings.Remove(newName);
+            }
+            //新建一个连接字符串实例  
+            ConnectionStringSettings mySettings =
+                new ConnectionStringSettings(newName, newConString, newProviderName);
+            // 将新的连接串添加到配置文件中.  
+            config.ConnectionStrings.ConnectionStrings.Add(mySettings);
+            // 保存对配置文件所作的更改  
+            config.Save(ConfigurationSaveMode.Modified);
+            // 强制重新载入配置文件的ConnectionStrings配置节  
+            ConfigurationManager.RefreshSection("connectionStrings");
+        }
+
+        #endregion
 
 
-
-#endregion
+        #endregion
 
         #region GetPicThumbnail
-/// <summary>
-/// 无损压缩图片
-/// </summary>
-/// <param name="sFile">原图片</param>
-/// <param name="dFile">压缩后保存位置</param>
-/// <param name="dHeight">高度</param>
-/// <param name="dWidth">宽度</param>
-/// <param name="flag">压缩质量 1-100</param>
-/// <returns></returns>
+        /// <summary>
+        /// 无损压缩图片
+        /// </summary>
+        /// <param name="sFile">原图片</param>
+        /// <param name="dFile">压缩后保存位置</param>
+        /// <param name="dHeight">高度</param>
+        /// <param name="dWidth">宽度</param>
+        /// <param name="flag">压缩质量 1-100</param>
+        /// <returns></returns>
 
-public static Image GetPicThumbnail(Image itemImage, int dHeight, int dWidth)//, int flag)
+        public static Image GetPicThumbnail(Image itemImage, int dHeight, int dWidth)//, int flag)
         {
             System.Drawing.Image iSource = itemImage;// System.Drawing.Image.FromFile(sFile);
             ImageFormat tFormat = iSource.RawFormat;

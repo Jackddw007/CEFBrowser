@@ -101,6 +101,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Web" />
@@ -161,7 +162,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TabStrip\Control\FATabStripItem.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="TabStrip\Control\FATabStripItemCollection.cs" />
     <Compile Include="TabStrip\Control\FATabStripMenuGlyph.cs" />
@@ -385,6 +386,23 @@
     <Content Include="CefiBrowser.ico" />
     <Content Include="DLL\EasyHook.dll" />
     <Content Include="DLL\EasyHook32.dll" />
+    <None Include="Resources\forwardEnabled24.jpg" />
+    <None Include="Resources\GoBackEnabled24.jpg" />
+    <None Include="Resources\GoBackDisabled24.jpg" />
+    <None Include="Resources\GoBackEnabled20.jpg" />
+    <None Include="Resources\Home20.jpg" />
+    <None Include="Resources\ReFlash20.jpg" />
+    <None Include="Resources\forwardDisabled24.jpg" />
+    <None Include="Resources\Home24.jpg" />
+    <None Include="Resources\ReFlash24.jpg" />
+    <None Include="Resources\Internet24.jpg" />
+    <None Include="Resources\Seach24.jpg" />
+    <None Include="Resources\SSL24.jpg" />
+    <None Include="Resources\FavBtIconDef24.jpg" />
+    <None Include="Resources\FavBtIconEnter24.jpg" />
+    <None Include="Resources\forwardEnabled20.jpg" />
+    <None Include="Resources\qianJingEnabled24.jpg" />
+    <None Include="Resources\qianJingDisabled24.jpg" />
     <None Include="Resources\iconMax24.jpg" />
     <None Include="Resources\iconNo24.jpg" />
     <None Include="Resources\iconClose24.jpg" />

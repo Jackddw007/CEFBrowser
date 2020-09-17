@@ -27,7 +27,10 @@ namespace CefiBrowser
         #endregion
 
         #region Props
-
+        /// <summary>
+        /// 微软Edge样式
+        /// </summary>
+        public bool MSEdgeStyle { set; get; }
         public bool IsMouseOver
         {
             get { return isMouseOver; }
@@ -78,10 +81,21 @@ namespace CefiBrowser
             LinearGradientBrush brush;
 
             #region 画新增按钮的方法
-            path.AddLine(AddNbt.Left + 3, AddNbt.Y, AddNbt.Right, AddNbt.Y);
-            path.AddLine(AddNbt.Right, AddNbt.Y, AddNbt.Right + AddNbt.Width / 3 - 3, AddNbt.Y + AddNbt.Height);
-            path.AddLine(AddNbt.Right + AddNbt.Width / 3 - 3, AddNbt.Y + AddNbt.Height, AddNbt.Left + AddNbt.Width / 3, AddNbt.Y + AddNbt.Height);
-            path.AddLine(AddNbt.Left + AddNbt.Width / 3, AddNbt.Y + AddNbt.Height, AddNbt.Left + 3, AddNbt.Y);
+            if (!MSEdgeStyle) //Chrome样式
+            {  //从左边到右边的线
+                path.AddLine(AddNbt.Left + 3, AddNbt.Y, AddNbt.Right, AddNbt.Y);
+                path.AddLine(AddNbt.Right, AddNbt.Y, AddNbt.Right + AddNbt.Width / 3 - 3, AddNbt.Y + AddNbt.Height);
+                path.AddLine(AddNbt.Right + AddNbt.Width / 3 - 3, AddNbt.Y + AddNbt.Height, AddNbt.Left + AddNbt.Width / 3, AddNbt.Y + AddNbt.Height);
+                path.AddLine(AddNbt.Left + AddNbt.Width / 3, AddNbt.Y + AddNbt.Height, AddNbt.Left + 3, AddNbt.Y);
+            }
+            else //微软edge样式
+            {
+                path.AddLine(AddNbt.Left, AddNbt.Y, AddNbt.Right, AddNbt.Y);
+                path.AddLine(AddNbt.Right, AddNbt.Y, AddNbt.Right , AddNbt.Y + AddNbt.Height);
+                path.AddLine(AddNbt.Right , AddNbt.Y + AddNbt.Height, AddNbt.Left , AddNbt.Y + AddNbt.Height);
+                path.AddLine(AddNbt.Left , AddNbt.Y , AddNbt.Left , AddNbt.Y + AddNbt.Height);
+
+            }
             #endregion
 
             brush = new LinearGradientBrush(AddNbt, offSelectedColor, offSelectedColor, LinearGradientMode.Vertical);

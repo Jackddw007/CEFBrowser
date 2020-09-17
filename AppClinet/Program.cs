@@ -95,8 +95,8 @@
             try
             {
 
-                if (Directory.Exists(GetAppDir("Cache")))
-                    Directory.Delete(GetAppDir("Cache"), true);
+                //if (Directory.Exists(GetAppDir("Cache")))
+                //    Directory.Delete(GetAppDir("Cache"), true);
             }
             catch
             { }

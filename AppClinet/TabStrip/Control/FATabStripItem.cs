@@ -15,7 +15,7 @@ namespace CefiBrowser
     [ToolboxItem(false)]
     [DefaultProperty("Title")]
     [DefaultEvent("Changed")]
-    public class FATabStripItem : Panel
+    public class FATabStripItem : UserControl
     {
         #region Events
 
@@ -298,7 +298,7 @@ namespace CefiBrowser
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-
+            AutoScaleMode = AutoScaleMode.Font;
             sf = new StringFormat();
             sf.Trimming = StringTrimming.EllipsisCharacter; //超长时最后三个字符以...代替
             sf.FormatFlags |= StringFormatFlags.NoWrap;
@@ -446,7 +446,10 @@ namespace CefiBrowser
             CanClose = item.CanClose;
             Tag = item.Tag;
         }
-
+        /// <summary>
+        /// 当时Button左边到Form起始点的距离
+        /// </summary>
+        public float ButtontoForm_LeftDistance { set; get; }
         protected internal virtual void OnChanged()
         {
             if (Changed != null)
@@ -624,14 +627,7 @@ namespace CefiBrowser
         public void DrawItemText(Graphics g, RectangleF textRect)
         {
             textRect.Height = CefConstHelper.TextSizeH;
-            if (PublicClass.DpiY >= 120 && PublicClass.DpiY <= 150)
-            {
-                textRect.Height = CefConstHelper.TextSizeH +3;
-            }
-            else if (PublicClass.DpiY >= 150)
-            {
-                textRect.Height = CefConstHelper.TextSizeH+5;
-            }
+
             if (browserIsLoading)
                 textRect.X = iconBounds.Right + 3;
 

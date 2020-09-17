@@ -158,7 +158,7 @@ namespace CefiBrowser
             tabItem.BackColor = SystemColors.Window;//onSelectedColor;// Color.FromArgb(204, 204, 204);
             tabItem.IsDrawn = true;
             tabItem.CanClose = true;
-            tabItem.Height = CefConstHelper.Def_TabButton_Hight;
+            //tabItem.Height = CefConstHelper.Def_TabButton_Hight;
 
             Items.Insert(tabIndex, tabItem);
 
@@ -403,8 +403,9 @@ namespace CefiBrowser
 
             return item;
         }
-
-        //取消Form按钮的选中状态
+        /// <summary>
+        /// 取消Form按钮的选中状态
+        /// </summary>
         public void CancelFromButton()
         {
             if (FButtonIsDown == false)
@@ -419,7 +420,7 @@ namespace CefiBrowser
                 }
                 Invalidate();
             }
-           
+
 
         }
         #endregion
@@ -540,10 +541,21 @@ namespace CefiBrowser
         {
             if (selectedItem == null)
             {
+                if (!newAddBT.MSEdgeStyle)
+                {
+                    CefConstHelper.buttonPar = 20;
+                    CefConstHelper.TabButtons_DefOffset = 14;
+                    Invalidate();
+                }
+                //else if (BrowserStyle == "MSEdgeStyle")
+                //{
+                //    CefConstHelper.TabButtons_DefOffset = 0;
+                //}
                 FATabStripItem newitem = new FATabStripItem();
                 AddTab(newitem, true);
                 newitem = null;
                 ControlSizeChanged();
+                
             }
             //画Tabstrip边框
             // SetDefaultSelected();
@@ -551,16 +563,15 @@ namespace CefiBrowser
             //borderRc.Width--;
             //borderRc.Height--;
             //e.Graphics.DrawRectangle(SystemPens.ControlDark, borderRc);
-            CefConstHelper.DEF_START_POS = 10;
-            if (PublicClass.DpiX > 150)
-            {
-                CefConstHelper.DEF_START_POS = 16;
-            }
-            else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 150)
-            {
-                CefConstHelper.DEF_START_POS = 13;
-            }
-
+            //if (PublicClass.DpiX > 150)
+            //{
+            //    CefConstHelper.DEF_START_POS = 16;
+            //}
+            //else if (PublicClass.DpiX >= 120 && PublicClass.DpiX <= 150)
+            //{
+            //    CefConstHelper.DEF_START_POS = 13;
+            //}
+            CefConstHelper.DEF_START_POS = 16;
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
 
@@ -604,22 +615,19 @@ namespace CefiBrowser
             {
                 if (ParentForm.WindowState == FormWindowState.Maximized)
                 {
-                    PointF end = new PointF(SelectedItem.StripRect.Left + 1f, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost);
-                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost), new PointF(ClientRectangle.Width, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost));
-                    e.Graphics.DrawLine(new Pen(onSelectedColor, 1f), end, new PointF(SelectedItem.StripRect.Right - 1f, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost));
+                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost), new PointF(SelectedItem.ButtontoForm_LeftDistance, CefConstHelper.buttonHeight-CefConstHelper.UderLineCost));
+                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(SelectedItem.ButtontoForm_LeftDistance+ SelectedItem.Width , CefConstHelper.buttonHeight - CefConstHelper.UderLineCost),
+                    new PointF(SelectedItem.StripRect.Right, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost));
                 }
                 else
                 {
-                    PointF end = new PointF(SelectedItem.StripRect.Left + 1f, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost);
-                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost), new PointF(ClientRectangle.Width, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost));
-                    e.Graphics.DrawLine(new Pen(onSelectedColor, 1f), end, new PointF(SelectedItem.StripRect.Right - 1f, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost));
+                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(0, CefConstHelper.buttonHeight - CefConstHelper.UderLineCost + CefConstHelper.DEF_Header_TopDis), new PointF(SelectedItem.ButtontoForm_LeftDistance, CefConstHelper.buttonHeight+ CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost));
+                    e.Graphics.DrawLine(SystemPens.ControlDark, new PointF(SelectedItem.ButtontoForm_LeftDistance + SelectedItem.Width, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost),
+                    new PointF(SelectedItem.StripRect.Right, CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis - CefConstHelper.UderLineCost));
 
                 }
             }
-            //Rectangle borderRc = ParentForm.ClientRectangle; ;
-            //borderRc.Width--;
-            //borderRc.Height--;
-            //e.Graphics.DrawRectangle(new Pen(SystemColors.ControlDark, 1), borderRc);
+
 
             #endregion
         }
@@ -985,18 +993,19 @@ namespace CefiBrowser
             {
                 //buttonRect是定义标签button的边框宽和高及坐标,28为高，X,Y为坐标
                 buttonRect = new RectangleF(CefConstHelper.DEF_START_POS, CefConstHelper.DEF_Header_TopDis, CefConstHelper.Def_TabButton_White, CefConstHelper.buttonHeight);
-
                 currentItem.StripRect = buttonRect;
                 CefConstHelper.DEF_START_POS += (CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset);
+                currentItem.ButtontoForm_LeftDistance = CefConstHelper.DEF_START_POS - buttonRect.Width + CefConstHelper.TabButtons_DefOffset;
                 NewAddRect.Bounds = new RectangleF(CefConstHelper.DEF_START_POS + 10, (CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis) / 5 + CefConstHelper.DEF_Header_TopDis, CefConstHelper.AddnewButton_Width, CefConstHelper.buttonHeight / 2);
             }
             else 
             {
                 //buttonRect是定义标签button的边框宽和高及坐标,28为高，X,Y为坐标
                 //窗口最大化的时候Y坐标为1
-                buttonRect = new RectangleF(CefConstHelper.DEF_START_POS, this.Location.Y-2, CefConstHelper.Def_TabButton_White, CefConstHelper.buttonHeight);
+                buttonRect = new RectangleF(CefConstHelper.DEF_START_POS, this.Location.Y, CefConstHelper.Def_TabButton_White, CefConstHelper.buttonHeight);
                 currentItem.StripRect = buttonRect;
                 CefConstHelper.DEF_START_POS += (CefConstHelper.Def_TabButton_White - CefConstHelper.TabButtons_DefOffset);
+                currentItem.ButtontoForm_LeftDistance = CefConstHelper.DEF_START_POS-buttonRect.Width+ CefConstHelper.TabButtons_DefOffset;
                 NewAddRect.Bounds = new RectangleF(CefConstHelper.DEF_START_POS + 10, (CefConstHelper.buttonHeight + CefConstHelper.DEF_Header_TopDis) / 5, CefConstHelper.AddnewButton_Width, CefConstHelper.buttonHeight / 2); //画新增按钮
             }
             PublicClass.DEF_START_POS = CefConstHelper.DEF_START_POS;
@@ -1008,6 +1017,7 @@ namespace CefiBrowser
 
                 if (buttonRect.X > ClientRectangle.Width - CefConstHelper.AddNbt_FormRight - buttonRect.Width + 30)
                     buttonRect.X = ClientRectangle.Width - CefConstHelper.AddNbt_FormRight - buttonRect.Width + 30;
+                selectedItem.ButtontoForm_LeftDistance = buttonRect.X;
                 selectedItem.StripRect = buttonRect;
             }
             
@@ -1134,7 +1144,7 @@ namespace CefiBrowser
             sf.FormatFlags |= StringFormatFlags.NoWrap;
             sf.FormatFlags &= StringFormatFlags.DirectionRightToLeft;
 
-            stripButtonRect = new Rectangle(0, 0, ClientSize.Width - CefConstHelper.DEF_GLYPH_WIDTH - 2, CefConstHelper.buttonHeight);
+            stripButtonRect = new Rectangle(0, 0, ClientSize.Width - CefConstHelper.DEF_GLYPH_WIDTH , CefConstHelper.buttonHeight);
 
                 if (ParentForm != null && ParentForm.WindowState == FormWindowState.Maximized)
                 {
@@ -1142,7 +1152,7 @@ namespace CefiBrowser
                         DockPadding.Top = 0;
                     else
                         //  DockPadding.Top = DEF_HEADER_HEIGHT + InControlHeight;
-                        DockPadding.Top = CefConstHelper.buttonHeight + InControlHeight - 3;
+                        DockPadding.Top = CefConstHelper.buttonHeight + InControlHeight;
 
                     DockPadding.Bottom = 0;
                     DockPadding.Right = 0;
@@ -1160,7 +1170,7 @@ namespace CefiBrowser
                     }
                     else
                     {
-                        DockPadding.Top = CefConstHelper.buttonHeight + InControlHeight + CefConstHelper.DEF_Header_TopDis -1;
+                        DockPadding.Top = CefConstHelper.buttonHeight + InControlHeight + CefConstHelper.DEF_Header_TopDis ;
                         DockPadding.Bottom = 0;
                         DockPadding.Right = 0;
                         DockPadding.Left = 0;
@@ -1215,7 +1225,7 @@ namespace CefiBrowser
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.Selectable, true);
-           // AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleMode = AutoScaleMode.Font;
             
             items = new FATabStripItemCollection();
             items.CollectionChanged += new CollectionChangeEventHandler(OnCollectionChanged);
@@ -1326,7 +1336,14 @@ namespace CefiBrowser
                 UpdateLayout();
             }
         }
-
+        /// <summary>
+        /// Chrome样式
+        /// </summary>
+        public bool ChromeStyle { set; get; }
+        /// <summary>
+        /// 微软Edge样式
+        /// </summary>
+        public bool MSEdgeStyle { set; get; }
         /// <summary>
         /// DesignerSerializationVisibility
         /// </summary>

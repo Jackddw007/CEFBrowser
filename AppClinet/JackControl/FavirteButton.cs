@@ -140,9 +140,9 @@ namespace CefiBrowser
                         PX = PX - 3- (MainForm.Instance.textShow.Width + MainForm.Instance.FavPanel.PointToClient(new Point(PX, MousePosition.Y)).X - MainForm.Instance.FavPanel.Width);
                     }
                     if (MainForm.Instance.WindowState == FormWindowState.Maximized)
-                        MainForm.Instance.textShow.Location = MainForm.Instance.FavPanel.PointToClient(new Point(PX, MousePosition.Y + 82));
+                        MainForm.Instance.textShow.Location = MainForm.Instance.FavPanel.PointToClient(new Point(PX, MousePosition.Y + CefConstHelper.buttonHeight+MainForm.Instance.ToolsPanel.Height + MainForm.Instance.FavPanel.Height-CefConstHelper.DEF_Header_TopDis+10));
                     else if (MainForm.Instance.WindowState == FormWindowState.Normal)
-                        MainForm.Instance.textShow.Location =   MainForm.Instance.FavPanel.PointToClient(new Point(PX, MousePosition.Y + 97));
+                        MainForm.Instance.textShow.Location =   MainForm.Instance.FavPanel.PointToClient(new Point(PX, MousePosition.Y + CefConstHelper.buttonHeight  + MainForm.Instance.ToolsPanel.Height + MainForm.Instance.FavPanel.Height+10));
 
                     MainForm.Instance.textShow.Visible = true;
                 }

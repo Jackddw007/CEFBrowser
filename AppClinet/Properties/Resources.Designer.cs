@@ -193,6 +193,26 @@ namespace CefiBrowser.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap FavBtIconDef24 {
+            get {
+                object obj = ResourceManager.GetObject("FavBtIconDef24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FavBtIconEnter24 {
+            get {
+                object obj = ResourceManager.GetObject("FavBtIconEnter24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap favrite {
             get {
                 object obj = ResourceManager.GetObject("favrite", resourceCulture);
@@ -253,6 +273,56 @@ namespace CefiBrowser.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap forwardDisabled24 {
+            get {
+                object obj = ResourceManager.GetObject("forwardDisabled24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap forwardDisabled241 {
+            get {
+                object obj = ResourceManager.GetObject("forwardDisabled241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap forwardEnabled20 {
+            get {
+                object obj = ResourceManager.GetObject("forwardEnabled20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap forwardEnabled24 {
+            get {
+                object obj = ResourceManager.GetObject("forwardEnabled24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap forwardEnabled241 {
+            get {
+                object obj = ResourceManager.GetObject("forwardEnabled241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap gback1 {
             get {
                 object obj = ResourceManager.GetObject("gback1", resourceCulture);
@@ -276,6 +346,36 @@ namespace CefiBrowser.Properties {
         internal static System.Drawing.Bitmap ginBack1 {
             get {
                 object obj = ResourceManager.GetObject("ginBack1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap GoBackDisabled24 {
+            get {
+                object obj = ResourceManager.GetObject("GoBackDisabled24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap GoBackEnabled20 {
+            get {
+                object obj = ResourceManager.GetObject("GoBackEnabled20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap GoBackEnabled24 {
+            get {
+                object obj = ResourceManager.GetObject("GoBackEnabled24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +416,26 @@ namespace CefiBrowser.Properties {
         internal static System.Drawing.Bitmap home2 {
             get {
                 object obj = ResourceManager.GetObject("home2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Home20 {
+            get {
+                object obj = ResourceManager.GetObject("Home20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Home24 {
+            get {
+                object obj = ResourceManager.GetObject("Home24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -386,6 +506,16 @@ namespace CefiBrowser.Properties {
         internal static System.Drawing.Bitmap info1 {
             get {
                 object obj = ResourceManager.GetObject("info1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Internet24 {
+            get {
+                object obj = ResourceManager.GetObject("Internet24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,6 +643,26 @@ namespace CefiBrowser.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap ReFlash20 {
+            get {
+                object obj = ResourceManager.GetObject("ReFlash20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ReFlash24 {
+            get {
+                object obj = ResourceManager.GetObject("ReFlash24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap reflesh {
             get {
                 object obj = ResourceManager.GetObject("reflesh", resourceCulture);
@@ -533,9 +683,29 @@ namespace CefiBrowser.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Seach24 {
+            get {
+                object obj = ResourceManager.GetObject("Seach24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap shousuo {
             get {
                 object obj = ResourceManager.GetObject("shousuo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SSL24 {
+            get {
+                object obj = ResourceManager.GetObject("SSL24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

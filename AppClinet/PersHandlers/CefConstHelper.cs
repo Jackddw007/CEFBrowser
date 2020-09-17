@@ -13,9 +13,13 @@ namespace CefiBrowser
         /// </summary>
         public static int DEF_GLYPH_WIDTH = 38;
         /// <summary>
-        /// 第一个标签Button到Form左边的距离
+        /// 当前标签Button到Form左边的距离动态的值
         /// </summary>
-        public static float DEF_START_POS=10;
+        public static float DEF_START_POS=13;
+        /// <summary>
+        /// 第一个标签Button到Form左边的距离默认值
+        /// </summary>
+        public static float DEF_START0_POS = 13;
         /// <summary>
         /// TabButton下面的一条装饰线
         /// </summary>
